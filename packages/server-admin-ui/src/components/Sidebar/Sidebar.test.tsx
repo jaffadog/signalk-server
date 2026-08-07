@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { MemoryRouter, type Location } from 'react-router-dom'
 import Sidebar from './Sidebar'
@@ -23,8 +23,6 @@ vi.mock('../../store', () => ({
   useHistoryProviderUnavailable: () => false
 }))
 
-const MOBILE_SHOWN = 'sidebar-mobile-show'
-
 function renderSidebar(pathname = '/dashboard') {
   const location = {
     pathname,
@@ -33,58 +31,52 @@ function renderSidebar(pathname = '/dashboard') {
     state: null,
     key: 'test'
   } as Location
-  return render(
+  const onHide = vi.fn()
+  render(
     <MemoryRouter initialEntries={[pathname]}>
-      <Sidebar location={location} />
+      <Sidebar location={location} show onHide={onHide} />
     </MemoryRouter>
   )
+  return onHide
 }
 
 describe('Sidebar', () => {
-  beforeEach(() => {
-    document.body.classList.add(MOBILE_SHOWN)
-  })
-
-  afterEach(() => {
-    document.body.classList.remove(MOBILE_SHOWN)
-  })
-
-  it('closes the mobile sidebar when a page is picked', () => {
+  it('calls onHide when a page is picked', () => {
     // NavLink navigates via pushState, which fires no popstate, so nothing
     // else takes the overlay down and it covers the page just opened.
-    renderSidebar()
+    const onHide = renderSidebar()
     fireEvent.click(screen.getByText('Webapps'))
-    expect(document.body.classList.contains(MOBILE_SHOWN)).toBe(false)
+    expect(onHide).toHaveBeenCalled()
   })
 
-  it('closes the mobile sidebar when a submenu entry is picked', () => {
-    renderSidebar()
+  it('calls onHide when a submenu entry is picked', () => {
+    const onHide = renderSidebar()
     fireEvent.click(screen.getByText('Data'))
     fireEvent.click(screen.getByText('Metadata'))
-    expect(document.body.classList.contains(MOBILE_SHOWN)).toBe(false)
+    expect(onHide).toHaveBeenCalled()
   })
 
-  it('keeps the mobile sidebar open when a dropdown is expanded', () => {
+  it('does not call onHide when a dropdown is expanded', () => {
     // Expanding also navigates (to the group's remembered page), but the
     // user is about to pick from the children that just appeared.
-    renderSidebar()
+    const onHide = renderSidebar()
     fireEvent.click(screen.getByText('Data'))
-    expect(document.body.classList.contains(MOBILE_SHOWN)).toBe(true)
+    expect(onHide).not.toHaveBeenCalled()
   })
 
-  it('keeps the mobile sidebar open when a dropdown is collapsed', () => {
+  it('does not call onHide when a dropdown is collapsed', () => {
     // Rendering under /data/browser auto-opens the group, so a single click
     // collapses it.
-    renderSidebar('/data/browser')
+    const onHide = renderSidebar('/data/browser')
     fireEvent.click(screen.getByText('Data'))
-    expect(document.body.classList.contains(MOBILE_SHOWN)).toBe(true)
+    expect(onHide).not.toHaveBeenCalled()
   })
 
-  it('closes the mobile sidebar when an external link is picked', () => {
+  it('calls onHide when an external link is picked', () => {
     // The new tab leaves the current page untouched, but the menu entry was
     // acted on — leaving the overlay up means finding it on return.
-    renderSidebar()
+    const onHide = renderSidebar()
     fireEvent.click(screen.getByText('OpenApi'))
-    expect(document.body.classList.contains(MOBILE_SHOWN)).toBe(false)
+    expect(onHide).toHaveBeenCalled()
   })
 })

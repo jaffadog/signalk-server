@@ -2,14 +2,80 @@
 
 // Here you can add other styles
 
-// Navbar toggler - remove border to match CoreUI v1 styling
-.app-header .navbar-toggler {
-  border: none;
-  outline: none;
-  -webkit-tap-highlight-color: rgb(var(--bs-black-rgb), 0.1);
+// Disable rubber-band/elastic overscroll (trackpad bounce at top/bottom of
+// the page) so the sticky header/sidebar don't visibly detach during it.
+html,
+body {
+  overscroll-behavior-y: none;
+}
 
-  &:focus {
-    box-shadow: none;
+// Bootstrap's own .card has no default margin-bottom, so stacked cards
+// touch unless each usage site remembers a spacing utility. Give every
+// card breathing room by default instead.
+.card {
+  margin-bottom: 1.5rem;
+}
+
+// Bootstrap's navbar dropdowns default to position:static below the
+// navbar's expand breakpoint (intended for full nav sections that push
+// page content down when expanded) and only float via position:absolute
+// at that breakpoint and up. Our header dropdown is a compact settings/
+// account menu, not a nav section — force it to float at every width so
+// it doesn't expand our fixed-height header out of its own box.
+.app-navbar .dropdown-menu {
+  position: absolute !important;
+}
+
+// App shell: fixed dimensions so Header's banner offsets, the sidebar's
+// fixed positioning, and the main/footer margin compensation below all
+// share the same stable values to anchor to.
+$app-navbar-height: 55px;
+$app-sidebar-width: 240px;
+
+.app-navbar {
+  height: $app-navbar-height;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  .navbar-toggler {
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgb(var(--bs-black-rgb), 0.1);
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+// Header is `fixed`, so it's removed from flow and reserves no space —
+// the content row below it needs the offset added back manually.
+.app-content-row {
+  margin-top: $app-navbar-height;
+}
+
+// Sidebar stays pinned in the viewport instead of scrolling away with the
+// page, matching the pre-BS5 app shell. Only applies at lg+, where
+// Offcanvas (responsive="lg") renders as a static in-flow panel rather than
+// a mobile slide-over — below that breakpoint Bootstrap's own fixed/
+// full-height offcanvas styling applies.
+@include media-breakpoint-up(lg) {
+  .sidebar-offcanvas {
+    position: fixed;
+    top: $app-navbar-height;
+    width: $app-sidebar-width;
+    height: calc(100vh - #{$app-navbar-height});
+    overflow-y: auto;
+    z-index: 1020;
+  }
+
+  // Sidebar is fixed (out of flow) at this breakpoint, so main and the
+  // footer both need matching margin-left to render beside it rather than
+  // underneath it — mirrors the original app shell exactly (footer only
+  // ever spanned the main-content column, never the sidebar's).
+  .app-main,
+  .app-footer-shell {
+    margin-left: $app-sidebar-width;
   }
 }
 

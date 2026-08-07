@@ -1,6 +1,8 @@
 import React, {
   Suspense,
   useEffect,
+  useState,
+  useCallback,
   Component,
   ReactNode,
   ComponentType
@@ -266,23 +268,48 @@ function LegacyPluginConfigRedirect() {
 
 export default function Full() {
   const location = useLocation()
+  const [sidebarShow, setSidebarShow] = useState(false)
 
   useEffect(() => {
     fetchAllData()
   }, [])
 
+  // NavLink navigates via pushState, which fires no popstate, so nothing
+  // else closes the mobile off-canvas sidebar after the user picks a page.
+  useEffect(() => {
+    setSidebarShow(false)
+  }, [location.pathname])
+
+  // Embedded webapps can ask for more width via `adminUI.hideSideBar()`
+  // (see Embedded.tsx). The sidebar has no desktop minimize state anymore
+  // (see Sidebar.tsx), so this only ever affects the mobile off-canvas.
+  useEffect(() => {
+    const hideSidebar = () => setSidebarShow(false)
+    window.addEventListener('sidebar:hide', hideSidebar)
+    return () => window.removeEventListener('sidebar:hide', hideSidebar)
+  }, [])
+
+  const toggleSidebar = useCallback(() => {
+    setSidebarShow((prev) => !prev)
+  }, [])
+
+  const isDocsRoute = location.pathname.indexOf('/documentation') === 0
+  const isEmbeddedRoute = location.pathname.indexOf('/e/') === 0
   const suppressPadding =
-    location.pathname.indexOf('/e/') === 0 ||
-    location.pathname.indexOf('/documentation') === 0
-      ? { padding: '0px' }
-      : {}
+    isEmbeddedRoute || isDocsRoute ? { padding: '0px' } : { padding: '30px' }
 
   return (
-    <div className="app">
-      <Header />
-      <div className="app-body">
-        <Sidebar location={location} />
-        <main className="main">
+    <div className="d-flex flex-column min-vh-100">
+      <Header onToggleSidebar={toggleSidebar} />
+      <div className="app-content-row flex-grow-1">
+        {!isDocsRoute && (
+          <Sidebar
+            location={location}
+            show={sidebarShow}
+            onHide={() => setSidebarShow(false)}
+          />
+        )}
+        <main className="app-main overflow-x-auto">
           <Container fluid style={suppressPadding}>
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>

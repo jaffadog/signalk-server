@@ -60,7 +60,7 @@
 // @import 'bootstrap/scss/popover';
 // @import 'bootstrap/scss/carousel';
 @import 'bootstrap/scss/spinners';
-// @import 'bootstrap/scss/offcanvas';
+@import 'bootstrap/scss/offcanvas';
 // @import 'bootstrap/scss/placeholders';
 
 // Helpers
@@ -70,10 +70,11 @@
 @import 'bootstrap/scss/utilities/api';
 
 // Override Core-UI variables
-@import 'core-variables';
+// @import 'core-variables';
 
 // Import Core-UI styles
-@import 'core/core';
+// @import 'core/core';
 
 // Custom styles
+@import 'sk-tokens';
 @import 'custom';

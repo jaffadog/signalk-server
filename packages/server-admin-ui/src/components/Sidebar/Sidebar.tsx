@@ -10,6 +10,7 @@ import React, {
 import { NavLink, Location, useNavigate } from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge'
 import Nav from 'react-bootstrap/Nav'
+import Offcanvas from 'react-bootstrap/Offcanvas'
 import {
   useAppStore,
   useAccessRequests,
@@ -28,12 +29,11 @@ import {
 } from '../../store'
 import classNames from 'classnames'
 import { isOverrideDormantUnderGroups } from '../../utils/sourceGroups'
-import './Sidebar.css'
 import SidebarFooter from './../SidebarFooter/SidebarFooter'
 import SidebarForm from './../SidebarForm/SidebarForm'
 import SidebarHeader from './../SidebarHeader/SidebarHeader'
-import SidebarMinimizer from './../SidebarMinimizer/SidebarMinimizer'
 
+// ---------- types (unchanged) ----------
 interface BadgeData {
   variant?: string
   text?: string
@@ -65,9 +65,15 @@ function pathMatchesChild(pathname: string, childUrl: string): boolean {
 
 interface SidebarProps {
   location: Location
+  // Mobile off-canvas visibility. Desktop (>= lg) always renders the
+  // sidebar statically regardless of this value — see Offcanvas's
+  // `responsive="lg"` below. Owned by the layout container (Full.tsx)
+  // and toggled from the header's menu button.
+  show: boolean
+  onHide: () => void
 }
 
-export default function Sidebar({ location }: SidebarProps) {
+export default function Sidebar({ location, show, onHide }: SidebarProps) {
   const navigate = useNavigate()
   const appStore = useAppStore()
   const accessRequests = useAccessRequests()
@@ -481,14 +487,13 @@ export default function Sidebar({ location }: SidebarProps) {
   }, [location.pathname, items])
 
   // NavLink navigates via pushState, which fires no popstate, so the mobile
-  // sidebar would stay open on top of the page the user just picked. Only
-  // leaf links close it: toggling a dropdown open also navigates (to the
-  // group's remembered page), and closing there would hide the children the
-  // user is about to choose from. Header owns the same class, so both remove
-  // it — the operation is idempotent.
+  // off-canvas sidebar would stay open on top of the page the user just
+  // picked. Only leaf links close it: toggling a dropdown open also
+  // navigates (to the group's remembered page), and closing there would
+  // hide the children the user is about to choose from.
   const closeMobileSidebar = useCallback(() => {
-    document.body.classList.remove('sidebar-mobile-show')
-  }, [])
+    onHide()
+  }, [onHide])
 
   const handleClick = useCallback(
     (item: NavItemData) => (e: MouseEvent<HTMLAnchorElement>) => {
@@ -544,24 +549,18 @@ export default function Sidebar({ location }: SidebarProps) {
     }
   }, [location.pathname, items])
 
-  const activeRoute = useCallback(
-    (routeName: string) => {
-      const isOpen = openDropdowns.has(routeName)
-      return isOpen ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown'
-    },
-    [openDropdowns]
-  )
+  // ---------- render helpers (BS5-native) ----------
 
   const renderBadge = (badgeData?: BadgeData | null): ReactNode => {
-    if (badgeData) {
-      const classes = classNames(badgeData.class)
-      return (
-        <Badge className={classes} bg={badgeData.variant}>
-          {badgeData.text}
-        </Badge>
-      )
-    }
-    return null
+    if (!badgeData) return null
+    return (
+      <Badge
+        bg={badgeData.variant || 'secondary'}
+        className={classNames('ms-2', badgeData.class)}
+      >
+        {badgeData.text}
+      </Badge>
+    )
   }
 
   const renderBadges = (item: NavItemData): ReactNode => {
@@ -584,127 +583,146 @@ export default function Sidebar({ location }: SidebarProps) {
     return renderBadge(item.badge)
   }
 
-  const wrapper = (item: NavItemData): ReactNode => {
-    return item.wrapper && item.wrapper.element
-      ? React.createElement(
-          item.wrapper.element,
-          item.wrapper.attributes,
-          item.name
-        )
-      : item.name
-  }
-
-  const title = (titleItem: NavItemData, key: number): ReactNode => {
-    const classes = classNames('nav-title', titleItem.class)
-    return (
-      <li key={key} className={classes}>
-        {wrapper(titleItem)}{' '}
-      </li>
-    )
-  }
-
-  const divider = (dividerItem: NavItemData, key: number): ReactNode => {
-    const classes = classNames('divider', dividerItem.class)
-    return <li key={key} className={classes} />
-  }
-
   const renderIcon = (iconClass?: string): ReactNode => {
     if (!iconClass) return null
-    return <i className={classNames(iconClass, 'nav-icon')} />
+    return <i className={classNames(iconClass, 'me-2')} />
   }
 
-  const navLink = (
-    item: NavItemData,
-    key: number,
-    classes: { item: string; link: string; icon: string }
-  ): ReactNode => {
-    const url = item.url ? item.url : ''
-    const isExternal = (url: string) => {
-      const link = url ? url.substring(0, 4) : ''
-      return link === 'http'
-    }
-    return (
-      <Nav.Item as="li" key={key} className={classes.item}>
-        {isExternal(url) ? (
+  const renderNavLink = (item: NavItemData, key: number): ReactNode => {
+    const url = item.url || ''
+    const isExternal = url.startsWith('http')
+
+    const content = (
+      <>
+        {renderIcon(item.icon)}
+        <span className="flex-grow-1">{item.name}</span>
+        {renderBadges(item)}
+      </>
+    )
+
+    if (isExternal) {
+      return (
+        <Nav.Item as="li" key={key}>
           <Nav.Link
             href={url}
-            className={classes.link}
-            {...(item.props || {})}
+            className="d-flex align-items-center"
             onClick={closeMobileSidebar}
+            {...(item.props || {})}
           >
-            {renderIcon(item.icon)}
-            {item.name}
-            {renderBadges(item)}
+            {content}
           </Nav.Link>
-        ) : (
-          <NavLink
-            to={url}
-            className={({ isActive }) =>
-              isActive ? `${classes.link} active` : classes.link
-            }
-            {...(item.props || {})}
-            onClick={closeMobileSidebar}
-          >
-            {renderIcon(item.icon)}
-            {item.name}
-            {renderBadges(item)}
-          </NavLink>
-        )}
+        </Nav.Item>
+      )
+    }
+
+    return (
+      <Nav.Item as="li" key={key}>
+        <NavLink
+          to={url}
+          className={({ isActive }) =>
+            classNames('nav-link d-flex align-items-center', {
+              active: isActive
+            })
+          }
+          onClick={closeMobileSidebar}
+          {...(item.props || {})}
+        >
+          {content}
+        </NavLink>
       </Nav.Item>
     )
   }
 
-  const navItem = (item: NavItemData, key: number): ReactNode => {
-    const classes = {
-      item: classNames(item.class),
-      link: classNames(
-        'nav-link',
-        item.variant ? `nav-link-${item.variant}` : ''
-      ),
-      icon: classNames(item.icon)
-    }
-    return navLink(item, key, classes)
-  }
+  const renderNavGroup = (item: NavItemData, key: number): ReactNode => {
+    const isOpen = openDropdowns.has(item.url || '')
+    const collapseId = `sidebar-group-${(item.url || String(key)).replace(/\//g, '-')}`
 
-  const navDropdown = (item: NavItemData, key: number): ReactNode => {
     return (
-      <li key={key} className={activeRoute(item.url || '')}>
+      <Nav.Item as="li" key={key}>
         <a
-          className="nav-link nav-dropdown-toggle"
           href="#"
+          className="nav-link d-flex align-items-center"
           onClick={handleClick(item)}
+          aria-expanded={isOpen}
+          aria-controls={collapseId}
         >
           {renderIcon(item.icon)}
-          {item.name}
+          <span className="flex-grow-1">{item.name}</span>
           {renderBadges(item)}
+          <i
+            className={classNames(
+              'bi ms-2',
+              isOpen ? 'bi-chevron-down' : 'bi-chevron-right'
+            )}
+          />
         </a>
-        <ul className="nav-dropdown-items">{navList(item.children || [])}</ul>
-      </li>
+        <ul
+          id={collapseId}
+          className={classNames(
+            'collapse nav flex-column ms-3 border-start ps-2 list-unstyled',
+            { show: isOpen }
+          )}
+        >
+          {(item.children || []).map((child, idx) => renderNavLink(child, idx))}
+        </ul>{' '}
+      </Nav.Item>
     )
   }
 
-  const navType = (item: NavItemData, idx: number): ReactNode =>
-    item.title
-      ? title(item, idx)
-      : item.divider
-        ? divider(item, idx)
-        : item.children
-          ? navDropdown(item, idx)
-          : navItem(item, idx)
-
-  const navList = (navItems: NavItemData[]): ReactNode[] => {
-    return navItems.map((item, index) => navType(item, index))
+  const renderItem = (item: NavItemData, idx: number): ReactNode => {
+    if (item.title) {
+      return (
+        <li key={idx} className="nav-item mt-3 mb-1">
+          <span className="nav-link text-muted small fw-semibold text-uppercase">
+            {item.name}
+          </span>
+        </li>
+      )
+    }
+    if (item.divider) {
+      return <li key={idx} className="border-top my-2" role="separator" />
+    }
+    if (item.children?.length) {
+      return renderNavGroup(item, idx)
+    }
+    return renderNavLink(item, idx)
   }
 
+  // Single Offcanvas with `responsive="lg"`: renders as a normal static
+  // block at the lg breakpoint and up, and becomes a slide-over off-canvas
+  // panel (with backdrop, Escape-to-close, and a close button) below it.
+  // Replaces the old sidebar-minimized / sidebar-compact machinery
+  // entirely — no separate desktop "minimize" mode for now (see
+  // STYLING.md notes on the CoreUI sidebar removal for why).
   return (
-    <div className="sidebar">
-      <SidebarHeader />
-      <SidebarForm />
-      <nav className="sidebar-nav">
-        <Nav>{navList(items)}</Nav>
-      </nav>
-      <SidebarFooter />
-      <SidebarMinimizer />
-    </div>
+    <Offcanvas
+      show={show}
+      onHide={onHide}
+      responsive="lg"
+      className="bg-body-tertiary border-end sidebar-offcanvas"
+      style={{ width: 240 }}
+    >
+      <Offcanvas.Header closeButton className="d-lg-none border-bottom">
+        <Offcanvas.Title as="span" className="fs-6 fw-semibold">
+          Menu
+        </Offcanvas.Title>
+      </Offcanvas.Header>
+
+      <Offcanvas.Body className="d-flex flex-column p-3">
+        <SidebarHeader />
+        <SidebarForm />
+
+        <nav className="flex-grow-1 overflow-auto" aria-label="Main navigation">
+          <Nav
+            as="ul"
+            className="nav-pills flex-column mb-auto list-unstyled ps-0"
+          >
+            {items.map((item, idx) => renderItem(item, idx))}
+          </Nav>
+        </nav>
+
+        <SidebarFooter />
+      </Offcanvas.Body>
+    </Offcanvas>
   )
 }

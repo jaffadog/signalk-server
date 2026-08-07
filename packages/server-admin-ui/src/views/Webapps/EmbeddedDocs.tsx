@@ -18,13 +18,6 @@ export default function EmbeddedDocs() {
     currentHashRef.current = location.hash
   }, [location.pathname, location.hash])
 
-  useEffect(() => {
-    document.body.classList.add('sidebar-hidden')
-    return () => {
-      document.body.classList.remove('sidebar-hidden')
-    }
-  }, [])
-
   const handleIframeLoad = useCallback(() => {
     const iframe = iframeRef.current
     if (!iframe?.contentWindow) return

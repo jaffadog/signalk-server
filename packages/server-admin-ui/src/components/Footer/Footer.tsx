@@ -29,7 +29,7 @@ export default function Footer() {
     currentMajor > recommendedMajor
 
   return (
-    <footer className="app-footer">
+    <footer className="app-footer-shell d-flex flex-wrap align-items-center px-3 py-2 border-top bg-body-tertiary">
       <span>
         <a href="https://github.com/SignalK/signalk-server-node/">
           Signal K Server
