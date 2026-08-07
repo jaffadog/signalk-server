@@ -10,38 +10,41 @@
 
 // Components
 @import 'aside';
-@import 'avatars';
-@import 'badge';
+// @import 'avatars'; // not used in sk
+// @import 'badge'; // not used in sk
 @import 'breadcrumb-menu';
 @import 'breadcrumb';
-@import 'buttons';
+// @import 'buttons'; // not used in sk
 @import 'callout';
 @import 'card';
-@import 'charts';
+// @import 'charts'; // not used in sk
 @import 'dropdown';
 @import 'footer';
 @import 'grid';
-@import 'input-group';
-@import 'loading';
+// @import 'input-group'; // not used in sk
+// @import 'loading'; // not used in sk
 @import 'modal';
 @import 'nav';
 @import 'navbar';
 @import 'progress';
 @import 'sidebar';
+
+// confirmed this is in heavy use in sk admin-ui 7-aug-2026
 @import 'switches';
-@import 'tables';
+
+// @import 'tables'; // not used in sk
 @import 'widgets';
 
 // Layout Options
 @import 'layout';
 
-@import 'others';
+// @import 'others';
 
 // Utility classes
 @import 'utilities';
 
 // Temporary fixes
-@import 'temp';
+// @import 'temp';
 
 // Right-to-left
-@import 'rtl';
+// @import 'rtl';
