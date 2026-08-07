@@ -206,7 +206,6 @@ export default function Devices() {
                 </tbody>
               </Table>
             </Card.Body>
-            <Card.Footer></Card.Footer>
           </Card>
 
           {selectedDevice && (
@@ -216,71 +215,73 @@ export default function Devices() {
                   <FontAwesomeIcon icon={faAlignJustify} /> Device
                 </Card.Header>
                 <Card.Body>
-                  <Form.Group as={Row}>
-                    <Col md="2">
-                      <Form.Label>Client ID</Form.Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                      <span className="form-control-plaintext">
-                        {selectedDevice.clientId}
-                      </span>
-                    </Col>
-                  </Form.Group>
-                  <Form.Group as={Row}>
-                    <Col md="2">
-                      <Form.Label htmlFor="description">Description</Form.Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                      <Form.Control
-                        size={60}
-                        style={{ width: 'auto' }}
-                        type="text"
-                        id="description"
-                        name="description"
-                        autoComplete="off"
-                        onChange={handleDeviceChange}
-                        value={selectedDevice.description || ''}
-                      />
-                    </Col>
-                  </Form.Group>
-                  <Form.Group as={Row}>
-                    <Col md="2">
-                      <Form.Label htmlFor="permissions">Permissions</Form.Label>
-                    </Col>
-                    <Col xs="12" md="2">
-                      {!selectedDevice.requestedPermissions && (
-                        <Form.Select
-                          id="permissions"
-                          name="permissions"
-                          value={selectedDevice.permissions || 'readonly'}
-                          onChange={handleDeviceChange}
-                        >
-                          <option value="readonly">Read Only</option>
-                          <option value="readwrite">Read/Write</option>
-                          <option value="admin">Admin</option>
-                        </Form.Select>
-                      )}
-                      {selectedDevice.requestedPermissions && (
+                  <Form>
+                    <Form.Group as={Row}>
+                      <Form.Label column md="2">
+                        Client ID
+                      </Form.Label>
+                      <Col xs="12" md="9">
                         <span className="form-control-plaintext">
-                          {convertPermissions(selectedDevice.permissions)}
+                          {selectedDevice.clientId}
                         </span>
-                      )}
-                    </Col>
-                  </Form.Group>
-                  <Form.Group as={Row}>
-                    <Col md="2">
-                      <Form.Label>Token Expiry</Form.Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                      <span className="form-control-plaintext">
-                        {isExpired(selectedDevice) ? (
-                          <Badge bg="danger">Expired</Badge>
-                        ) : (
-                          formatExpiry(selectedDevice)
+                      </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}>
+                      <Form.Label column md="2" htmlFor="description">
+                        Description
+                      </Form.Label>
+                      <Col xs="12" md="9">
+                        <Form.Control
+                          size={60}
+                          style={{ width: 'auto' }}
+                          type="text"
+                          id="description"
+                          name="description"
+                          autoComplete="off"
+                          onChange={handleDeviceChange}
+                          value={selectedDevice.description || ''}
+                        />
+                      </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}>
+                      <Form.Label column md="2" htmlFor="permissions">
+                        Permissions
+                      </Form.Label>
+                      <Col xs="12" md="3">
+                        {!selectedDevice.requestedPermissions && (
+                          <Form.Select
+                            id="permissions"
+                            name="permissions"
+                            value={selectedDevice.permissions || 'readonly'}
+                            onChange={handleDeviceChange}
+                          >
+                            <option value="readonly">Read Only</option>
+                            <option value="readwrite">Read/Write</option>
+                            <option value="admin">Admin</option>
+                          </Form.Select>
                         )}
-                      </span>
-                    </Col>
-                  </Form.Group>
+                        {selectedDevice.requestedPermissions && (
+                          <span className="form-control-plaintext">
+                            {convertPermissions(selectedDevice.permissions)}
+                          </span>
+                        )}
+                      </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}>
+                      <Form.Label column md="2">
+                        Token Expiry
+                      </Form.Label>
+                      <Col xs="12" md="9">
+                        <span className="form-control-plaintext">
+                          {isExpired(selectedDevice) ? (
+                            <Badge bg="danger">Expired</Badge>
+                          ) : (
+                            formatExpiry(selectedDevice)
+                          )}
+                        </span>
+                      </Col>
+                    </Form.Group>
+                  </Form>
                 </Card.Body>
                 <Card.Footer>
                   <div className="d-flex flex-wrap gap-2">

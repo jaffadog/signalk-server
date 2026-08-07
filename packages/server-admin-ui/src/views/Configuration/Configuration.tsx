@@ -555,7 +555,6 @@ function PluginConfigCard({
     [plugin.data, saveData, setOptimisticData]
   )
 
-  const labelStyle = { marginLeft: '10px', marginBottom: '0px' }
   const { schema } = plugin
   const configurationRequired =
     schema &&
@@ -635,46 +634,22 @@ function PluginConfigCard({
             <>
               <Row>
                 <Col lg={4} className={'mt-2 mt-lg-0'}>
-                  <Form.Label
-                    style={labelStyle}
-                    className="switch switch-text switch-primary"
-                  >
-                    <input
-                      type="checkbox"
-                      name="enabled"
-                      className="switch-input"
-                      onChange={() => handleToggle('enabled')}
-                      checked={optimisticData.enabled}
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="Yes"
-                      data-off="No"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
-                  <span className="ms-1">Enabled</span>
+                  <Form.Check
+                    type="switch"
+                    name="enabled"
+                    label="Enabled"
+                    onChange={() => handleToggle('enabled')}
+                    checked={optimisticData.enabled}
+                  />
                 </Col>
-                <Col lg={4} className={'mt-2 mt-lg-0'}>
-                  <Form.Label
-                    style={labelStyle}
-                    className="switch switch-text switch-primary"
-                  >
-                    <input
-                      type="checkbox"
-                      name="enableLogging"
-                      className="switch-input"
-                      onChange={() => handleToggle('enableLogging')}
-                      checked={optimisticData.enableLogging}
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="Yes"
-                      data-off="No"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
-                  <span className="ms-1">Data logging</span>
+                <Col lg={4} className="mt-2 mt-lg-0 d-flex align-items-center">
+                  <Form.Check
+                    type="switch"
+                    name="enableLogging"
+                    label="Data logging"
+                    onChange={() => handleToggle('enableLogging')}
+                    checked={optimisticData.enableLogging}
+                  />
                   {optimisticData.enableLogging && (
                     <OverlayTrigger
                       placement="bottom"
@@ -696,32 +671,22 @@ function PluginConfigCard({
                   )}
                 </Col>
                 <Col lg={4} className={'mt-2 mt-lg-0'}>
-                  <Form.Label
-                    style={labelStyle}
-                    className="switch switch-text switch-primary"
-                  >
-                    <input
-                      type="checkbox"
-                      name="enableDebug"
-                      className="switch-input"
-                      onChange={() => handleToggle('enableDebug')}
-                      checked={optimisticData.enableDebug}
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="Yes"
-                      data-off="No"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
-                  <span className="ms-1">
-                    Enable debug{' '}
-                    {optimisticData.enableDebug ? (
-                      <a href="#/serverConfiguration/log">log</a>
-                    ) : (
-                      'log'
-                    )}
-                  </span>
+                  <Form.Check
+                    type="switch"
+                    name="enableDebug"
+                    label={
+                      <>
+                        Enable debug{' '}
+                        {optimisticData.enableDebug ? (
+                          <a href="#/serverConfiguration/log">log</a>
+                        ) : (
+                          'log'
+                        )}
+                      </>
+                    }
+                    onChange={() => handleToggle('enableDebug')}
+                    checked={optimisticData.enableDebug}
+                  />
                 </Col>
               </Row>
               {optimisticData.enabled && (

@@ -170,28 +170,22 @@ const BackupRestore: React.FC = () => {
               </Form.Text>
               <br />
               <Form.Group as={Row}>
-                <Col xs="3" md="2">
-                  <Form.Label htmlFor="backup-includePlugins">
-                    Include Plugins
-                  </Form.Label>
-                </Col>
+                <Form.Label
+                  column
+                  xs="3"
+                  md="2"
+                  htmlFor="backup-includePlugins"
+                >
+                  Include Plugins
+                </Form.Label>
                 <Col xs="2" md={fieldColWidthMd}>
-                  <Form.Label className="switch switch-text switch-primary me-2">
-                    <Form.Control
-                      type="checkbox"
-                      id="backup-includePlugins"
-                      name="enabled"
-                      className="switch-input"
-                      onChange={includePluginsChange}
-                      checked={includePlugins}
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="Yes"
-                      data-off="No"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
+                  <Form.Check
+                    type="switch"
+                    id="backup-includePlugins"
+                    name="enabled"
+                    onChange={includePluginsChange}
+                    checked={includePlugins}
+                  />
                   <Form.Text className="text-muted">
                     Selecting Yes will increase the size of the backup, but will
                     allow for offline restore.
@@ -240,25 +234,15 @@ const BackupRestore: React.FC = () => {
                 <Col xs="12" md={fieldColWidthMd}>
                   {Object.keys(restoreContents).map((name) => {
                     return (
-                      <div key={name}>
-                        <Form.Label className="switch switch-text switch-primary">
-                          <Form.Control
-                            type="checkbox"
-                            id={name}
-                            name={name}
-                            className="switch-input"
-                            onChange={handleRestoreFileChange}
-                            checked={restoreContents[name]}
-                          />
-                          <span
-                            className="switch-label"
-                            data-on="Yes"
-                            data-off="No"
-                          />
-                          <span className="switch-handle" />
-                        </Form.Label>{' '}
-                        {name}
-                      </div>
+                      <Form.Check
+                        key={name}
+                        type="switch"
+                        id={name}
+                        name={name}
+                        label={name}
+                        onChange={handleRestoreFileChange}
+                        checked={restoreContents[name]}
+                      />
                     )
                   })}
                 </Col>

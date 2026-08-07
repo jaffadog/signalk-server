@@ -252,9 +252,9 @@ export default function Users() {
                 </Card.Header>
                 <Card.Body>
                   <Form.Group as={Row} className="mb-3">
-                    <Col md="2">
-                      <Form.Label htmlFor="userId">User ID</Form.Label>
-                    </Col>
+                    <Form.Label column md="3" htmlFor="userId">
+                      User ID
+                    </Form.Label>
                     <Col xs="12" md="9">
                       {selectedUser.isNew && (
                         <Form.Control
@@ -267,17 +267,21 @@ export default function Users() {
                         />
                       )}
                       {!selectedUser.isNew && (
-                        <Form.Label>{selectedUser.userId}</Form.Label>
+                        <span className="form-control-plaintext">
+                          {selectedUser.userId}
+                        </span>
                       )}
                     </Col>
                   </Form.Group>
                   {selectedUser.email && (
                     <Form.Group as={Row} className="mb-3">
-                      <Col md="2">
-                        <Form.Label>Email</Form.Label>
-                      </Col>
+                      <Form.Label column md="3">
+                        Email
+                      </Form.Label>
                       <Col xs="12" md="9">
-                        <Form.Label>{selectedUser.email}</Form.Label>
+                        <span className="form-control-plaintext">
+                          {selectedUser.email}
+                        </span>
                       </Col>
                     </Form.Group>
                   )}
@@ -294,9 +298,9 @@ export default function Users() {
                   ) : (
                     <>
                       <Form.Group as={Row} className="mb-3">
-                        <Col md="2">
-                          <Form.Label htmlFor="password">Password</Form.Label>
-                        </Col>
+                        <Form.Label column md="3" htmlFor="password">
+                          Password
+                        </Form.Label>
                         <Col xs="12" md="9">
                           <Form.Control
                             type="password"
@@ -309,11 +313,9 @@ export default function Users() {
                         </Col>
                       </Form.Group>
                       <Form.Group as={Row} className="mb-3">
-                        <Col md="2">
-                          <Form.Label htmlFor="confirmPassword">
-                            Confirm Password
-                          </Form.Label>
-                        </Col>
+                        <Form.Label column md="3" htmlFor="confirmPassword">
+                          Confirm Password
+                        </Form.Label>
                         <Col xs="12" md="9">
                           <Form.Control
                             type="password"
@@ -328,9 +330,9 @@ export default function Users() {
                     </>
                   )}
                   <Form.Group as={Row} className="mb-3">
-                    <Col md="2">
-                      <Form.Label htmlFor="permissions">Permissions</Form.Label>
-                    </Col>
+                    <Form.Label column md="3" htmlFor="permissions">
+                      Permissions
+                    </Form.Label>
                     <Col xs="12" md="2">
                       <Form.Select
                         id="permissions"

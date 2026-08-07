@@ -283,33 +283,21 @@ const OIDCSettings: React.FC = () => {
               className="form-horizontal"
             >
               <Form.Group as={Row}>
-                <Col xs="0" md="3">
-                  <span className="col-form-label">Enable OIDC</span>
-                  {renderEnvBadge('enabled')}
-                </Col>
                 <Col md="9">
-                  <div className="d-flex align-items-center">
-                    <label
-                      style={{ marginRight: '15px', marginBottom: 0 }}
-                      className="switch switch-text switch-primary"
-                    >
-                      <input
-                        type="checkbox"
-                        id="oidc-enabled"
-                        name="enabled"
-                        className="switch-input"
-                        onChange={(e) => setEnabled(e.target.checked)}
-                        checked={enabled}
-                        disabled={isFieldDisabled('enabled')}
-                      />
-                      <span
-                        className="switch-label"
-                        data-on="Yes"
-                        data-off="No"
-                      />
-                      <span className="switch-handle" />
-                    </label>
-                  </div>
+                  <Form.Check
+                    type="switch"
+                    id="oidc-enabled"
+                    name="enabled"
+                    label={
+                      <>
+                        Enable OIDC
+                        {renderEnvBadge('enabled')}
+                      </>
+                    }
+                    onChange={(e) => setEnabled(e.target.checked)}
+                    checked={enabled}
+                    disabled={isFieldDisabled('enabled')}
+                  />
                   <Form.Text muted>
                     Enable OpenID Connect authentication
                   </Form.Text>
@@ -317,10 +305,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="issuer">Issuer URL</Form.Label>
+                <Form.Label column md="3" htmlFor="issuer">
+                  Issuer URL
                   {renderEnvBadge('issuer')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Row>
                     <Col md="8">
@@ -365,10 +353,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="clientId">Client ID</Form.Label>
+                <Form.Label column md="3" htmlFor="clientId">
+                  Client ID
                   {renderEnvBadge('clientId')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="text"
@@ -385,10 +373,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="clientSecret">Client Secret</Form.Label>
+                <Form.Label column md="3" htmlFor="clientSecret">
+                  Client Secret
                   {renderEnvBadge('clientSecret')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="password"
@@ -418,10 +406,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="redirectUri">Redirect URI</Form.Label>
+                <Form.Label column md="3" htmlFor="redirectUri">
+                  Redirect URI
                   {renderEnvBadge('redirectUri')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="text"
@@ -441,12 +429,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="providerName">
-                    Provider Display Name
-                  </Form.Label>
+                <Form.Label column md="3" htmlFor="providerName">
+                  Provider Display Name
                   {renderEnvBadge('providerName')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="text"
@@ -468,12 +454,10 @@ const OIDCSettings: React.FC = () => {
               <h5>Permission Mapping</h5>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="defaultPermission">
-                    Default Permission
-                  </Form.Label>
+                <Form.Label column md="3" htmlFor="defaultPermission">
+                  Default Permission
                   {renderEnvBadge('defaultPermission')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="4">
                   <Form.Select
                     id="defaultPermission"
@@ -493,10 +477,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="adminGroups">Admin Groups</Form.Label>
+                <Form.Label column md="3" htmlFor="adminGroups">
+                  Admin Groups
                   {renderEnvBadge('adminGroups')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="text"
@@ -515,12 +499,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="readwriteGroups">
-                    Read/Write Groups
-                  </Form.Label>
+                <Form.Label column md="3" htmlFor="readwriteGroups">
+                  Read/Write Groups
                   {renderEnvBadge('readwriteGroups')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="text"
@@ -540,12 +522,10 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="groupsAttribute">
-                    Groups Attribute
-                  </Form.Label>
+                <Form.Label column md="3" htmlFor="groupsAttribute">
+                  Groups Attribute
                   {renderEnvBadge('groupsAttribute')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="text"
@@ -568,33 +548,21 @@ const OIDCSettings: React.FC = () => {
               <h5>User Settings</h5>
 
               <Form.Group as={Row}>
-                <Col xs="0" md="3">
-                  <span className="col-form-label">Auto-Create Users</span>
-                  {renderEnvBadge('autoCreateUsers')}
-                </Col>
                 <Col md="9">
-                  <div className="d-flex align-items-center">
-                    <label
-                      style={{ marginRight: '15px', marginBottom: 0 }}
-                      className="switch switch-text switch-primary"
-                    >
-                      <input
-                        type="checkbox"
-                        id="oidc-autoCreateUsers"
-                        name="autoCreateUsers"
-                        className="switch-input"
-                        onChange={(e) => setAutoCreateUsers(e.target.checked)}
-                        checked={autoCreateUsers}
-                        disabled={isFieldDisabled('autoCreateUsers')}
-                      />
-                      <span
-                        className="switch-label"
-                        data-on="Yes"
-                        data-off="No"
-                      />
-                      <span className="switch-handle" />
-                    </label>
-                  </div>
+                  <Form.Check
+                    type="switch"
+                    id="oidc-autoCreateUsers"
+                    name="autoCreateUsers"
+                    label={
+                      <>
+                        Auto-Create Users
+                        {renderEnvBadge('autoCreateUsers')}
+                      </>
+                    }
+                    onChange={(e) => setAutoCreateUsers(e.target.checked)}
+                    checked={autoCreateUsers}
+                    disabled={isFieldDisabled('autoCreateUsers')}
+                  />
                   <Form.Text muted>
                     Automatically create local user on first OIDC login
                   </Form.Text>
@@ -602,33 +570,21 @@ const OIDCSettings: React.FC = () => {
               </Form.Group>
 
               <Form.Group as={Row}>
-                <Col xs="0" md="3">
-                  <span className="col-form-label">Auto-Login</span>
-                  {renderEnvBadge('autoLogin')}
-                </Col>
                 <Col md="9">
-                  <div className="d-flex align-items-center">
-                    <label
-                      style={{ marginRight: '15px', marginBottom: 0 }}
-                      className="switch switch-text switch-primary"
-                    >
-                      <input
-                        type="checkbox"
-                        id="oidc-autoLogin"
-                        name="autoLogin"
-                        className="switch-input"
-                        onChange={(e) => setAutoLogin(e.target.checked)}
-                        checked={autoLogin}
-                        disabled={isFieldDisabled('autoLogin')}
-                      />
-                      <span
-                        className="switch-label"
-                        data-on="Yes"
-                        data-off="No"
-                      />
-                      <span className="switch-handle" />
-                    </label>
-                  </div>
+                  <Form.Check
+                    type="switch"
+                    id="oidc-autoLogin"
+                    name="autoLogin"
+                    label={
+                      <>
+                        Auto-Login
+                        {renderEnvBadge('autoLogin')}
+                      </>
+                    }
+                    onChange={(e) => setAutoLogin(e.target.checked)}
+                    checked={autoLogin}
+                    disabled={isFieldDisabled('autoLogin')}
+                  />
                   <Form.Text muted>
                     Automatically redirect to OIDC login when not authenticated
                   </Form.Text>
@@ -639,10 +595,10 @@ const OIDCSettings: React.FC = () => {
               <h5>Advanced</h5>
 
               <Form.Group as={Row}>
-                <Col md="3">
-                  <Form.Label htmlFor="scope">Scope</Form.Label>
+                <Form.Label column md="3" htmlFor="scope">
+                  Scope
                   {renderEnvBadge('scope')}
-                </Col>
+                </Form.Label>
                 <Col xs="12" md="9">
                   <Form.Control
                     type="text"

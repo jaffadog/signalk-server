@@ -176,31 +176,29 @@ export default function AccessRequests() {
                 </Card.Header>
                 <Card.Body>
                   <Form.Group as={Row}>
-                    <Col md="4" lg="2">
-                      <Form.Label>Identifier</Form.Label>
-                    </Col>
+                    <Form.Label column md="4" lg="2">
+                      Identifier
+                    </Form.Label>
                     <Col xs="12" md="8">
-                      <Form.Label>
+                      <span className="form-control-plaintext">
                         {selectedRequest.accessIdentifier}
-                      </Form.Label>
+                      </span>
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row}>
-                    <Col md="4" lg="2">
-                      <Form.Label>Description</Form.Label>
-                    </Col>
+                    <Form.Label column md="4" lg="2">
+                      Description
+                    </Form.Label>
                     <Col xs="12" md="8">
-                      <Form.Label>
+                      <span className="form-control-plaintext">
                         {selectedRequest.accessDescription}
-                      </Form.Label>
+                      </span>
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row}>
-                    <Col md="4" lg="2">
-                      <Form.Label htmlFor="expiration">
-                        Authentication Timeout
-                      </Form.Label>
-                    </Col>
+                    <Form.Label column md="4" lg="2" htmlFor="expiration">
+                      Authentication Timeout
+                    </Form.Label>
                     <Col xs="12" md="8" lg="3">
                       <Form.Control
                         type="text"
@@ -216,9 +214,9 @@ export default function AccessRequests() {
                     </Col>
                   </Form.Group>
                   <Form.Group as={Row}>
-                    <Col md="4" lg="2">
-                      <Form.Label htmlFor="permissions">Permissions</Form.Label>
-                    </Col>
+                    <Form.Label column md="4" lg="2" htmlFor="permissions">
+                      Permissions
+                    </Form.Label>
                     <Col xs="12" md="8" lg="3">
                       {!selectedRequest.requestedPermissions && (
                         <Form.Select

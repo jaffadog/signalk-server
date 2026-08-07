@@ -237,9 +237,9 @@ const ServerSettings: React.FC = () => {
           >
             {!settings.runFromSystemd && (
               <Form.Group as={Row}>
-                <Col md="2">
-                  <Form.Label htmlFor="port">HTTP Port</Form.Label>
-                </Col>
+                <Form.Label column md="2" htmlFor="port">
+                  HTTP Port
+                </Form.Label>
                 <Col xs="12" md={fieldColWidthMd}>
                   <Form.Control
                     size={5}
@@ -270,9 +270,9 @@ const ServerSettings: React.FC = () => {
             )}
             {settings.options?.ssl && !settings.runFromSystemd && (
               <Form.Group as={Row}>
-                <Col md="2">
-                  <Form.Label htmlFor="sslport">SSL Port</Form.Label>
-                </Col>
+                <Form.Label column md="2" htmlFor="sslport">
+                  SSL Port
+                </Form.Label>
                 <Col xs="12" md={fieldColWidthMd}>
                   <Form.Control
                     size={5}
@@ -299,31 +299,16 @@ const ServerSettings: React.FC = () => {
                 {settings.options &&
                   Object.keys(settings.options).map((name) => {
                     return (
-                      <div
+                      <Form.Check
                         key={name}
-                        className="d-flex align-items-center mb-2"
-                      >
-                        <Form.Label
-                          style={{ marginRight: '15px', marginBottom: 0 }}
-                          className="switch switch-text switch-primary"
-                        >
-                          <input
-                            type="checkbox"
-                            id={`option-${name}`}
-                            name={name}
-                            className="switch-input"
-                            onChange={handleOptionChange}
-                            checked={settings.options?.[name] || false}
-                          />
-                          <span
-                            className="switch-label"
-                            data-on="On"
-                            data-off="Off"
-                          />
-                          <span className="switch-handle" />
-                        </Form.Label>
-                        <span>{name}</span>
-                      </div>
+                        type="switch"
+                        id={`option-${name}`}
+                        name={name}
+                        label={name}
+                        className="mb-2"
+                        onChange={handleOptionChange}
+                        checked={settings.options?.[name] || false}
+                      />
                     )
                   })}
               </Col>
@@ -338,40 +323,24 @@ const ServerSettings: React.FC = () => {
                   const disabled = name === 'tcp' && tcpUnavailable
                   return (
                     <div key={name} className="mb-2">
-                      <div
-                        className="d-flex align-items-center"
+                      <Form.Check
+                        type="switch"
+                        id={`interface-${name}`}
+                        name={name}
+                        label={SettableInterfaces[name]}
                         style={{
                           opacity: disabled
                             ? DISABLED_ROW_OPACITY
                             : ENABLED_ROW_OPACITY
                         }}
-                      >
-                        <Form.Label
-                          style={{ marginRight: '15px', marginBottom: 0 }}
-                          className="switch switch-text switch-primary"
-                        >
-                          <input
-                            type="checkbox"
-                            id={`interface-${name}`}
-                            name={name}
-                            className="switch-input"
-                            onChange={handleInterfaceChange}
-                            checked={
-                              disabled
-                                ? false
-                                : settings.interfaces?.[name] || false
-                            }
-                            disabled={disabled}
-                          />
-                          <span
-                            className="switch-label"
-                            data-on="On"
-                            data-off="Off"
-                          />
-                          <span className="switch-handle" />
-                        </Form.Label>
-                        <span>{SettableInterfaces[name]}</span>
-                      </div>
+                        onChange={handleInterfaceChange}
+                        checked={
+                          disabled
+                            ? false
+                            : settings.interfaces?.[name] || false
+                        }
+                        disabled={disabled}
+                      />
                       {disabled && (
                         <Alert
                           variant="warning"
@@ -393,11 +362,9 @@ const ServerSettings: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="pruneContextsMinutes">
-                  Maximum age of inactive vessels&apos; data
-                </Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="pruneContextsMinutes">
+                Maximum age of inactive vessels&apos; data
+              </Form.Label>
               <Col xs="12" md={fieldColWidthMd}>
                 <Form.Control
                   type="text"
@@ -414,11 +381,9 @@ const ServerSettings: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="loggingDirectory">
-                  Data Logging Directory
-                </Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="loggingDirectory">
+                Data Logging Directory
+              </Form.Label>
               <Col xs="12" md={fieldColWidthMd}>
                 <Form.Control
                   type="text"
@@ -437,32 +402,19 @@ const ServerSettings: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="keepMostRecentLogsOnly">
-                  Keep only most recent data log files
-                </Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="keepMostRecentLogsOnly">
+                Keep only most recent data log files
+              </Form.Label>
               <Col xs="12" md={fieldColWidthMd}>
                 <div className="d-flex align-items-center">
-                  <Form.Label
-                    style={{ marginRight: '15px', marginBottom: 0 }}
-                    className="switch switch-text switch-primary"
-                  >
-                    <input
-                      type="checkbox"
-                      name="keepMostRecentLogsOnly"
-                      id="keepMostRecentLogsOnly"
-                      className="switch-input"
-                      onChange={handleChange}
-                      checked={settings.keepMostRecentLogsOnly || false}
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="On"
-                      data-off="Off"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
+                  <Form.Check
+                    type="switch"
+                    name="keepMostRecentLogsOnly"
+                    id="keepMostRecentLogsOnly"
+                    className="me-3"
+                    onChange={handleChange}
+                    checked={settings.keepMostRecentLogsOnly || false}
+                  />
                   <div>
                     <Form.Label
                       htmlFor="logCountToKeep"
@@ -485,35 +437,20 @@ const ServerSettings: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="apiOnly">
-                  API Only Mode
-                  <br />
-                  <i>(Course API)</i>
-                </Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="apiOnly">
+                API Only Mode
+                <br />
+                <i>(Course API)</i>
+              </Form.Label>
               <Col xs="12" md={fieldColWidthMd}>
-                <div className="d-flex align-items-center mb-2">
-                  <Form.Label
-                    style={{ marginRight: '15px', marginBottom: 0 }}
-                    className="switch switch-text switch-primary"
-                  >
-                    <input
-                      type="checkbox"
-                      name="apiOnly"
-                      id="apiOnly"
-                      className="switch-input"
-                      onChange={handleCourseApiChange}
-                      checked={settings.courseApi?.apiOnly || false}
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="On"
-                      data-off="Off"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
-                </div>
+                <Form.Check
+                  type="switch"
+                  name="apiOnly"
+                  id="apiOnly"
+                  className="mb-2"
+                  onChange={handleCourseApiChange}
+                  checked={settings.courseApi?.apiOnly || false}
+                />
                 <Form.Text muted>
                   Accept course operations only via HTTP requests. Destination
                   data from NMEA sources is not used.
@@ -521,37 +458,20 @@ const ServerSettings: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="manageNotifications">
-                  Manage Notifications
-                  <br />
-                  <i>(restart required)</i>
-                </Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="manageNotifications">
+                Manage Notifications
+                <br />
+                <i>(restart required)</i>
+              </Form.Label>
               <Col xs="12" md={fieldColWidthMd}>
-                <div className="d-flex align-items-center mb-2">
-                  <Form.Label
-                    style={{ marginRight: '15px', marginBottom: 0 }}
-                    className="switch switch-text switch-primary"
-                  >
-                    <input
-                      type="checkbox"
-                      name="manageNotifications"
-                      id="manageNotifications"
-                      className="switch-input"
-                      onChange={handleNotificationsChange}
-                      checked={
-                        settings.notifications?.manageNotifications ?? true
-                      }
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="On"
-                      data-off="Off"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
-                </div>
+                <Form.Check
+                  type="switch"
+                  name="manageNotifications"
+                  id="manageNotifications"
+                  className="mb-2"
+                  onChange={handleNotificationsChange}
+                  checked={settings.notifications?.manageNotifications ?? true}
+                />
                 <Form.Text muted>
                   Run the built-in notification manager. Turn off to let an
                   external notification handler own notification lifecycle and
@@ -561,33 +481,18 @@ const ServerSettings: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="enforceDataTimeouts">
-                  Enforce Data Timeouts
-                </Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="enforceDataTimeouts">
+                Enforce Data Timeouts
+              </Form.Label>
               <Col xs="12" md={fieldColWidthMd}>
-                <div className="d-flex align-items-center mb-2">
-                  <Form.Label
-                    style={{ marginRight: '15px', marginBottom: 0 }}
-                    className="switch switch-text switch-primary"
-                  >
-                    <input
-                      type="checkbox"
-                      name="enforceDataTimeouts"
-                      id="enforceDataTimeouts"
-                      className="switch-input"
-                      onChange={handleStalenessChange}
-                      checked={settings.staleness?.enforceDataTimeouts === true}
-                    />
-                    <span
-                      className="switch-label"
-                      data-on="On"
-                      data-off="Off"
-                    />
-                    <span className="switch-handle" />
-                  </Form.Label>
-                </div>
+                <Form.Check
+                  type="switch"
+                  name="enforceDataTimeouts"
+                  id="enforceDataTimeouts"
+                  className="mb-2"
+                  onChange={handleStalenessChange}
+                  checked={settings.staleness?.enforceDataTimeouts === true}
+                />
                 <Form.Text muted>
                   When a value on your own vessel stops updating past its
                   timeout, mark it as stale so displays and alerting plugins can

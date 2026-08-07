@@ -997,24 +997,15 @@ const DataBrowser: React.FC = () => {
                 </Form.Select>
               </Col>
               <Col xs="6" md="auto" className="ms-md-auto">
-                <label className="switch switch-text switch-primary">
-                  <input
-                    type="checkbox"
-                    id="databrowser-pause"
-                    name="pause"
-                    className="switch-input"
-                    onChange={handlePause}
-                    checked={pause}
-                  />
-                  <span className="switch-label" data-on="Yes" data-off="No" />
-                  <span className="switch-handle" />
-                </label>{' '}
-                <label
-                  htmlFor="databrowser-pause"
-                  style={{ whiteSpace: 'nowrap', cursor: 'pointer' }}
-                >
-                  Pause
-                </label>
+                <Form.Check
+                  type="switch"
+                  id="databrowser-pause"
+                  name="pause"
+                  label="Pause"
+                  onChange={handlePause}
+                  checked={pause}
+                  className="d-inline-block"
+                />
               </Col>
             </Form.Group>
             {context && context !== 'none' && (

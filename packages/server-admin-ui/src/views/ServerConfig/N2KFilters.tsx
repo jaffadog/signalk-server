@@ -116,18 +116,15 @@ export default function N2KFilters({ value, onChange }: N2KFiltersProps) {
       <Card>
         <Card.Header>Filters</Card.Header>
         <Card.Body>
-          <Form.Label className="switch switch-text switch-primary">
-            <input
-              type="checkbox"
-              name="filtersEnabled"
-              className="switch-input"
-              checked={!!value.options.filtersEnabled}
-              onChange={handleEnabledChange}
-            />
-            <span className="switch-label" data-on="Yes" data-off="No" />
-            <span className="switch-handle" />
-          </Form.Label>
-          &nbsp; Enabled <br />
+          <Form.Check
+            type="switch"
+            id="n2k-filters-enabled"
+            name="filtersEnabled"
+            label="Enabled"
+            checked={!!value.options.filtersEnabled}
+            onChange={handleEnabledChange}
+          />
+          <br />
           <br />
           Filter out all messages from a specific {sourceName} by entering just
           the {sourceName}.<br />

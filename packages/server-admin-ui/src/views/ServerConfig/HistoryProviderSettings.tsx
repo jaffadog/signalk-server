@@ -95,9 +95,9 @@ const HistoryProviderSettings: React.FC = () => {
           className="mb-0"
           controlId="historyDefaultProvider"
         >
-          <Col md={2}>
-            <Form.Label>Default Provider</Form.Label>
-          </Col>
+          <Form.Label column md={2}>
+            Default Provider
+          </Form.Label>
           <Col xs="12" md={10}>
             {providers.ids.length === 0 ? (
               <Form.Text className="text-muted">

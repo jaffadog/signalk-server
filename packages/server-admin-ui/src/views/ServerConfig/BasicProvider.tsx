@@ -179,9 +179,9 @@ export default function BasicProvider({
   return (
     <div>
       <Form.Group as={Row} className="mb-3">
-        <Col xs="3" md="3">
-          <Form.Label htmlFor="select">Data Type</Form.Label>
-        </Col>
+        <Form.Label column xs="3" md="3" htmlFor="select">
+          Data Type
+        </Form.Label>
         <Col xs="6" md="3">
           {value.isNew ? (
             <Form.Select
@@ -202,31 +202,26 @@ export default function BasicProvider({
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3">
-        <Col xs="3" md="3">
-          <Form.Label htmlFor="provider-enabled">Enabled</Form.Label>
-        </Col>
+        <Form.Label column xs="3" md="3" htmlFor="provider-enabled">
+          Enabled
+        </Form.Label>
         <Col xs="2" md="3">
-          <Form.Label className="switch switch-text switch-primary">
-            <input
-              type="checkbox"
-              id="provider-enabled"
-              name="enabled"
-              className="switch-input"
-              onChange={(event) => onChange(event)}
-              checked={value.enabled}
-            />
-            <span className="switch-label" data-on="Yes" data-off="No" />
-            <span className="switch-handle" />
-          </Form.Label>
+          <Form.Check
+            type="switch"
+            id="provider-enabled"
+            name="enabled"
+            onChange={(event) => onChange(event)}
+            checked={value.enabled}
+          />
         </Col>
       </Form.Group>
       {value.type !== 'FileStream' && (
         <LoggingInput value={value} onChange={onChange} />
       )}
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="id">ID</Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="id">
+          ID
+        </Form.Label>
         <Col xs="12" md="3">
           <Form.Control
             type="text"
@@ -276,9 +271,9 @@ function TextInput({
 }: TextInputProps) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col md="3">
-        <Form.Label htmlFor={name}>{title}</Form.Label>
-      </Col>
+      <Form.Label column md="3" htmlFor={name}>
+        {title}
+      </Form.Label>
       <Col xs="12" md="3">
         <Form.Control
           type="text"
@@ -304,9 +299,9 @@ function TextAreaInput({
 }: TextAreaInputProps) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col md="3">
-        <Form.Label htmlFor={name}>{title}</Form.Label>
-      </Col>
+      <Form.Label column md="3" htmlFor={name}>
+        {title}
+      </Form.Label>
       <Col xs="12" md="3">
         <Form.Control
           as="textarea"
@@ -505,9 +500,9 @@ function TokenInput({
   return (
     <>
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="options.token">Authentication Token</Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="options.token">
+          Authentication Token
+        </Form.Label>
         <Col xs="12" md="3">
           <Form.Control
             type="text"
@@ -630,9 +625,9 @@ function DeviceInput({ value, onChange }: DeviceInputProps) {
 
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col md="3">
-        <Form.Label htmlFor="serialportselect">Serial port</Form.Label>
-      </Col>
+      <Form.Label column md="3" htmlFor="serialportselect">
+        Serial port
+      </Form.Label>
       <Col xs="12" md="3">
         <Form.Select
           name="options.device"
@@ -695,22 +690,17 @@ const serialportListOptions = (
 function LoggingInput({ value, onChange }: LoggingInputProps) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-logging">Data Logging</Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-logging">
+        Data Logging
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-logging"
-            name="logging"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.logging}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-logging"
+          name="logging"
+          onChange={(event) => onChange(event)}
+          checked={value.logging}
+        />
         {value.logging && (
           <OverlayTrigger
             placement="bottom"
@@ -760,24 +750,17 @@ function ValidateChecksumInput({
 
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-validateChecksum">
-          Validate Checksum
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-validateChecksum">
+        Validate Checksum
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-validateChecksum"
-            name="options.validateChecksum"
-            className="switch-input"
-            onChange={handleChange}
-            checked={isValidateChecksumEnabled}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-validateChecksum"
+          name="options.validateChecksum"
+          onChange={handleChange}
+          checked={isValidateChecksumEnabled}
+        />
       </Col>
     </Form.Group>
   )
@@ -786,24 +769,17 @@ function ValidateChecksumInput({
 function OverrideTimestamps({ value, onChange }: OverrideTimestampsProps) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-overrideTimestamp">
-          Override timestamps
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-overrideTimestamp">
+        Override timestamps
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-overrideTimestamp"
-            name="options.overrideTimestamp"
-            className="switch-input"
-            onChange={onChange}
-            checked={value.overrideTimestamp}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-overrideTimestamp"
+          name="options.overrideTimestamp"
+          onChange={onChange}
+          checked={value.overrideTimestamp}
+        />
       </Col>
     </Form.Group>
   )
@@ -818,24 +794,17 @@ function RemoveNullsInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-removeNulls">
-          Remove NULL characters
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-removeNulls">
+        Remove NULL characters
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-removeNulls"
-            name="options.removeNulls"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.removeNulls}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-removeNulls"
+          name="options.removeNulls"
+          onChange={(event) => onChange(event)}
+          checked={value.removeNulls}
+        />
       </Col>
     </Form.Group>
   )
@@ -853,25 +822,18 @@ function AppendChecksum({
 
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-appendChecksum">
-          Append Checksum
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-appendChecksum">
+        Append Checksum
+      </Form.Label>
       <Col xs="2" md="1">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-appendChecksum"
-            name="options.appendChecksum"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.appendChecksum && !isValidateChecksumEnabled}
-            disabled={isValidateChecksumEnabled}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-appendChecksum"
+          name="options.appendChecksum"
+          onChange={(event) => onChange(event)}
+          checked={value.appendChecksum && !isValidateChecksumEnabled}
+          disabled={isValidateChecksumEnabled}
+        />
       </Col>
       <Col xs="12" md="6">
         {isValidateChecksumEnabled && (
@@ -913,9 +875,9 @@ function DataTypeInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col md="3">
-        <Form.Label htmlFor="dataType">Data Type</Form.Label>
-      </Col>
+      <Form.Label column md="3" htmlFor="dataType">
+        Data Type
+      </Form.Label>
       <Col xs="12" md="4">
         <Form.Select
           id="dataType"
@@ -1169,12 +1131,12 @@ function TalkerGroups({
 
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col md="3">
-        <Form.Label>Talker Groups</Form.Label>
+      <Form.Label column md="3">
+        Talker Groups
         <Form.Text className="d-block text-muted">
           Group talker IDs from the same device into a single source.
         </Form.Text>
-      </Col>
+      </Form.Label>
       <Col xs="12" md="9">
         {entries.map((entry, index) => (
           // eslint-disable-next-line @eslint-react/no-array-index-key
@@ -1344,24 +1306,17 @@ function Suppress0183Checkbox({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-suppress0183event">
-          Suppress nmea0183 event
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-suppress0183event">
+        Suppress nmea0183 event
+      </Form.Label>
       <Col xs="1" md="1">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-suppress0183event"
-            name="options.suppress0183event"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.suppress0183event}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-suppress0183event"
+          name="options.suppress0183event"
+          onChange={(event) => onChange(event)}
+          checked={value.suppress0183event}
+        />
       </Col>
       <Col xs="12" md="6">
         <label className="text-muted small">
@@ -1381,24 +1336,17 @@ function UseCanNameInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-useCanName">
-          Use Can NAME in source data
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-useCanName">
+        Use Can NAME in source data
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-useCanName"
-            name="options.useCanName"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.useCanName === true}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-useCanName"
+          name="options.useCanName"
+          onChange={(event) => onChange(event)}
+          checked={value.useCanName === true}
+        />
       </Col>
     </Form.Group>
   )
@@ -1416,24 +1364,17 @@ function ActAsCanDeviceInput({
   const checked = value.actAsCanDevice !== false
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-actAsCanDevice">
-          Act as N2K device
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-actAsCanDevice">
+        Act as N2K device
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-actAsCanDevice"
-            name="options.actAsCanDevice"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={checked}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-actAsCanDevice"
+          name="options.actAsCanDevice"
+          onChange={(event) => onChange(event)}
+          checked={checked}
+        />
       </Col>
       <Col xs="7" md="6" className="form-text text-muted small">
         Claim an N2K address and participate actively on the bus (answer ISO
@@ -1454,24 +1395,17 @@ function CreateDeviceInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-createDevice">
-          Act as N2K device (createDevice)
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-createDevice">
+        Act as N2K device (createDevice)
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-createDevice"
-            name="options.createDevice"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.createDevice === true}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-createDevice"
+          name="options.createDevice"
+          onChange={(event) => onChange(event)}
+          checked={value.createDevice === true}
+        />
       </Col>
       <Col xs="7" md="6" className="form-text text-muted small">
         Claim an N2K address and participate actively on the bus. Recommended
@@ -1530,11 +1464,9 @@ function DeviceInstanceInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-deviceInstance">
-          Device Instance
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-deviceInstance">
+        Device Instance
+      </Form.Label>
       <Col xs="2" md="3">
         <Form.Control
           id="provider-deviceInstance"
@@ -1575,11 +1507,9 @@ function SystemInstanceInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-systemInstance">
-          System Instance
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-systemInstance">
+        System Instance
+      </Form.Label>
       <Col xs="2" md="3">
         <Form.Control
           id="provider-systemInstance"
@@ -1619,24 +1549,17 @@ function CamelCaseCompatInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-useCamelCompat">
-          CamelCase Compat (for legacy N2K plugins)
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-useCamelCompat">
+        CamelCase Compat (for legacy N2K plugins)
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-useCamelCompat"
-            name="options.useCamelCompat"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.useCamelCompat === true}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-useCamelCompat"
+          name="options.useCamelCompat"
+          onChange={(event) => onChange(event)}
+          checked={value.useCamelCompat === true}
+        />
       </Col>
     </Form.Group>
   )
@@ -1651,24 +1574,17 @@ function CollectNetworkStatsInput({
 }) {
   return (
     <Form.Group as={Row} className="mb-3">
-      <Col xs="3" md="3">
-        <Form.Label htmlFor="provider-sendNetworkStats">
-          Collect Network Statistics
-        </Form.Label>
-      </Col>
+      <Form.Label column xs="3" md="3" htmlFor="provider-sendNetworkStats">
+        Collect Network Statistics
+      </Form.Label>
       <Col xs="2" md="3">
-        <Form.Label className="switch switch-text switch-primary">
-          <input
-            type="checkbox"
-            id="provider-sendNetworkStats"
-            name="options.sendNetworkStats"
-            className="switch-input"
-            onChange={(event) => onChange(event)}
-            checked={value.sendNetworkStats}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-        </Form.Label>
+        <Form.Check
+          type="switch"
+          id="provider-sendNetworkStats"
+          name="options.sendNetworkStats"
+          onChange={(event) => onChange(event)}
+          checked={value.sendNetworkStats}
+        />
       </Col>
     </Form.Group>
   )
@@ -1678,9 +1594,9 @@ function NMEA2000({ value, onChange, hasAnalyzer }: TypeComponentProps) {
   return (
     <div>
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="n2k-source-type">NMEA 2000 Source</Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="n2k-source-type">
+          NMEA 2000 Source
+        </Form.Label>
         <Col xs="12" md="3">
           <Form.Select
             id="n2k-source-type"
@@ -1826,11 +1742,9 @@ function NMEA2000({ value, onChange, hasAnalyzer }: TypeComponentProps) {
           <HostInput value={value.options} onChange={onChange} />
           <PortInput value={value.options} onChange={onChange} />
           <Form.Group as={Row} className="mb-2">
-            <Col xs="12" md="3">
-              <Form.Label htmlFor="n2k-ip-gateway-format">
-                Text Format
-              </Form.Label>
-            </Col>
+            <Form.Label column xs="12" md="3" htmlFor="n2k-ip-gateway-format">
+              Text Format
+            </Form.Label>
             <Col xs="12" md="3">
               <Form.Select
                 id="n2k-ip-gateway-format"
@@ -1861,9 +1775,9 @@ function NMEA2000({ value, onChange, hasAnalyzer }: TypeComponentProps) {
           <HostInput value={value.options} onChange={onChange} />
           <PortInput value={value.options} onChange={onChange} />
           <Form.Group as={Row} className="mb-3">
-            <Col md="3">
-              <Form.Label htmlFor="options.password">Password</Form.Label>
-            </Col>
+            <Form.Label column md="3" htmlFor="options.password">
+              Password
+            </Form.Label>
             <Col xs="12" md="3">
               <Form.Control
                 type="password"
@@ -1905,11 +1819,9 @@ function NMEA0183({ value, onChange }: TypeComponentProps) {
   return (
     <div>
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="nmea0183-source-type">
-            NMEA 0183 Source
-          </Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="nmea0183-source-type">
+          NMEA 0183 Source
+        </Form.Label>
         <Col xs="12" md="3">
           <Form.Select
             id="nmea0183-source-type"
@@ -1975,9 +1887,9 @@ function SignalK({ value, onChange }: TypeComponentProps) {
   return (
     <div>
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="signalk-source-type">SignalK Source</Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="signalk-source-type">
+          SignalK Source
+        </Form.Label>
         <Col xs="12" md="3">
           <Form.Select
             id="signalk-source-type"
@@ -2010,31 +1922,23 @@ function SignalK({ value, onChange }: TypeComponentProps) {
             <PortInput value={value.options} onChange={onChange} />
             {value.options.type === 'wss' && (
               <Form.Group as={Row} className="mb-3">
-                <Col xs="0" md="3">
-                  <Form.Label htmlFor="provider-selfsignedcert">
-                    Allow self signed certificates
-                  </Form.Label>
-                </Col>
+                <Form.Label
+                  column
+                  xs="0"
+                  md="3"
+                  htmlFor="provider-selfsignedcert"
+                >
+                  Allow self signed certificates
+                </Form.Label>
                 <Col xs="12" md="8">
-                  <div>
-                    <Form.Label className="switch switch-text switch-primary">
-                      <input
-                        type="checkbox"
-                        id="provider-selfsignedcert"
-                        name="options.selfsignedcert"
-                        className="switch-input"
-                        onChange={onChange}
-                        checked={value.options.selfsignedcert}
-                        disabled={!(value.options.type === 'wss')}
-                      />
-                      <span
-                        className="switch-label"
-                        data-on="On"
-                        data-off="Off"
-                      />
-                      <span className="switch-handle" />
-                    </Form.Label>
-                  </div>
+                  <Form.Check
+                    type="switch"
+                    id="provider-selfsignedcert"
+                    name="options.selfsignedcert"
+                    onChange={onChange}
+                    checked={value.options.selfsignedcert}
+                    disabled={!(value.options.type === 'wss')}
+                  />
                 </Col>
               </Form.Group>
             )}
@@ -2059,11 +1963,9 @@ function SignalK({ value, onChange }: TypeComponentProps) {
       {serialParams({ value, onChange })}
       {!value.options.useDiscovery && (
         <Form.Group as={Row} className="mb-3">
-          <Col md="3">
-            <Form.Label htmlFor="self-handling">
-              &apos;self&apos; handling
-            </Form.Label>
-          </Col>
+          <Form.Label column md="3" htmlFor="self-handling">
+            &apos;self&apos; handling
+          </Form.Label>
           <Col xs="12" md="3">
             <Form.Select
               id="self-handling"
@@ -2096,9 +1998,9 @@ function Seatalk({ value, onChange }: TypeComponentProps) {
   return (
     <span>
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="seatalk-type">GPIO Library</Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="seatalk-type">
+          GPIO Library
+        </Form.Label>
         <Col xs="12" md="3">
           <Form.Select
             id="seatalk-type"
@@ -2113,9 +2015,9 @@ function Seatalk({ value, onChange }: TypeComponentProps) {
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="gpio">GPIO Pin</Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="gpio">
+          GPIO Pin
+        </Form.Label>
         <Col xs="12" md="3">
           <Form.Select
             name="options.gpio"
@@ -2130,22 +2032,17 @@ function Seatalk({ value, onChange }: TypeComponentProps) {
         </Col>
       </Form.Group>
       <Form.Group as={Row} className="mb-3">
-        <Col md="3">
-          <Form.Label htmlFor="gpioInvert">Invert signal</Form.Label>
-        </Col>
+        <Form.Label column md="3" htmlFor="gpioInvert">
+          Invert signal
+        </Form.Label>
         <Col xs="12" md="10">
-          <Form.Label className="switch switch-text switch-primary">
-            <input
-              type="checkbox"
-              id="gpioInvert"
-              name="options.gpioInvert"
-              className="switch-input"
-              onChange={onChange}
-              checked={value.options.gpioInvert}
-            />
-            <span className="switch-label" data-on="Yes" data-off="No" />
-            <span className="switch-handle" />
-          </Form.Label>
+          <Form.Check
+            type="switch"
+            id="gpioInvert"
+            name="options.gpioInvert"
+            onChange={onChange}
+            checked={value.options.gpioInvert}
+          />
         </Col>
       </Form.Group>
       <IgnoredSentences

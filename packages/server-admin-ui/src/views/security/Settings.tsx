@@ -105,101 +105,45 @@ export default function Settings() {
                 className="form-horizontal"
               >
                 <Form.Group as={Row}>
-                  <Col xs="0" md="3">
-                    <span className="col-form-label">
-                      Allow Readonly Access
-                    </span>
-                  </Col>
                   <Col md="9">
-                    <div className="d-flex align-items-center">
-                      <label
-                        style={{ marginRight: '15px', marginBottom: 0 }}
-                        className="switch switch-text switch-primary"
-                      >
-                        <input
-                          type="checkbox"
-                          id="security-allow_readonly"
-                          name="allow_readonly"
-                          className="switch-input"
-                          onChange={handleChange}
-                          checked={config.allow_readonly}
-                        />
-                        <span
-                          className="switch-label"
-                          data-on="Yes"
-                          data-off="No"
-                        />
-                        <span className="switch-handle" />
-                      </label>
-                    </div>
+                    <Form.Check
+                      type="switch"
+                      id="security-allow_readonly"
+                      name="allow_readonly"
+                      label="Allow Readonly Access"
+                      onChange={handleChange}
+                      checked={config.allow_readonly}
+                    />
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                  <Col xs="0" md="3">
-                    <span className="col-form-label">
-                      Allow New User Registration
-                    </span>
-                  </Col>
                   <Col md="9">
-                    <div className="d-flex align-items-center">
-                      <label
-                        style={{ marginRight: '15px', marginBottom: 0 }}
-                        className="switch switch-text switch-primary"
-                      >
-                        <input
-                          type="checkbox"
-                          id="security-allowNewUserRegistration"
-                          name="allowNewUserRegistration"
-                          className="switch-input"
-                          onChange={handleChange}
-                          checked={config.allowNewUserRegistration}
-                        />
-                        <span
-                          className="switch-label"
-                          data-on="Yes"
-                          data-off="No"
-                        />
-                        <span className="switch-handle" />
-                      </label>
-                    </div>
+                    <Form.Check
+                      type="switch"
+                      id="security-allowNewUserRegistration"
+                      name="allowNewUserRegistration"
+                      label="Allow New User Registration"
+                      onChange={handleChange}
+                      checked={config.allowNewUserRegistration}
+                    />
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                  <Col xs="0" md="3">
-                    <span className="col-form-label">
-                      Allow New Device Registration
-                    </span>
-                  </Col>
                   <Col md="9">
-                    <div className="d-flex align-items-center">
-                      <label
-                        style={{ marginRight: '15px', marginBottom: 0 }}
-                        className="switch switch-text switch-primary"
-                      >
-                        <input
-                          type="checkbox"
-                          id="security-allowDeviceAccessRequests"
-                          name="allowDeviceAccessRequests"
-                          className="switch-input"
-                          onChange={handleChange}
-                          checked={config.allowDeviceAccessRequests}
-                        />
-                        <span
-                          className="switch-label"
-                          data-on="Yes"
-                          data-off="No"
-                        />
-                        <span className="switch-handle" />
-                      </label>
-                    </div>
+                    <Form.Check
+                      type="switch"
+                      id="security-allowDeviceAccessRequests"
+                      name="allowDeviceAccessRequests"
+                      label="Allow New Device Registration"
+                      onChange={handleChange}
+                      checked={config.allowDeviceAccessRequests}
+                    />
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                  <Col md="3">
-                    <Form.Label htmlFor="expiration">
-                      Remember Me timeout
-                    </Form.Label>
-                  </Col>
+                  <Form.Label column md="3" htmlFor="expiration">
+                    Remember Me timeout
+                  </Form.Label>
                   <Col xs="12" md="3">
                     <Form.Control
                       type="text"
@@ -233,11 +177,9 @@ export default function Settings() {
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                  <Col md="3">
-                    <Form.Label htmlFor="allowedCorsOrigins">
-                      Allowed CORS origins
-                    </Form.Label>
-                  </Col>
+                  <Form.Label column md="3" htmlFor="allowedCorsOrigins">
+                    Allowed CORS origins
+                  </Form.Label>
                   <Col xs="12" md="9">
                     <Form.Control
                       type="text"

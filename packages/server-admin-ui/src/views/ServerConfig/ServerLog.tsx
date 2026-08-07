@@ -266,34 +266,24 @@ export default function ServerLogs() {
             </Form.Group>
             <Form.Group as={Row}>
               <Col xs="6" md="6">
-                Persist debug settings over server restarts{' '}
-                <Form.Label className="switch switch-text switch-primary">
-                  <Form.Control
-                    type="checkbox"
-                    id="Enabled"
-                    name="debug"
-                    className="switch-input"
-                    onChange={handleRememberDebug}
-                    checked={log.rememberDebug}
-                  />
-                  <span className="switch-label" data-on="Yes" data-off="No" />
-                  <span className="switch-handle" />
-                </Form.Label>
+                <Form.Check
+                  type="switch"
+                  id="Enabled"
+                  name="debug"
+                  label="Persist debug settings over server restarts"
+                  onChange={handleRememberDebug}
+                  checked={log.rememberDebug}
+                />
               </Col>
               <Col xs="6" md="6">
-                Pause the log window{' '}
-                <Form.Label className="switch switch-text switch-primary">
-                  <Form.Control
-                    type="checkbox"
-                    id="Pause"
-                    name="pause"
-                    className="switch-input"
-                    onChange={handlePause}
-                    checked={pause}
-                  />
-                  <span className="switch-label" data-on="Yes" data-off="No" />
-                  <span className="switch-handle" />
-                </Form.Label>
+                <Form.Check
+                  type="switch"
+                  id="Pause"
+                  name="pause"
+                  label="Pause the log window"
+                  onChange={handlePause}
+                  checked={pause}
+                />
               </Col>
             </Form.Group>
             <LogList value={log} accessError={accessError} />

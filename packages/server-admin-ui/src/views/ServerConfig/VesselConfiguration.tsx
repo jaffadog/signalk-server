@@ -84,9 +84,9 @@ const VesselConfiguration: React.FC = () => {
             className="form-horizontal"
           >
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="name">Name</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="name">
+                Name
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"
@@ -100,9 +100,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="mmsi">MMSI</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="mmsi">
+                MMSI
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"
@@ -116,9 +116,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="callsignVhf">Call Sign</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="callsignVhf">
+                Call Sign
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"
@@ -134,9 +134,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="uuid">UUID</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="uuid">
+                UUID
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"
@@ -150,9 +150,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="aisShipType">Ship Type</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="aisShipType">
+                Ship Type
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Select
                   id="aisShipType"
@@ -226,9 +226,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="draft">Draft</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="draft">
+                Draft
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"
@@ -244,9 +244,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="length">Length</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="length">
+                Length
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"
@@ -262,9 +262,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="beam">Beam</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="beam">
+                Beam
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"
@@ -278,9 +278,9 @@ const VesselConfiguration: React.FC = () => {
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
-              <Col md="2">
-                <Form.Label htmlFor="height">Height</Form.Label>
-              </Col>
+              <Form.Label column md="2" htmlFor="height">
+                Height
+              </Form.Label>
               <Col xs="12" md="4">
                 <Form.Control
                   type="text"

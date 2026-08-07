@@ -356,31 +356,23 @@ const MethodSelect: React.FC<ValueRenderProps> = ({
   return (
     <>
       {['sound', 'visual'].map((method) => (
-        <label
+        <Form.Check
           key={method}
-          className="switch switch-text switch-primary"
-          htmlFor={`${baseId}-${method}`}
-        >
-          <input
-            type="checkbox"
-            id={`${baseId}-${method}`}
-            className="switch-input"
-            onChange={() => {
-              const arr = value as string[]
-              if (arr.indexOf(method) < 0) {
-                arr.push(method)
-                setValue([...arr])
-              } else {
-                const newArr = arr.filter((m) => m !== method)
-                setValue(newArr)
-              }
-            }}
-            checked={(value as string[]).indexOf(method) >= 0}
-          />
-          <span className="switch-label" data-on="Yes" data-off="No" />
-          <span className="switch-handle" />
-          {method}
-        </label>
+          type="switch"
+          id={`${baseId}-${method}`}
+          label={method}
+          onChange={() => {
+            const arr = value as string[]
+            if (arr.indexOf(method) < 0) {
+              arr.push(method)
+              setValue([...arr])
+            } else {
+              const newArr = arr.filter((m) => m !== method)
+              setValue(newArr)
+            }
+          }}
+          checked={(value as string[]).indexOf(method) >= 0}
+        />
       ))}
     </>
   )

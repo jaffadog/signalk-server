@@ -270,9 +270,9 @@ const UnitPreferencesSettings: React.FC = () => {
       </Card.Header>
       <Card.Body>
         <Form.Group as={Row} className="mb-3">
-          <Col md={2}>
-            <Form.Label>Display Units</Form.Label>
-          </Col>
+          <Form.Label column md={2}>
+            Display Units
+          </Form.Label>
           <Col xs="12" md={10}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Form.Select

@@ -177,22 +177,14 @@ export default function Login() {
                       <Row>
                         <Col xs="8">
                           <InputGroup className="mb-4">
-                            <Form.Label className="switch switch-text switch-primary">
-                              <input
-                                type="checkbox"
-                                name="rememberMe"
-                                className="switch-input"
-                                onChange={handleInputChange}
-                                checked={rememberMe}
-                              />
-                              <span
-                                className="switch-label"
-                                data-on="Yes"
-                                data-off="No"
-                              />
-                              <span className="switch-handle" />
-                            </Form.Label>
-                            &nbsp; Remember Me
+                            <Form.Check
+                              type="switch"
+                              id="login-remember-me"
+                              name="rememberMe"
+                              label="Remember Me"
+                              onChange={handleInputChange}
+                              checked={rememberMe}
+                            />
                           </InputGroup>
                         </Col>
                       </Row>
