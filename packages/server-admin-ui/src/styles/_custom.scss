@@ -1113,23 +1113,23 @@ form.rjsf {
 
 // brighten sk logo when in dark mode to improve contrast
 
-[data-bs-theme='dark'] .app-header.navbar .navbar-brand {
-  position: relative;
-  background-color: var(--sk-navbar-bg);
-  background-image: none;
-  border-bottom-color: var(--bs-border-color-translucent);
+// [data-bs-theme='dark'] .app-header.navbar .navbar-brand {
+//   position: relative;
+//   background-color: var(--sk-navbar-bg);
+//   background-image: none;
+//   border-bottom-color: var(--bs-border-color-translucent);
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('../assets/signal-k-logo-image-text.svg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 110px auto;
-    filter: brightness(1.4);
-  }
-}
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     inset: 0;
+//     background-image: url('../assets/signal-k-logo-image-text.svg');
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     background-size: 110px auto;
+//     filter: brightness(1.4);
+//   }
+// }
 
 // light/dark/auto mode navbar dropdown menu:
 
