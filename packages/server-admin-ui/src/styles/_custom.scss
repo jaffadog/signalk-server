@@ -358,6 +358,13 @@ form.rjsf {
   border: 0;
 }
 
+// Bootstrap has no utility for viewport-relative sizing, so the Playground
+// JSON/result panes' scroll cap needs one small custom rule; everything
+// else about them (overflow-y-scroll, border, p-1) is a stock utility.
+.json-scroll-pane {
+  max-height: 60vh;
+}
+
 // Navbar FontAwesome icon styling to match original FA4 appearance
 .app-header.navbar {
   .nav-link {
@@ -1066,28 +1073,6 @@ form.rjsf {
 .sidebar {
   color: var(--sk-sidebar-color);
   background-color: var(--sk-sidebar-bg);
-}
-
-.nav-tabs .nav-link.active,
-.nav-tabs .navbar .active.dropdown-toggle,
-.navbar .nav-tabs .active.dropdown-toggle {
-  color: var(--sk-nav-color);
-  background: var(--sk-nav-bg);
-  border-color: var(--sk-nav-border-color);
-  border-bottom-color: var(--sk-nav-bottom-color);
-}
-
-.nav-tabs .nav-link.active:focus,
-.nav-tabs .navbar .active.dropdown-toggle:focus,
-.navbar .nav-tabs .active.dropdown-toggle:focus {
-  background: var(--sk-nav-bg);
-  border-color: var(--sk-nav-border-color);
-  border-bottom-color: var(--sk-nav-bottom-color);
-}
-
-.tab-content {
-  background: var(--sk-nav-bg);
-  border-color: var(--sk-nav-border-color);
 }
 
 .sidebar .nav-link.active,

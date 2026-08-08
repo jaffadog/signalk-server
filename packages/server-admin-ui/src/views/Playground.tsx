@@ -60,14 +60,7 @@ function isJson(input: string): boolean {
 function N2kJsonPanel({ n2kData }: { n2kData: unknown[] }) {
   return (
     <Tab.Pane eventKey={N2KJSON_TAB_ID}>
-      <div
-        style={{
-          overflowY: 'scroll',
-          maxHeight: '60vh',
-          border: '1px solid var(--sk-card-border-color)',
-          padding: '5px'
-        }}
-      >
+      <div className="json-scroll-pane overflow-y-scroll p-1">
         <pre>{JSON.stringify(n2kData, null, 2)}</pre>
       </div>
     </Tab.Pane>
@@ -415,17 +408,10 @@ const Playground: React.FC = () => {
                     </Nav.Item>
                   )}
                 </Nav>
-                <Tab.Content>
+                <Tab.Content className="border-start border-end border-bottom p-1">
                   <Tab.Pane eventKey={DELTAS_TAB_ID}>
                     {deltas.length > 0 && (
-                      <div
-                        style={{
-                          overflowY: 'scroll',
-                          maxHeight: '60vh',
-                          border: '1px solid var(--sk-card-border-color)',
-                          padding: '5px'
-                        }}
-                      >
+                      <div className="json-scroll-pane overflow-y-scroll p-1">
                         <pre>{JSON.stringify(deltas, null, 2)}</pre>
                       </div>
                     )}
@@ -433,7 +419,7 @@ const Playground: React.FC = () => {
 
                   {data.length > 0 && (
                     <Tab.Pane eventKey={PATHS_TAB_ID}>
-                      <div style={{ overflowY: 'scroll', maxHeight: '60vh' }}>
+                      <div className="json-scroll-pane overflow-y-scroll">
                         <Table responsive bordered striped size="sm">
                           <thead>
                             <tr>
@@ -482,14 +468,7 @@ const Playground: React.FC = () => {
 
                   {putResults && putResults.length > 0 && (
                     <Tab.Pane eventKey={PUTRESULTS_TAB_ID}>
-                      <div
-                        style={{
-                          overflowY: 'scroll',
-                          maxHeight: '60vh',
-                          border: '1px solid var(--sk-card-border-color)',
-                          padding: '5px'
-                        }}
-                      >
+                      <div className="json-scroll-pane overflow-y-scroll p-1">
                         <pre>{JSON.stringify(putResults, null, 2)}</pre>
                       </div>
                     </Tab.Pane>
@@ -497,14 +476,7 @@ const Playground: React.FC = () => {
 
                   {jsonError && (
                     <Tab.Pane eventKey={LINT_ERROR_TAB_ID}>
-                      <div
-                        style={{
-                          overflowY: 'scroll',
-                          maxHeight: '60vh',
-                          border: '1px solid var(--sk-card-border-color)',
-                          padding: '5px'
-                        }}
-                      >
+                      <div className="json-scroll-pane overflow-y-scroll p-1">
                         <pre>{jsonError}</pre>
                       </div>
                     </Tab.Pane>
