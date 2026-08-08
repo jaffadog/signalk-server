@@ -18,6 +18,7 @@ import {
 import { logoutAction, restartAction } from '../../actions'
 import { MODES, useTheme } from '../../hooks/useTheme'
 import signalKLogo from '../../assets/signal-k-logo-image-text.svg'
+import signalKLogoDark from '../../assets/signal-k-logo-image-text-dark.svg'
 
 // Header banners are absolutely positioned just below the navbar. The
 // stacked offset places a second banner below the first when both show.
@@ -124,6 +125,13 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
       <Navbar.Brand href="#" className="ms-2">
         <img
           src={signalKLogo}
+          className="navbar-brand-logo-light"
+          style={{ width: 110, height: 'auto' }}
+          alt="Signal K"
+        />
+        <img
+          src={signalKLogoDark}
+          className="navbar-brand-logo-dark"
           style={{ width: 110, height: 'auto' }}
           alt="Signal K"
         />

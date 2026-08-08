@@ -47,6 +47,25 @@ $app-sidebar-width: 240px;
     }
   }
 
+  // The wordmark's brand-navy fill (#003399) reads fine on a light navbar
+  // but disappears into a dark one — swap in a brighter-blue variant
+  // instead of trying to filter/recolor the same asset. Toggled off
+  // [data-bs-theme] rather than the theme dropdown's React state so it
+  // also follows "auto" mode's live system-preference changes for free.
+  .navbar-brand-logo-dark {
+    display: none;
+  }
+
+  [data-bs-theme='dark'] & {
+    .navbar-brand-logo-light {
+      display: none;
+    }
+
+    .navbar-brand-logo-dark {
+      display: inline;
+    }
+  }
+
   // Bootstrap's .navbar-nav is a vertical (flex-column) list until the
   // navbar's own expand breakpoint (here, lg); it only becomes a row above
   // that. We never use Bootstrap's own collapse for this nav — every item
