@@ -79,6 +79,68 @@ $app-sidebar-width: 240px;
   }
 }
 
+// Sidebar nav: styled after Bootstrap's own "Collapsible" sidebar example
+// (getbootstrap.com/docs/5.3/examples/sidebars) — a subtle background pill
+// for hover/current-page instead of a filled/colored one, and a caret that
+// rotates in place via CSS transform rather than swapping between two icons.
+.sidebar-nav {
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.375rem 0.5rem;
+    border-radius: var(--bs-border-radius);
+    color: var(--bs-body-color);
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-align: left;
+
+    &:hover {
+      color: var(--bs-body-color);
+      background-color: var(--bs-secondary-bg);
+    }
+
+    // :focus-visible (not :focus) so a mouse click doesn't leave the same
+    // pill lit up as the actual current page — browsers keep a clicked <a>
+    // focused, and :focus-visible only fires for keyboard-driven focus.
+    &:focus-visible {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: -2px;
+    }
+
+    &.active {
+      background-color: var(--bs-secondary-bg);
+      font-weight: 600;
+    }
+  }
+
+  .sidebar-caret {
+    transition: transform 0.25s ease;
+  }
+
+  [aria-expanded='true'] .sidebar-caret {
+    transform: rotate(90deg);
+  }
+
+  .sidebar-children {
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+
+    &.show {
+      max-height: 500px;
+    }
+
+    .sidebar-link {
+      padding-left: 2rem;
+      font-size: 0.875rem;
+    }
+  }
+}
+
 // RJSF Form Styling
 
 // Mixin for button state variants to reduce duplication

@@ -9,8 +9,9 @@ import React, {
 } from 'react'
 import { NavLink, Location, useNavigate } from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge'
-import Nav from 'react-bootstrap/Nav'
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight'
 import {
   useAppStore,
   useAccessRequests,
@@ -602,25 +603,25 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
 
     if (isExternal) {
       return (
-        <Nav.Item as="li" key={key}>
-          <Nav.Link
+        <li key={key}>
+          <a
             href={url}
-            className="d-flex align-items-center"
+            className="sidebar-link d-flex align-items-center"
             onClick={closeMobileSidebar}
             {...(item.props || {})}
           >
             {content}
-          </Nav.Link>
-        </Nav.Item>
+          </a>
+        </li>
       )
     }
 
     return (
-      <Nav.Item as="li" key={key}>
+      <li key={key}>
         <NavLink
           to={url}
           className={({ isActive }) =>
-            classNames('nav-link d-flex align-items-center', {
+            classNames('sidebar-link d-flex align-items-center', {
               active: isActive
             })
           }
@@ -629,7 +630,7 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
         >
           {content}
         </NavLink>
-      </Nav.Item>
+      </li>
     )
   }
 
@@ -638,10 +639,10 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
     const collapseId = `sidebar-group-${(item.url || String(key)).replace(/\//g, '-')}`
 
     return (
-      <Nav.Item as="li" key={key}>
+      <li key={key}>
         <a
           href="#"
-          className="nav-link d-flex align-items-center"
+          className="sidebar-link d-flex align-items-center"
           onClick={handleClick(item)}
           aria-expanded={isOpen}
           aria-controls={collapseId}
@@ -649,31 +650,28 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
           {renderIcon(item.icon)}
           <span className="flex-grow-1">{item.name}</span>
           {renderBadges(item)}
-          <i
-            className={classNames(
-              'bi ms-2',
-              isOpen ? 'bi-chevron-down' : 'bi-chevron-right'
-            )}
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className="ms-2 sidebar-caret"
           />
         </a>
         <ul
           id={collapseId}
-          className={classNames(
-            'collapse nav flex-column ms-3 border-start ps-2 list-unstyled',
-            { show: isOpen }
-          )}
+          className={classNames('sidebar-children list-unstyled', {
+            show: isOpen
+          })}
         >
           {(item.children || []).map((child, idx) => renderNavLink(child, idx))}
-        </ul>{' '}
-      </Nav.Item>
+        </ul>
+      </li>
     )
   }
 
   const renderItem = (item: NavItemData, idx: number): ReactNode => {
     if (item.title) {
       return (
-        <li key={idx} className="nav-item mt-3 mb-1">
-          <span className="nav-link text-muted small fw-semibold text-uppercase">
+        <li key={idx} className="mt-3 mb-1">
+          <span className="d-block px-2 text-muted small fw-semibold text-uppercase">
             {item.name}
           </span>
         </li>
@@ -713,12 +711,9 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
         <SidebarForm />
 
         <nav className="flex-grow-1 overflow-auto" aria-label="Main navigation">
-          <Nav
-            as="ul"
-            className="nav-pills flex-column mb-auto list-unstyled ps-0"
-          >
+          <ul className="sidebar-nav mb-auto list-unstyled ps-0">
             {items.map((item, idx) => renderItem(item, idx))}
-          </Nav>
+          </ul>
         </nav>
 
         <SidebarFooter />
