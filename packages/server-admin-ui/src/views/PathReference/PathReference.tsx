@@ -11,6 +11,8 @@ import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faList } from '@fortawesome/free-solid-svg-icons/faList'
 import type { PathMetadataEntry } from '@signalk/path-metadata'
 
 type AllMetadata = Record<string, PathMetadataEntry>
@@ -122,7 +124,7 @@ export default function PathReference() {
     return (
       <Card>
         <Card.Header>
-          <i className="icon-list" /> Path Reference
+          <FontAwesomeIcon icon={faList} className="me-2" /> Path Reference
         </Card.Header>
         <Card.Body>
           <p style={{ color: '#e74c3c' }}>
@@ -140,7 +142,7 @@ export default function PathReference() {
     return (
       <Card>
         <Card.Header>
-          <i className="icon-list" /> Path Reference
+          <FontAwesomeIcon icon={faList} className="me-2" /> Path Reference
         </Card.Header>
         <Card.Body>Loading path metadata...</Card.Body>
       </Card>
@@ -150,7 +152,7 @@ export default function PathReference() {
   return (
     <Card>
       <Card.Header>
-        <i className="icon-list" /> Path Reference
+        <FontAwesomeIcon icon={faList} className="me-2" /> Path Reference
         <Badge bg="secondary" className="ms-2">
           {filtered.length} / {vesselPaths.length} paths
         </Badge>

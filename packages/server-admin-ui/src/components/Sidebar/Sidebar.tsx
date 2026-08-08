@@ -11,7 +11,18 @@ import { NavLink, Location, useNavigate } from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight'
+import { faGaugeHigh } from '@fortawesome/free-solid-svg-icons/faGaugeHigh'
+import { faTableCellsLarge } from '@fortawesome/free-solid-svg-icons/faTableCellsLarge'
+import { faFolder } from '@fortawesome/free-solid-svg-icons/faFolder'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons/faCartShopping'
+import { faGear } from '@fortawesome/free-solid-svg-icons/faGear'
+import { faShieldHalved } from '@fortawesome/free-solid-svg-icons/faShieldHalved'
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons/faBookOpen'
+import { faList } from '@fortawesome/free-solid-svg-icons/faList'
+import { faBolt } from '@fortawesome/free-solid-svg-icons/faBolt'
+import { faRss } from '@fortawesome/free-solid-svg-icons/faRss'
 import {
   useAppStore,
   useAccessRequests,
@@ -45,7 +56,7 @@ interface BadgeData {
 interface NavItemData {
   name: string
   url?: string
-  icon?: string
+  icon?: IconDefinition
   badge?: BadgeData | null
   badges?: (BadgeData | null)[]
   class?: string
@@ -292,12 +303,12 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
       {
         name: 'Dashboard',
         url: '/dashboard',
-        icon: 'icon-speedometer'
+        icon: faGaugeHigh
       },
       {
         name: 'Webapps',
         url: '/webapps',
-        icon: 'icon-grid'
+        icon: faTableCellsLarge
       },
       ((): NavItemData => {
         const dataBadgeCount = isAdmin
@@ -306,7 +317,7 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
         return {
           name: 'Data',
           url: '/data',
-          icon: 'icon-folder',
+          icon: faFolder,
           badge:
             dataBadgeCount > 0
               ? { variant: 'warning', text: `${dataBadgeCount}` }
@@ -325,7 +336,7 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
         {
           name: 'Apps & Plugins',
           url: '/apps',
-          icon: 'icon-basket',
+          icon: faCartShopping,
           badges: [updatesBadge, unconfiguredBadge, historyProviderBadge],
           children: [
             {
@@ -343,7 +354,7 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
         {
           name: 'Server',
           url: '/serverConfiguration',
-          icon: 'icon-settings',
+          icon: faGear,
           children: [
             {
               name: 'Settings',
@@ -375,7 +386,7 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
       const security: NavItemData = {
         name: 'Security',
         url: '/security',
-        icon: 'icon-shield',
+        icon: faShieldHalved,
         badges: securityBadges,
         children: [
           {
@@ -411,19 +422,19 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
     result.push({
       name: 'Documentation',
       url: '/documentation',
-      icon: 'icon-book-open'
+      icon: faBookOpen
     })
 
     result.push({
       name: 'Path Reference',
       url: '/documentation/paths',
-      icon: 'icon-list'
+      icon: faList
     })
 
     result.push({
       name: 'OpenApi',
       url: `${window.location.protocol}//${window.location.host}/doc/openapi`,
-      icon: 'icon-energy',
+      icon: faBolt,
       props: {
         target: '_blank',
         rel: 'noopener noreferrer'
@@ -433,7 +444,7 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
     result.push({
       name: 'AsyncApi',
       url: '/asyncapi',
-      icon: 'icon-feed'
+      icon: faRss
     })
 
     return result
@@ -584,9 +595,9 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
     return renderBadge(item.badge)
   }
 
-  const renderIcon = (iconClass?: string): ReactNode => {
-    if (!iconClass) return null
-    return <i className={classNames(iconClass, 'me-2')} />
+  const renderIcon = (icon?: IconDefinition): ReactNode => {
+    if (!icon) return null
+    return <FontAwesomeIcon icon={icon} className="me-2" />
   }
 
   const renderNavLink = (item: NavItemData, key: number): ReactNode => {
