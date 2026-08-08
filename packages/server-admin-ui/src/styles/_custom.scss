@@ -313,14 +313,30 @@ form.rjsf {
 }
 
 // Bootstrap 5 compatibility: Remove default link underlines to match Bootstrap 4 styling
-// Affects Dashboard activity lists and status tables
-.horizontal-bars a,
+// Affects the Dashboard activity list and status tables
+.list-group-item a,
 .table a {
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
   }
+}
+
+// Bootstrap's default .progress is 1rem tall; the Dashboard activity list
+// and app-store action cells both want a much thinner bar.
+.progress-xs {
+  height: 4px;
+}
+
+.progress-sm {
+  height: 8px;
+}
+
+// list-group-flush still draws a hairline divider between items by
+// default; the Dashboard activity list reads cleaner without it.
+.list-group-flush > .list-group-item {
+  border: 0;
 }
 
 // Navbar FontAwesome icon styling to match original FA4 appearance
@@ -340,8 +356,25 @@ form.rjsf {
   }
 }
 
-// Dashboard callout values - use body color instead of primary for readability
+// Dashboard callout: accent-colored left border marking a highlighted
+// stat block. Not a Bootstrap component, so this is genuinely custom CSS,
+// but keeps the same shape as the old CoreUI callout (0-width border on
+// every side except a 0.25rem left edge) using theme-aware tokens instead
+// of the vendored Sass color it used to pull from.
+.callout {
+  position: relative;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  border: 0 solid var(--bs-border-color);
+  border-left-width: 0.25rem;
+  border-radius: var(--bs-border-radius);
+}
+
 .callout-primary {
+  border-left-color: var(--bs-primary);
+
+  // Dashboard callout values - use body color instead of primary for
+  // readability
   .h4,
   .h5 {
     color: inherit;

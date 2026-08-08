@@ -62,60 +62,61 @@ export default function Dashboard() {
     linkType: string
   ): ReactNode => {
     return (
-      <li key={providerId} onClick={() => navigate(`/dashboard`)}>
-        <i
-          className={`icon-login ${getInputPulseClass(providerStats)}`}
-          style={{
-            color: providerStats.deltaCount ? '#039' : 'lightblue'
-          }}
-        />
-        <i
-          className={`icon-logout ${getOutputPulseClass(providerStats)}`}
-          style={{
-            transform: 'scaleX(-1)',
-            color: providerStats.writeCount ? '#039' : 'lightblue'
-          }}
-        />
-        <span className="title">
-          {linkType === 'plugin'
-            ? pluginNameLink(providerId)
-            : providerIdLink(providerId)}
-        </span>
-        {(providerStats.writeRate || 0) > 0 && (
-          <span className="value" style={{ fontWeight: 'normal' }}>
-            {' '}
-            <strong>{providerStats.writeRate}</strong>{' '}
-            <span className="text-muted small">{'msg/s'}</span>{' '}
+      <li
+        key={providerId}
+        className="list-group-item"
+        role="button"
+        onClick={() => navigate(`/dashboard`)}
+      >
+        <div className="d-flex align-items-center">
+          <i
+            className={`icon-login me-2 ${getInputPulseClass(providerStats)}`}
+            style={{
+              color: providerStats.deltaCount ? '#039' : 'lightblue'
+            }}
+          />
+          <i
+            className={`icon-logout me-2 ${getOutputPulseClass(providerStats)}`}
+            style={{
+              transform: 'scaleX(-1)',
+              color: providerStats.writeCount ? '#039' : 'lightblue'
+            }}
+          />
+          <span className="flex-grow-1">
+            {linkType === 'plugin'
+              ? pluginNameLink(providerId)
+              : providerIdLink(providerId)}
           </span>
-        )}
-        {(providerStats.deltaRate || 0) > 0 &&
-          (providerStats.writeRate || 0) > 0 && (
-            <span className="value" style={{ fontWeight: 'normal' }}>
-              <span className="text-muted small">{','}</span>
-              &#160;
+          {(providerStats.writeRate || 0) > 0 && (
+            <span className="text-nowrap">
+              <strong>{providerStats.writeRate}</strong>{' '}
+              <span className="text-muted small">msg/s</span>
             </span>
           )}
-        {(providerStats.deltaRate || 0) > 0 && (
-          <span className="value" style={{ fontWeight: 'normal' }}>
-            {' '}
-            <strong>{providerStats.deltaRate}</strong>{' '}
-            <span className="text-muted small">
-              (
-              {(((providerStats.deltaRate || 0) / deltaRateNum) * 100).toFixed(
-                0
-              )}
-              %)
-            </span>{' '}
-            <span className="text-muted small">{'deltas/s'}</span>{' '}
-          </span>
-        )}
-        <div className="bars">
-          <ProgressBar
-            className="progress-xs"
-            variant="warning"
-            now={((providerStats.deltaRate || 0) / deltaRateNum) * 100}
-          />
+          {(providerStats.deltaRate || 0) > 0 &&
+            (providerStats.writeRate || 0) > 0 && (
+              <span className="text-muted small">,&nbsp;</span>
+            )}
+          {(providerStats.deltaRate || 0) > 0 && (
+            <span className="text-nowrap">
+              <strong>{providerStats.deltaRate}</strong>{' '}
+              <span className="text-muted small">
+                (
+                {(
+                  ((providerStats.deltaRate || 0) / deltaRateNum) *
+                  100
+                ).toFixed(0)}
+                %)
+              </span>{' '}
+              <span className="text-muted small">deltas/s</span>
+            </span>
+          )}
         </div>
+        <ProgressBar
+          className="progress-xs mt-1"
+          variant="warning"
+          now={((providerStats.deltaRate || 0) / deltaRateNum) * 100}
+        />
       </li>
     )
   }
@@ -142,14 +143,10 @@ export default function Dashboard() {
             ? pluginNameLink(status.id)
             : providerIdLink(status.id)}
         </td>
-        <td>
-          <p className="text-danger">{lastError}</p>
-        </td>
-        <td>
-          <p className={statusClass}>
-            {(status.message || '').substring(0, 80)}
-            {(status.message || '').length > 80 ? '...' : ''}
-          </p>
+        <td className="text-danger">{lastError}</td>
+        <td className={statusClass}>
+          {(status.message || '').substring(0, 80)}
+          {(status.message || '').length > 80 ? '...' : ''}
         </td>
       </tr>
     )
@@ -197,7 +194,7 @@ export default function Dashboard() {
                   <div className="text-muted" style={{ fontSize: '1rem' }}>
                     Connections activity
                   </div>
-                  <ul className="horizontal-bars type-2">
+                  <ul className="list-group list-group-flush">
                     {Object.keys(providerStatistics || {})
                       .sort()
                       .map((providerId) => {
@@ -219,7 +216,7 @@ export default function Dashboard() {
                       ? 'Plugins activity'
                       : null}
                   </div>
-                  <ul className="horizontal-bars type-2">
+                  <ul className="list-group list-group-flush">
                     {Object.keys(providerStatistics || {})
                       .sort()
                       .map((providerId) => {
