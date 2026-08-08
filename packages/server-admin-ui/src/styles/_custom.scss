@@ -387,40 +387,40 @@ form.rjsf {
 }
 
 // Ensure btn-success has white text (Bootstrap 5 may calculate dark text for some greens)
-.btn-success,
-.btn-success:hover,
-.btn-success:focus,
-.btn-success:active {
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-active-color: var(--bs-white);
-  color: var(--bs-white) !important;
-}
+// .btn-success,
+// .btn-success:hover,
+// .btn-success:focus,
+// .btn-success:active {
+//   --bs-btn-color: var(--bs-white);
+//   --bs-btn-hover-color: var(--bs-white);
+//   --bs-btn-active-color: var(--bs-white);
+//   color: var(--bs-white) !important;
+// }
 
 // Source Priorities: nested table in Priorities column should have white background
-.table-striped .table {
-  --bs-table-bg: var(--bs-white);
-  background-color: var(--bs-white);
-}
+// .table-striped .table {
+//   --bs-table-bg: var(--bs-white);
+//   background-color: var(--bs-white);
+// }
 
 // Ensure btn-danger has white text
-.btn-danger,
-.btn-danger:hover,
-.btn-danger:focus,
-.btn-danger:active {
-  --bs-btn-color: var(--bs-white);
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-active-color: var(--bs-white);
-  color: var(--bs-white) !important;
-}
+// .btn-danger,
+// .btn-danger:hover,
+// .btn-danger:focus,
+// .btn-danger:active {
+//   --bs-btn-color: var(--bs-white);
+//   --bs-btn-hover-color: var(--bs-white);
+//   --bs-btn-active-color: var(--bs-white);
+//   color: var(--bs-white) !important;
+// }
 
 // Ensure badges have white text
-.badge.text-bg-success,
-.badge.text-bg-danger,
-.badge.bg-success,
-.badge.bg-danger {
-  color: var(--bs-white) !important;
-}
+// .badge.text-bg-success,
+// .badge.text-bg-danger,
+// .badge.bg-success,
+// .badge.bg-danger {
+//   color: var(--bs-white) !important;
+// }
 
 // Plugin config: scrollable list and connected panels on desktop
 @media (width >= 1200px) {
@@ -440,6 +440,7 @@ form.rjsf {
 }
 
 // Priority Groups
+
 .pg-help-toggle {
   padding: 0;
   text-decoration: none;
@@ -997,23 +998,3 @@ form.rjsf {
     #{color.channel($sk-primary-dark, 'green', $space: rgb)},
     #{color.channel($sk-primary-dark, 'blue', $space: rgb)};
 }
-
-// brighten sk logo when in dark mode to improve contrast
-
-// [data-bs-theme='dark'] .app-header.navbar .navbar-brand {
-//   position: relative;
-//   background-color: var(--sk-navbar-bg);
-//   background-image: none;
-//   border-bottom-color: var(--bs-border-color-translucent);
-
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     inset: 0;
-//     background-image: url('../assets/signal-k-logo-image-text.svg');
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     background-size: 110px auto;
-//     filter: brightness(1.4);
-//   }
-// }

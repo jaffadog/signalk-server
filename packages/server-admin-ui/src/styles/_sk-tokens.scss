@@ -2,24 +2,10 @@
 // Signal K Light Mode Colors
 //
 
-$sk-body-tertiary-bg-light: #e4e5e6;
-
-$sk-primary-light: $blue;
-
-$sk-card-bg-light: $white;
-$sk-card-border-color-light: $gray-200;
-$sk-card-cap-bg-light: $gray-100;
-
-$sk-progress-bg-light: $gray-100;
-
 $sk-input-bg-light: $white;
-$sk-input-focus-bg-light: $white;
-$sk-input-group-addon-bg-light: $gray-100;
 $sk-input-border-color-light: $gray-200;
-$sk-input-group-addon-border-color-light: $gray-200;
 
 $sk-dropdown-border-color-light: $gray-200;
-$sk-dropdown-divider-bg-light: $gray-100;
 
 $sk-table-bg-light: $white;
 $sk-table-hover-bg-light: $gray-100;
@@ -34,24 +20,12 @@ $sk-plugin-config-array-item-bg-light: aliceblue;
 $sk-bg-dark: #222630;
 $sk-border-color-dark: #343a48;
 
-$sk-body-tertiary-bg-dark: #1e222a;
-
 $sk-primary-dark: #5b9dff;
 
-$sk-card-bg-dark: $sk-bg-dark;
-$sk-card-border-color-dark: #3f424b;
-$sk-card-cap-bg-dark: #292d36;
-
-$sk-progress-bg-dark: $gray-800;
-
 $sk-input-bg-dark: $sk-bg-dark;
-$sk-input-focus-bg-dark: $sk-bg-dark;
-$sk-input-group-addon-bg-dark: $gray-100;
 $sk-input-border-color-dark: $sk-border-color-dark;
-$sk-input-group-addon-border-color-dark: $gray-200;
 
 $sk-dropdown-border-color-dark: $sk-border-color-dark;
-$sk-dropdown-divider-bg-dark: $sk-border-color-dark;
 
 $sk-table-bg-dark: #212631;
 $sk-table-hover-bg-dark: #32363f;
@@ -63,29 +37,14 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 // Apply Signal K Colors to Bootstrap Using Sass Overrides
 //
 
-// NOTE: use bs sass vars for bs overrides that provide both "light" and "dark" variants:
-
-// $body-tertiary-bg: $sk-body-tertiary-bg-light;
-// $body-tertiary-bg-dark: $sk-body-tertiary-bg-dark;
-
 // NOTE: use css vars for bs overrides that do not provide both "light" and "dark" variants:
 
 :root,
 [data-bs-theme='light'] {
-  --sk-card-bg: #{$sk-card-bg-light};
-  --sk-card-cap-bg: #{$sk-card-cap-bg-light};
-  --sk-card-border-color: #{$sk-card-border-color-light};
-
-  --sk-progress-bg: #{$sk-progress-bg-light};
-
   --sk-input-bg: #{$sk-input-bg-light};
-  --sk-input-focus-bg: #{$sk-input-focus-bg-light};
-  --sk-input-group-addon-bg: #{$sk-input-group-addon-bg-light};
   --sk-input-border-color: #{$sk-input-border-color-light};
-  --sk-input-group-addon-border-color: #{$sk-input-group-addon-border-color-light};
 
   --sk-dropdown-border-color: #{$sk-dropdown-border-color-light};
-  --sk-dropdown-divider-bg: #{$sk-dropdown-divider-bg-light};
 
   --sk-table-bg: #{$sk-table-bg-light};
   --sk-table-hover-bg: #{$sk-table-hover-bg-light};
@@ -95,20 +54,10 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 }
 
 [data-bs-theme='dark'] {
-  --sk-card-bg: #{$sk-card-bg-dark};
-  --sk-card-cap-bg: #{$sk-card-cap-bg-dark};
-  --sk-card-border-color: #{$sk-card-border-color-dark};
-
-  --sk-progress-bg: #{$sk-progress-bg-dark};
-
   --sk-input-bg: #{$sk-input-bg-dark};
-  --sk-input-focus-bg: #{$sk-input-focus-bg-dark};
-  --sk-input-group-addon-bg: #{$sk-input-group-addon-bg-dark};
   --sk-input-border-color: #{$sk-input-border-color-dark};
-  --sk-input-group-addon-border-color: #{$sk-input-group-addon-border-color-dark};
 
   --sk-dropdown-border-color: #{$sk-dropdown-border-color-dark};
-  --sk-dropdown-divider-bg: #{$sk-dropdown-divider-bg-dark};
 
   --sk-table-bg: #{$sk-table-bg-dark};
   --sk-table-hover-bg: #{$sk-table-hover-bg-dark};
