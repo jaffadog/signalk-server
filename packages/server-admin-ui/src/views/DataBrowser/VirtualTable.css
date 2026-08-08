@@ -14,11 +14,16 @@
   grid-template-columns:
     minmax(150px, 1.5fr) minmax(120px, 2fr) minmax(80px, 0.8fr)
     minmax(120px, 1.2fr);
-  background-color: var(--sk-table-bg);
+  background-color: var(--bs-body-bg);
   border-bottom: 2px solid var(--bs-border-color);
   position: sticky;
   top: 55px; /* Fixed header height */
   z-index: 1; /* Low z-index to allow dropdowns to appear above */
+  /* .virtual-table-header is edge-to-edge inside the rounded
+     .virtual-table container; without matching radius its square
+     corners paint over the parent's rounded top corners. */
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }
 
 .virtual-table-header-cell {
@@ -68,19 +73,19 @@
 }
 
 .virtual-table-row {
-  background-color: var(--sk-table-bg);
+  background-color: var(--bs-body-bg);
 }
 
 .virtual-table-row:hover {
-  background-color: var(--sk-table-hover-bg);
+  background-color: rgb(var(--bs-emphasis-color-rgb), 0.075);
 }
 
 .virtual-table-row.striped {
-  background-color: var(--sk-table-striped-bg);
+  background-color: rgb(var(--bs-emphasis-color-rgb), 0.05);
 }
 
 .virtual-table-row.striped:hover {
-  background-color: var(--sk-table-hover-bg);
+  background-color: rgb(var(--bs-emphasis-color-rgb), 0.075);
 }
 
 .virtual-table-cell {
@@ -192,7 +197,7 @@
   }
 
   .virtual-table-row.striped {
-    background-color: var(--sk-table-striped-bg);
+    background-color: rgb(var(--bs-emphasis-color-rgb), 0.05);
   }
 
   .virtual-table-cell {
@@ -286,6 +291,16 @@
   color: var(--bs-secondary-color);
   background-color: var(--bs-tertiary-bg);
   border-top: 1px solid var(--bs-border-color);
+  /* Same edge-to-edge corner issue as .virtual-table-header, but for
+     the bottom corners — except when this is the sole child (the
+     "no data yet" empty state), where it owns all four. */
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.virtual-table-info:only-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
 }
 
 .copy-icon {

@@ -2,21 +2,15 @@
 // Signal K Light Mode Colors
 //
 
-$sk-table-bg-light: $white;
-$sk-table-hover-bg-light: $gray-100;
-$sk-table-striped-bg-light: $gray-100;
-
 $sk-plugin-config-array-item-bg-light: aliceblue;
 
 //
 // Signal K Dark Mode Colors
 //
 
-$sk-primary-dark: #5b9dff;
-
-$sk-table-bg-dark: #212631;
-$sk-table-hover-bg-dark: #32363f;
-$sk-table-striped-bg-dark: #2d313b;
+//$sk-primary-dark: #5b9dff;
+$sk-primary-dark: #0d6efd;
+// $blue:    #0d6efd !default;
 
 $sk-plugin-config-array-item-bg-dark: $gray-900;
 
@@ -28,17 +22,9 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 
 :root,
 [data-bs-theme='light'] {
-  --sk-table-bg: #{$sk-table-bg-light};
-  --sk-table-hover-bg: #{$sk-table-hover-bg-light};
-  --sk-table-striped-bg: #{$sk-table-striped-bg-light};
-
   --sk-plugin-config-array-item-bg: #{$sk-plugin-config-array-item-bg-light};
 }
 
 [data-bs-theme='dark'] {
-  --sk-table-bg: #{$sk-table-bg-dark};
-  --sk-table-hover-bg: #{$sk-table-hover-bg-dark};
-  --sk-table-striped-bg: #{$sk-table-striped-bg-dark};
-
   --sk-plugin-config-array-item-bg: #{$sk-plugin-config-array-item-bg-dark};
 }
