@@ -34,11 +34,6 @@ $sk-dropdown-divider-bg-light: $gray-100;
 
 $sk-switch-bg-light: $white;
 
-$sk-nav-color-light: $gray-800;
-$sk-nav-bg-light: $white;
-$sk-nav-border-color-light: var(--bs-card-border-color);
-$sk-nav-bottom-color-light: $white;
-
 $sk-table-bg-light: $white;
 $sk-table-hover-bg-light: $gray-100;
 $sk-table-striped-bg-light: $gray-100;
@@ -83,11 +78,6 @@ $sk-dropdown-border-color-dark: $sk-border-color-dark;
 $sk-dropdown-divider-bg-dark: $sk-border-color-dark;
 
 $sk-switch-bg-dark: $sk-bg-dark;
-
-$sk-nav-color-dark: #e3e3e4;
-$sk-nav-bg-dark: $sk-bg-dark;
-$sk-nav-border-color-dark: $sk-border-color-dark;
-$sk-nav-bottom-color-dark: $sk-bg-dark;
 
 $sk-table-bg-dark: #212631;
 $sk-table-hover-bg-dark: #32363f;
@@ -136,11 +126,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 
   --sk-switch-bg: #{$sk-switch-bg-light};
 
-  --sk-nav-color: #{$sk-nav-color-light};
-  --sk-nav-bg: #{$sk-nav-bg-light};
-  --sk-nav-border-color: #{$sk-nav-border-color-light};
-  --sk-nav-bottom-color: #{$sk-nav-bottom-color-light};
-
   --sk-table-bg: #{$sk-table-bg-light};
   --sk-table-hover-bg: #{$sk-table-hover-bg-light};
   --sk-table-striped-bg: #{$sk-table-striped-bg-light};
@@ -176,11 +161,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
   --sk-dropdown-divider-bg: #{$sk-dropdown-divider-bg-dark};
 
   --sk-switch-bg: #{$sk-switch-bg-dark};
-
-  --sk-nav-color: #{$sk-nav-color-dark};
-  --sk-nav-bg: #{$sk-nav-bg-dark};
-  --sk-nav-border-color: #{$sk-nav-border-color-dark};
-  --sk-nav-bottom-color: #{$sk-nav-bottom-color-dark};
 
   --sk-table-bg: #{$sk-table-bg-dark};
   --sk-table-hover-bg: #{$sk-table-hover-bg-dark};
