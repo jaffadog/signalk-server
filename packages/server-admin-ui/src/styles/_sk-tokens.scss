@@ -2,11 +2,6 @@
 // Signal K Light Mode Colors
 //
 
-$sk-input-bg-light: $white;
-$sk-input-border-color-light: $gray-200;
-
-$sk-dropdown-border-color-light: $gray-200;
-
 $sk-table-bg-light: $white;
 $sk-table-hover-bg-light: $gray-100;
 $sk-table-striped-bg-light: $gray-100;
@@ -17,15 +12,7 @@ $sk-plugin-config-array-item-bg-light: aliceblue;
 // Signal K Dark Mode Colors
 //
 
-$sk-bg-dark: #222630;
-$sk-border-color-dark: #343a48;
-
 $sk-primary-dark: #5b9dff;
-
-$sk-input-bg-dark: $sk-bg-dark;
-$sk-input-border-color-dark: $sk-border-color-dark;
-
-$sk-dropdown-border-color-dark: $sk-border-color-dark;
 
 $sk-table-bg-dark: #212631;
 $sk-table-hover-bg-dark: #32363f;
@@ -41,11 +28,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 
 :root,
 [data-bs-theme='light'] {
-  --sk-input-bg: #{$sk-input-bg-light};
-  --sk-input-border-color: #{$sk-input-border-color-light};
-
-  --sk-dropdown-border-color: #{$sk-dropdown-border-color-light};
-
   --sk-table-bg: #{$sk-table-bg-light};
   --sk-table-hover-bg: #{$sk-table-hover-bg-light};
   --sk-table-striped-bg: #{$sk-table-striped-bg-light};
@@ -54,11 +36,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 }
 
 [data-bs-theme='dark'] {
-  --sk-input-bg: #{$sk-input-bg-dark};
-  --sk-input-border-color: #{$sk-input-border-color-dark};
-
-  --sk-dropdown-border-color: #{$sk-dropdown-border-color-dark};
-
   --sk-table-bg: #{$sk-table-bg-dark};
   --sk-table-hover-bg: #{$sk-table-hover-bg-dark};
   --sk-table-striped-bg: #{$sk-table-striped-bg-dark};

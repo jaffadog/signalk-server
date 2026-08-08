@@ -6,11 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons/faArrowUp'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons/faArrowDown'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
-import Select, { type StylesConfig } from 'react-select'
+import Select, { mergeStyles, type StylesConfig } from 'react-select'
 import { useStore, useSourceStatus, useSourceStatusLoaded } from '../../store'
 import { type SourcesData } from '../../utils/sourceLabels'
 import { DEFAULT_FALLBACK_MS } from '../../utils/sourceGroups'
 import { useSourceAliases } from '../../hooks/useSourceAliases'
+import { bsSelectStyles } from '../../utils/reactSelectStyles'
 
 interface Priority {
   sourceRef: string
@@ -59,27 +60,30 @@ const MENU_PORTAL_Z_INDEX = 9999
 // otherwise get clipped to a single line. Let the selected value and the
 // menu options wrap so the full name + sourceRef stays readable in the
 // narrow priorities column, and grow the control vertically to fit.
-const wrappingSelectStyles: StylesConfig<SelectOption, false> = {
-  control: (base) => ({
-    ...base,
-    minHeight: SELECT_MIN_HEIGHT,
-    height: 'auto'
-  }),
-  valueContainer: (base) => ({ ...base, flexWrap: 'wrap' }),
-  singleValue: (base) => ({
-    ...base,
-    whiteSpace: 'normal',
-    overflow: 'visible',
-    textOverflow: 'clip',
-    wordBreak: 'break-word'
-  }),
-  option: (base) => ({
-    ...base,
-    whiteSpace: 'normal',
-    wordBreak: 'break-word'
-  }),
-  menuPortal: (base) => ({ ...base, zIndex: MENU_PORTAL_Z_INDEX })
-}
+const wrappingSelectStyles: StylesConfig<SelectOption, false> = mergeStyles(
+  bsSelectStyles<SelectOption>(),
+  {
+    control: (base) => ({
+      ...base,
+      minHeight: SELECT_MIN_HEIGHT,
+      height: 'auto'
+    }),
+    valueContainer: (base) => ({ ...base, flexWrap: 'wrap' }),
+    singleValue: (base) => ({
+      ...base,
+      whiteSpace: 'normal',
+      overflow: 'visible',
+      textOverflow: 'clip',
+      wordBreak: 'break-word'
+    }),
+    option: (base) => ({
+      ...base,
+      whiteSpace: 'normal',
+      wordBreak: 'break-word'
+    }),
+    menuPortal: (base) => ({ ...base, zIndex: MENU_PORTAL_Z_INDEX })
+  }
+)
 
 export const PrefsEditor: React.FC<PrefsEditorProps> = ({
   path,
