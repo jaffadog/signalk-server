@@ -697,7 +697,8 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
       show={show}
       onHide={onHide}
       responsive="lg"
-      className="bg-body-tertiary border-end sidebar-offcanvas"
+      data-bs-theme="dark"
+      className="bg-dark border-end sidebar-offcanvas"
       style={{ width: 240 }}
     >
       <Offcanvas.Header closeButton className="d-lg-none border-bottom">
