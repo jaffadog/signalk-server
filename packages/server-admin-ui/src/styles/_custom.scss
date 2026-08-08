@@ -46,6 +46,26 @@ $app-sidebar-width: 240px;
       box-shadow: none;
     }
   }
+
+  // Bootstrap's .navbar-nav is a vertical (flex-column) list until the
+  // navbar's own expand breakpoint (here, lg); it only becomes a row above
+  // that. We never use Bootstrap's own collapse for this nav — every item
+  // manages its own responsiveness via d-sm-none/d-none d-sm-block — so
+  // below lg it was stacking vertically and blowing the fixed-height
+  // header out of its box. Force the row layout at every width instead.
+  .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+
+    // Same story: Bootstrap only gives .nav-link horizontal padding
+    // (the spacing between items) above the expand breakpoint, since
+    // below it the items are normally full-width vertical rows where
+    // horizontal padding wouldn't do anything. Ours are always a row.
+    .nav-link {
+      padding-right: var(--bs-navbar-nav-link-padding-x, 0.5rem);
+      padding-left: var(--bs-navbar-nav-link-padding-x, 0.5rem);
+    }
+  }
 }
 
 // Header is `fixed`, so it's removed from flow and reserves no space —
