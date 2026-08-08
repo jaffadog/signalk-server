@@ -6,7 +6,6 @@ import { createRoot } from 'react-dom/client'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 
 import './styles/style.scss'
-import './styles/core/_dropdown-menu-right.scss'
 
 import Full from './containers/Full/Full'
 import { WebSocketProvider } from './contexts/WebSocketContext'
