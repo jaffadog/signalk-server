@@ -798,7 +798,7 @@ const PriorityGroupCard: React.FC<PriorityGroupCardProps> = ({
                         items={stableSources}
                         strategy={verticalListSortingStrategy}
                       >
-                        <ul className="pg-source-list">
+                        <ul className="pg-source-list list-unstyled d-flex flex-column">
                           {group.sources.map((src, i) => {
                             const highlighted =
                               activeSource === src ||
@@ -901,7 +901,7 @@ const PriorityGroupCard: React.FC<PriorityGroupCardProps> = ({
 
             <div className="pg-col pg-col-paths">
               <h6 className="pg-col-title">Paths</h6>
-              <ul className="pg-path-list">
+              <ul className="pg-path-list list-unstyled d-flex flex-column">
                 {group.paths.map((p) => {
                   const kinds = pathKinds.get(p) ?? []
                   const isOverride = overridePaths.has(p)
