@@ -66,8 +66,8 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
       as="header"
       expand="lg"
       fixed="top"
-      bg="body-tertiary"
-      className="border-bottom app-navbar"
+      bg="body"
+      className="border-bottom app-navbar px-3"
     >
       {showRestartBanner && (
         <Alert
