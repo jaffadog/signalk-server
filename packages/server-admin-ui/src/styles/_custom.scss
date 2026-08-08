@@ -255,9 +255,16 @@ form.rjsf {
     margin-bottom: 0.5rem;
   }
 
+  // RJSF renders array items with plain hardcoded classes (no hook to
+  // attach a Bootstrap utility class without a custom template
+  // override), so reference a Bootstrap CSS variable directly instead.
+  // Left/right margin is 0 (not Bootstrap's .row default) so the box's
+  // edges line up with the card's own padding; top/bottom margin plus
+  // the item's own padding give breathing room between stacked items.
   div.row.array-item {
-    background-color: var(--sk-plugin-config-array-item-bg);
-    margin-bottom: 3px;
+    background-color: var(--bs-tertiary-bg);
+    margin: 1em 0;
+    padding: 1em;
   }
 
   // Custom button styling for RJSF buttons to match original appearance

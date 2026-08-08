@@ -1,30 +1,5 @@
 //
-// Signal K Light Mode Colors
-//
-
-$sk-plugin-config-array-item-bg-light: aliceblue;
-
-//
 // Signal K Dark Mode Colors
 //
 
-//$sk-primary-dark: #5b9dff;
-$sk-primary-dark: #0d6efd;
-// $blue:    #0d6efd !default;
-
-$sk-plugin-config-array-item-bg-dark: $gray-900;
-
-//
-// Apply Signal K Colors to Bootstrap Using Sass Overrides
-//
-
-// NOTE: use css vars for bs overrides that do not provide both "light" and "dark" variants:
-
-:root,
-[data-bs-theme='light'] {
-  --sk-plugin-config-array-item-bg: #{$sk-plugin-config-array-item-bg-light};
-}
-
-[data-bs-theme='dark'] {
-  --sk-plugin-config-array-item-bg: #{$sk-plugin-config-array-item-bg-dark};
-}
+$sk-primary-dark: #5b9dff;
