@@ -263,8 +263,7 @@ form.rjsf {
   // Custom button styling for RJSF buttons to match original appearance
 
   // Add button styling - cyan color
-  button.btn-add,
-  button.array-item-add button {
+  button.btn-add {
     @include button-variant(
       #20a8d8,
       // background
@@ -320,9 +319,6 @@ form.rjsf {
   .row {
     padding: 0 2px !important;
   }
-  .navbar-header {
-    margin: 0;
-  }
 }
 
 /** Utility class to attempt to wrap text in a more balanced way. **/
@@ -365,23 +361,6 @@ form.rjsf {
   max-height: 60vh;
 }
 
-// Navbar FontAwesome icon styling to match original FA4 appearance
-.app-header.navbar {
-  .nav-link {
-    // Ensure FA6 SVG icons align properly with text
-    svg {
-      vertical-align: -0.125em;
-      margin-right: 0.35rem;
-    }
-  }
-
-  // Dropdown toggle icon sizing
-  .dropdown-toggle svg {
-    font-size: 1.25rem;
-    margin-right: 0;
-  }
-}
-
 // Dashboard callout: accent-colored left border marking a highlighted
 // stat block. Not a Bootstrap component, so this is genuinely custom CSS,
 // but keeps the same shape as the old CoreUI callout (0-width border on
@@ -404,47 +383,6 @@ form.rjsf {
   .h4,
   .h5 {
     color: inherit;
-  }
-}
-
-// Sidebar FontAwesome SVG icon styling
-.sidebar {
-  .nav-link {
-    svg.nav-icon {
-      display: inline-block;
-      width: 20px;
-      margin: 0 0.5rem 0 0;
-      font-size: 14px;
-      color: var(--bs-gray-600);
-      text-align: center;
-    }
-
-    &.active svg.nav-icon {
-      color: var(--bs-blue);
-    }
-
-    &:hover svg.nav-icon {
-      color: var(--bs-white);
-    }
-  }
-
-  .nav-dropdown-toggle svg.nav-icon {
-    display: inline-block;
-    width: 20px;
-    margin: 0 0.5rem 0 0;
-    font-size: 14px;
-    color: var(--bs-gray-600);
-    text-align: center;
-  }
-
-  // Indent dropdown child items that don't have icons
-  .nav-dropdown-items .nav-link {
-    padding-left: calc(1rem + 20px + 0.5rem);
-  }
-
-  // Hide parent badges when dropdown is expanded (children show their own)
-  .nav-dropdown.open > .nav-dropdown-toggle > .badge {
-    display: none;
   }
 }
 
@@ -1050,34 +988,6 @@ form.rjsf {
   }
 }
 
-.app-header.navbar,
-.app-header.navbar .navbar-brand {
-  background-color: var(--sk-navbar-bg);
-  border-bottom-color: var(--sk-navbar-border-color);
-}
-
-.app-footer {
-  color: var(--sk-footer-color);
-  background-color: var(--sk-footer-bg);
-  border-top-color: var(--sk-navbar-border-color);
-}
-
-.sidebar {
-  color: var(--sk-sidebar-color);
-  background-color: var(--sk-sidebar-bg);
-}
-
-.sidebar .nav-link.active,
-.sidebar .navbar .active.dropdown-toggle,
-.navbar .sidebar .active.dropdown-toggle {
-  background-color: var(--sk-sidebar-active-bg);
-}
-
-.switch.switch-text .switch-handle,
-.switch.switch-text .switch-label {
-  background-color: var(--sk-switch-bg);
-}
-
 // brighten bs-primary when in dark mode to improve contrast
 
 [data-bs-theme='dark'] {
@@ -1107,16 +1017,3 @@ form.rjsf {
 //     filter: brightness(1.4);
 //   }
 // }
-
-// light/dark/auto mode navbar dropdown menu:
-
-.app-header.navbar .theme-dropdown .dropdown-menu,
-.app-header.navbar .theme-dropdown .dropdown-item {
-  min-width: 7rem;
-}
-
-// light/dark/auto mode navbar dropdown menu icon size:
-
-.app-header.navbar .theme-dropdown .dropdown-toggle svg {
-  font-size: 1rem;
-}

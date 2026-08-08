@@ -10,17 +10,6 @@ $sk-card-bg-light: $white;
 $sk-card-border-color-light: $gray-200;
 $sk-card-cap-bg-light: $gray-100;
 
-$sk-navbar-bg-light: $white;
-$sk-navbar-border-color-light: $gray-300;
-
-$sk-footer-color-light: $gray-900;
-$sk-footer-bg-light: $gray-100;
-
-$sk-sidebar-color-light: $white;
-$sk-sidebar-bg-light: $gray-800;
-$sk-sidebar-active-bg-light: #33444c;
-$sk-sidebar-border-color-light: transparent;
-
 $sk-progress-bg-light: $gray-100;
 
 $sk-input-bg-light: $white;
@@ -31,8 +20,6 @@ $sk-input-group-addon-border-color-light: $gray-200;
 
 $sk-dropdown-border-color-light: $gray-200;
 $sk-dropdown-divider-bg-light: $gray-100;
-
-$sk-switch-bg-light: $white;
 
 $sk-table-bg-light: $white;
 $sk-table-hover-bg-light: $gray-100;
@@ -55,17 +42,6 @@ $sk-card-bg-dark: $sk-bg-dark;
 $sk-card-border-color-dark: #3f424b;
 $sk-card-cap-bg-dark: #292d36;
 
-$sk-navbar-bg-dark: $sk-bg-dark;
-$sk-navbar-border-color-dark: $sk-border-color-dark;
-
-$sk-footer-color-dark: #dadbdd;
-$sk-footer-bg-dark: $sk-bg-dark;
-
-$sk-sidebar-color-dark: #e3e3e4;
-$sk-sidebar-bg-dark: $sk-bg-dark;
-$sk-sidebar-active-bg-dark: #2b303c;
-$sk-sidebar-border-color-dark: $sk-border-color-dark;
-
 $sk-progress-bg-dark: $gray-800;
 
 $sk-input-bg-dark: $sk-bg-dark;
@@ -76,8 +52,6 @@ $sk-input-group-addon-border-color-dark: $gray-200;
 
 $sk-dropdown-border-color-dark: $sk-border-color-dark;
 $sk-dropdown-divider-bg-dark: $sk-border-color-dark;
-
-$sk-switch-bg-dark: $sk-bg-dark;
 
 $sk-table-bg-dark: #212631;
 $sk-table-hover-bg-dark: #32363f;
@@ -102,17 +76,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
   --sk-card-cap-bg: #{$sk-card-cap-bg-light};
   --sk-card-border-color: #{$sk-card-border-color-light};
 
-  --sk-navbar-bg: #{$sk-navbar-bg-light};
-  --sk-navbar-border-color: #{$sk-navbar-border-color-light};
-
-  --sk-footer-color: #{$sk-footer-color-light};
-  --sk-footer-bg: #{$sk-footer-bg-light};
-
-  --sk-sidebar-color: #{$sk-sidebar-color-light};
-  --sk-sidebar-bg: #{$sk-sidebar-bg-light};
-  --sk-sidebar-active-bg: #{$sk-sidebar-active-bg-light};
-  --sk-sidebar-border-color: #{$sk-sidebar-border-color-light};
-
   --sk-progress-bg: #{$sk-progress-bg-light};
 
   --sk-input-bg: #{$sk-input-bg-light};
@@ -123,8 +86,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 
   --sk-dropdown-border-color: #{$sk-dropdown-border-color-light};
   --sk-dropdown-divider-bg: #{$sk-dropdown-divider-bg-light};
-
-  --sk-switch-bg: #{$sk-switch-bg-light};
 
   --sk-table-bg: #{$sk-table-bg-light};
   --sk-table-hover-bg: #{$sk-table-hover-bg-light};
@@ -138,17 +99,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
   --sk-card-cap-bg: #{$sk-card-cap-bg-dark};
   --sk-card-border-color: #{$sk-card-border-color-dark};
 
-  --sk-navbar-bg: #{$sk-navbar-bg-dark};
-  --sk-navbar-border-color: #{$sk-navbar-border-color-dark};
-
-  --sk-footer-color: #{$sk-footer-color-dark};
-  --sk-footer-bg: #{$sk-footer-bg-dark};
-
-  --sk-sidebar-color: #{$sk-sidebar-color-dark};
-  --sk-sidebar-bg: #{$sk-sidebar-bg-dark};
-  --sk-sidebar-active-bg: #{$sk-sidebar-active-bg-dark};
-  --sk-sidebar-border-color: #{$sk-sidebar-border-color-dark};
-
   --sk-progress-bg: #{$sk-progress-bg-dark};
 
   --sk-input-bg: #{$sk-input-bg-dark};
@@ -159,8 +109,6 @@ $sk-plugin-config-array-item-bg-dark: $gray-900;
 
   --sk-dropdown-border-color: #{$sk-dropdown-border-color-dark};
   --sk-dropdown-divider-bg: #{$sk-dropdown-divider-bg-dark};
-
-  --sk-switch-bg: #{$sk-switch-bg-dark};
 
   --sk-table-bg: #{$sk-table-bg-dark};
   --sk-table-hover-bg: #{$sk-table-hover-bg-dark};
