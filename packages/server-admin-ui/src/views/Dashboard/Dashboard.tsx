@@ -49,15 +49,19 @@ export default function Dashboard() {
   }
 
   const getInputPulseClass = (providerStats: ProviderStatistics): string => {
-    if ((providerStats.deltaRate || 0) > 50) return 'text-primary fa-pulse-fast'
-    if ((providerStats.deltaRate || 0) > 0) return 'text-primary fa-pulse'
-    return ''
+    const colorClass = providerStats.deltaCount ? 'text-primary' : 'text-muted'
+    if ((providerStats.deltaRate || 0) > 50)
+      return `${colorClass} fa-pulse-fast`
+    if ((providerStats.deltaRate || 0) > 0) return `${colorClass} fa-pulse`
+    return colorClass
   }
 
   const getOutputPulseClass = (providerStats: ProviderStatistics): string => {
-    if ((providerStats.writeRate || 0) > 50) return 'text-primary fa-pulse-fast'
-    if ((providerStats.writeRate || 0) > 0) return 'text-primary fa-pulse'
-    return ''
+    const colorClass = providerStats.writeCount ? 'text-primary' : 'text-muted'
+    if ((providerStats.writeRate || 0) > 50)
+      return `${colorClass} fa-pulse-fast`
+    if ((providerStats.writeRate || 0) > 0) return `${colorClass} fa-pulse`
+    return colorClass
   }
 
   const renderActivity = (
@@ -75,17 +79,17 @@ export default function Dashboard() {
         <div className="d-flex align-items-center">
           <FontAwesomeIcon
             icon={faArrowRightToBracket}
-            className={classNames('me-2', getInputPulseClass(providerStats))}
-            style={{
-              color: providerStats.deltaCount ? '#039' : 'lightblue'
-            }}
+            className={classNames(
+              'me-2 flex-shrink-0',
+              getInputPulseClass(providerStats)
+            )}
           />
           <FontAwesomeIcon
             icon={faArrowRightFromBracket}
-            className={classNames('me-2', getOutputPulseClass(providerStats))}
-            style={{
-              color: providerStats.writeCount ? '#039' : 'lightblue'
-            }}
+            className={classNames(
+              'me-2 flex-shrink-0',
+              getOutputPulseClass(providerStats)
+            )}
           />
           <span className="flex-grow-1">
             {linkType === 'plugin'
