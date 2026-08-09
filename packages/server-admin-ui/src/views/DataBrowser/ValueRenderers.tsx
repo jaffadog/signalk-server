@@ -355,7 +355,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
   const getSNRColor = (snr: number | undefined): string => {
     if (!snr || snr <= 0) return 'var(--bs-secondary-color)'
     if (snr >= 40) return 'var(--bs-success)'
-    if (snr >= 30) return 'var(--bs-info)'
+    if (snr >= 30) return 'var(--bs-primary)'
     return 'var(--bs-danger)'
   }
 
@@ -518,7 +518,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                   cy={y}
                   r="8"
                   fill={color}
-                  stroke={hasSignal ? 'none' : 'var(--bs-body-color)'}
+                  stroke={hasSignal ? 'none' : 'var(--bs-border-color)'}
                   strokeWidth={hasSignal ? 0 : 2}
                 />
                 <text
@@ -558,7 +558,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                 style={{
                   width: '12px',
                   height: '12px',
-                  backgroundColor: 'var(--bs-info)',
+                  backgroundColor: 'var(--bs-primary)',
                   borderRadius: '50%'
                 }}
               ></div>
@@ -581,7 +581,6 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                   width: '12px',
                   height: '12px',
                   backgroundColor: 'var(--bs-secondary-color)',
-                  border: '2px solid var(--bs-border-color)',
                   borderRadius: '50%'
                 }}
               ></div>

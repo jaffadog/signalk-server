@@ -1051,7 +1051,7 @@ const ZoneRow: React.FC<ZoneProps> = ({
   return (
     <div
       style={{
-        backgroundColor: 'var(--bs-info-bg-subtle)',
+        backgroundColor: 'var(--bs-tertiary-bg)',
         padding: '10px',
         marginBottom: '5px',
         borderRadius: '4px',
