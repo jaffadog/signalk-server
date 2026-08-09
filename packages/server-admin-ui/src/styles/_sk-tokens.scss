@@ -1,5 +1,18 @@
-//
-// Signal K Dark Mode Colors
-//
+// ----- SignalK Light Mode Colors -----
+$sk-brand-color-light: #039;
 
-$sk-primary-dark: #5b9dff;
+// ----- SignalK Dark Mode Colors -----
+$sk-brand-color-dark: #5b9dff;
+
+// ----- SignalK CSS Vars -----
+
+// example:
+
+// :root,
+// [data-bs-theme='light'] {
+//   --sk-foo-color: #{$sk-foo-color-light};
+// }
+
+// [data-bs-theme='dark'] {
+//   --sk-foo-color: #{$sk-foo-color-dark};
+// }

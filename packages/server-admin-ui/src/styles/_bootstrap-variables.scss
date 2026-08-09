@@ -1,76 +1,21 @@
-// NOTE: this appears to have originated from AdminUI v1.0.6 (circa 2017)
-// https://github.com/coreui/coreui-free-bootstrap-admin-template/blob/v1.0.6/Static_Starter_GULP/src/scss/_bootstrap-variables.scss
-// CoreUI v1.0.6 used Bootstrap v4.0.0
-// TODO: we should aim to adopt Bootstrap v5 native colors rather than contunuing to retain these old CoreUI colors
-
 // Bootstrap overrides
 
-//
-// Color system
-//
-
-// $white: #fff;
-// $gray-100: #f0f3f5;
-// $gray-200: #c2cfd6;
-// $gray-300: #a4b7c1;
-// $gray-400: #869fac;
-// $gray-500: #678898;
-// $gray-600: #536c79;
-// $gray-700: #3e515b;
-// $gray-800: #29363d;
-// $gray-900: #151b1e;
-// $black: #000 !default;
-
 // override default blue color to sk themed navy blue
-$blue: #039;
+// Must be a real Sass color, not var(--sk-brand-color) - Bootstrap does
+// compile-time color math on $primary (shade-color, mix, tint-color, etc.
+// to derive -subtle/-emphasis/-rgb variants), which needs an actual color
+// value, not an opaque CSS custom property. The dark-mode swap happens at
+// runtime instead, via the --bs-primary override in _custom.scss.
+$primary: $sk-brand-color-light;
 
-// $indigo: #6610f2 !default;
-// $purple: #6f42c1 !default;
-// $pink: #e83e8c !default;
-// $red: #f86c6b;
-// $orange: #f8cb00;
-// $yellow: #fc0 !default;
-// $green: #00cd79;
-// $teal: #20c997 !default;
-// $cyan: #63c2de;
+// Bootstrap's own dark-mode Sass default re-derives the link color from
+// $primary itself (bootstrap/scss/_variables-dark.scss:53), not from a
+// mode-aware token - so left alone it bakes in the LIGHT brand hue even
+// inside [data-bs-theme='dark']. This is !default and this file is
+// imported before bootstrap/scss/variables-dark, so setting it here wins.
+// Same tint-color weight Bootstrap itself uses, just seeded from the dark
+// brand color. $link-hover-color-dark derives from this automatically.
+$link-color-dark: tint-color($sk-brand-color-dark, 40%);
 
-// $colors: (
-//   blue: $blue,
-//   indigo: $indigo,
-//   purple: $purple,
-//   pink: $pink,
-//   red: $red,
-//   orange: $orange,
-//   yellow: $yellow,
-//   green: $green,
-//   teal: $teal,
-//   cyan: $cyan,
-//   white: $white,
-//   gray: $gray-600,
-//   gray-dark: $gray-800
-// );
-
-// $theme-colors: (
-//   primary: $blue,
-//   secondary: $gray-700,
-//   success: $green,
-//   info: $cyan,
-//   warning: $yellow,
-//   danger: $red,
-//   light: $gray-200,
-//   dark: $gray-800
-// );
-
-// Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
-
-// $enable-transitions: true;
-// $enable-rounded: true;
-
-// Typography
-//
-// Font, line-height, and color for body text, headings, and more.
-
-// switch from bs5 default 16px font size to 14px
+// switch from bs5 default 1em (16px) font size to 0.875em (14px)
 $font-size-base: 0.875rem;

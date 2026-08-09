@@ -1,6 +1,6 @@
 @use 'sass:color';
 
-// Here you can add other styles
+// Signalk Admin UI Custom Styles
 
 // Disable rubber-band/elastic overscroll (trackpad bounce at top/bottom of
 // the page) so the sticky header/sidebar don't visibly detach during it.
@@ -999,9 +999,9 @@ form.rjsf {
 // brighten bs-primary when in dark mode to improve contrast
 
 [data-bs-theme='dark'] {
-  --bs-primary: #{$sk-primary-dark};
+  --bs-primary: #{$sk-brand-color-dark};
   --bs-primary-rgb:
-    #{color.channel($sk-primary-dark, 'red', $space: rgb)},
-    #{color.channel($sk-primary-dark, 'green', $space: rgb)},
-    #{color.channel($sk-primary-dark, 'blue', $space: rgb)};
+    #{color.channel($sk-brand-color-dark, 'red', $space: rgb)},
+    #{color.channel($sk-brand-color-dark, 'green', $space: rgb)},
+    #{color.channel($sk-brand-color-dark, 'blue', $space: rgb)};
 }
