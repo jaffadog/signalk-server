@@ -14,9 +14,9 @@ const SCORE_GREEN_THRESHOLD = 70
 const SCORE_YELLOW_THRESHOLD = 40
 
 function colorFor(score: number): string {
-  if (score >= SCORE_GREEN_THRESHOLD) return '#4dbd74'
-  if (score >= SCORE_YELLOW_THRESHOLD) return '#f8cb00'
-  return '#f86c6b'
+  if (score >= SCORE_GREEN_THRESHOLD) return 'var(--bs-success)'
+  if (score >= SCORE_YELLOW_THRESHOLD) return 'var(--bs-warning)'
+  return 'var(--bs-danger)'
 }
 
 const ScoreRing: React.FC<ScoreRingProps> = ({
@@ -42,7 +42,7 @@ const ScoreRing: React.FC<ScoreRingProps> = ({
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        stroke="#e4e7ea"
+        stroke="var(--bs-border-color)"
         strokeWidth={3}
         fill="none"
       />
@@ -63,7 +63,11 @@ const ScoreRing: React.FC<ScoreRingProps> = ({
         y="50%"
         textAnchor="middle"
         dominantBaseline="central"
-        style={{ fontSize: size * 0.35, fontWeight: 600, fill: '#2f353a' }}
+        style={{
+          fontSize: size * 0.35,
+          fontWeight: 600,
+          fill: 'var(--bs-body-color)'
+        }}
       >
         {clamped}
       </text>

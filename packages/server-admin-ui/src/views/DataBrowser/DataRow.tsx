@@ -334,7 +334,7 @@ function DataRow({
                 style={{
                   marginLeft: '4px',
                   fontSize: '0.7em',
-                  color: 'var(--bs-danger, #d9534f)',
+                  color: 'var(--bs-danger)',
                   fontWeight: 600,
                   textDecoration: 'none'
                 }}
@@ -354,7 +354,7 @@ function DataRow({
               style={{
                 marginLeft: '4px',
                 fontSize: '0.7em',
-                color: 'var(--bs-secondary-color, #6c757d)',
+                color: 'var(--bs-secondary-color)',
                 fontWeight: 500,
                 textDecoration: 'none'
               }}

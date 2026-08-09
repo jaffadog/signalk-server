@@ -782,7 +782,10 @@ const PriorityGroupCard: React.FC<PriorityGroupCardProps> = ({
                     {pairedCanNames.size > 0 && (
                       <div
                         className="pg-device-legend mb-2"
-                        style={{ fontSize: '0.8em', color: '#555' }}
+                        style={{
+                          fontSize: '0.8em',
+                          color: 'var(--bs-secondary-color)'
+                        }}
                       >
                         Coloured dots mark transports of the same physical
                         device — priorities apply to the device, not to each

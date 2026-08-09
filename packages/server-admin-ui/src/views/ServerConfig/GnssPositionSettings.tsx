@@ -50,7 +50,13 @@ interface VesselDimensions {
   beam: number | null
 }
 
-const COLORS = ['#0d6efd', '#198754', '#dc3545', '#ffc107', '#0dcaf0']
+const COLORS = [
+  'var(--bs-primary)',
+  'var(--bs-success)',
+  'var(--bs-danger)',
+  'var(--bs-warning)',
+  'var(--bs-info)'
+]
 const SAVE_ERROR_CLEAR_MS = 8000
 
 const GnssPositionSettings: React.FC = () => {
@@ -466,7 +472,7 @@ const GnssPositionSettings: React.FC = () => {
                 const color =
                   row.sensor !== null
                     ? COLORS[row.index % COLORS.length]
-                    : '#999'
+                    : 'var(--bs-secondary-color)'
                 const isUnconfigured = row.sensor === null
                 // Focusing any input of an unconfigured row starts its
                 // configuration: the row gets a sensor entry and the same

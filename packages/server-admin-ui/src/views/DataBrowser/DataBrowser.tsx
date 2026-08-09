@@ -100,7 +100,13 @@ const ContextOption = (props: OptionProps<SelectOption>) => {
   const { data } = props
   const needsBorder = data.value === 'self' || data.isFirstAis
   return (
-    <div style={needsBorder ? { borderTop: '1px solid #ccc' } : undefined}>
+    <div
+      style={
+        needsBorder
+          ? { borderTop: '1px solid var(--bs-border-color)' }
+          : undefined
+      }
+    >
       <components.Option {...props} />
     </div>
   )

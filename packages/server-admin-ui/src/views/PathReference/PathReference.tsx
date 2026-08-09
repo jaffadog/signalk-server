@@ -127,9 +127,7 @@ export default function PathReference() {
           <FontAwesomeIcon icon={faList} className="me-2" /> Path Reference
         </Card.Header>
         <Card.Body>
-          <p style={{ color: '#e74c3c' }}>
-            Failed to load path metadata: {error}
-          </p>
+          <p className="text-danger">Failed to load path metadata: {error}</p>
           <Button variant="primary" size="sm" onClick={() => loadMeta()}>
             Retry
           </Button>
@@ -205,7 +203,7 @@ export default function PathReference() {
               style={{
                 position: 'sticky',
                 top: 0,
-                backgroundColor: 'var(--bs-body-bg, #fff)',
+                backgroundColor: 'var(--bs-body-bg)',
                 zIndex: 1
               }}
             >

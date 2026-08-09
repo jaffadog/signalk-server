@@ -47,7 +47,7 @@ const TOUCH_ACTIVATION_TOLERANCE_PX = 5
 const DRAGGING_OPACITY = 0.6
 const DRAGGING_Z_INDEX = 2
 const HANDLE_Z_INDEX = 3
-const HANDLE_COLOR = '#8a93a2'
+const HANDLE_COLOR = 'var(--bs-secondary-color)'
 
 interface WebAppInfo {
   name: string

@@ -198,7 +198,7 @@ export default function EmbeddedAsyncApi() {
                           style={{
                             marginBottom: 10,
                             paddingLeft: 12,
-                            borderLeft: '2px solid #dee2e6'
+                            borderLeft: '2px solid var(--bs-border-color)'
                           }}
                         >
                           <code style={{ fontSize: 13 }}>
@@ -220,7 +220,7 @@ export default function EmbeddedAsyncApi() {
                           {msg.payload && (
                             <pre
                               style={{
-                                background: '#f5f5f5',
+                                background: 'var(--bs-tertiary-bg)',
                                 padding: 8,
                                 borderRadius: 4,
                                 fontSize: 12,

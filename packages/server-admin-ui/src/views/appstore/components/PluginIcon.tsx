@@ -103,7 +103,7 @@ const PluginIcon: React.FC<PluginIconProps> = ({
             width: size,
             height: size,
             objectFit: 'cover',
-            background: '#f0f3f5'
+            background: 'var(--bs-tertiary-bg)'
           }}
           onError={() => setFailedIndex(failedIndex + 1)}
         />
@@ -122,7 +122,7 @@ const PluginIcon: React.FC<PluginIconProps> = ({
         flexShrink: 0,
         borderRadius: 8,
         background: `linear-gradient(135deg, hsl(${hue}, 45%, 58%), hsl(${(hue + 30) % 360}, 50%, 42%))`,
-        color: '#fff',
+        color: 'var(--bs-white)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

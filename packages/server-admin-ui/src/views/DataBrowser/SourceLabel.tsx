@@ -79,7 +79,7 @@ const SourceLabel: React.FC<SourceLabelProps> = ({
           style={{
             fontSize: 'inherit',
             padding: '1px 4px',
-            border: '1px solid var(--bs-primary, #20a8d8)',
+            border: '1px solid var(--bs-primary)',
             borderRadius: '3px',
             width: '180px',
             outline: 'none'
