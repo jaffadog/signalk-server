@@ -756,7 +756,7 @@ const SourceDiscovery: React.FC = () => {
                   padding: '4px 0'
                 }}
               >
-                <span style={{ flex: 1, color: 'var(--bs-secondary-color)' }}>
+                <span className="text-muted" style={{ flex: 1 }}>
                   {c.deviceA.manufacturerCode || c.deviceA.sourceRef} (addr{' '}
                   {c.deviceA.src}){' vs '}
                   {c.deviceB.manufacturerCode || c.deviceB.sourceRef} (addr{' '}
@@ -962,7 +962,7 @@ const DeviceRows: React.FC<DeviceRowsProps> = ({
       </tr>
       {isExpanded && (
         <tr>
-          <td colSpan={11} style={{ backgroundColor: '#f8f9fa' }}>
+          <td colSpan={11} className="bg-body-tertiary">
             <div
               style={{
                 display: 'grid',
@@ -1038,12 +1038,7 @@ const DeviceRows: React.FC<DeviceRowsProps> = ({
               )}
               {allPgnKeys.length > 0 && (
                 <div style={{ gridColumn: '1 / -1' }}>
-                  <span
-                    style={{
-                      fontWeight: 500,
-                      color: 'var(--bs-secondary-color, #6c757d)'
-                    }}
-                  >
+                  <span className="text-muted" style={{ fontWeight: 500 }}>
                     Supported PGNs ({allPgnKeys.length}):
                   </span>{' '}
                   <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>
@@ -1052,10 +1047,8 @@ const DeviceRows: React.FC<DeviceRowsProps> = ({
                         {i > 0 && ', '}
                         {conflictPGNs?.has(pgn) ? (
                           <span
-                            style={{
-                              color: 'var(--bs-warning, #f0ad4e)',
-                              fontWeight: 600
-                            }}
+                            className="text-warning"
+                            style={{ fontWeight: 600 }}
                             title="Instance conflict: another device with the same instance also sends this PGN"
                           >
                             <FontAwesomeIcon
@@ -1145,10 +1138,8 @@ const InlineInstanceCell: React.FC<{
         {hasConflict && (
           <FontAwesomeIcon
             icon={faTriangleExclamation}
-            style={{
-              color: 'var(--bs-warning, #f0ad4e)',
-              marginLeft: '4px'
-            }}
+            className="text-warning"
+            style={{ marginLeft: '4px' }}
             title="Instance conflict"
           />
         )}
@@ -1259,51 +1250,38 @@ const InlineInstanceCell: React.FC<{
               width: '60px',
               fontSize: 'inherit',
               padding: '1px 4px',
-              border: '1px solid var(--bs-primary, #20a8d8)',
+              border: '1px solid var(--bs-primary)',
               borderRadius: '3px',
               outline: 'none'
             }}
           />
           {canSave && (
-            <button
-              type="button"
+            <Button
+              size="sm"
+              variant="primary"
               onClick={handleSave}
               disabled={isSaving}
-              style={{
-                fontSize: 'inherit',
-                padding: '1px 6px',
-                border: '1px solid var(--bs-primary, #20a8d8)',
-                borderRadius: '3px',
-                backgroundColor: 'var(--bs-primary, #20a8d8)',
-                color: '#fff',
-                cursor: 'pointer'
-              }}
+              style={{ fontSize: 'inherit', padding: '1px 6px' }}
             >
               {isSaving ? 'Verifying...' : 'Save'}
-            </button>
+            </Button>
           )}
           {!isSaving && (
-            <button
-              type="button"
+            <Button
+              size="sm"
+              variant="outline-secondary"
               onClick={() => setIsEditing(false)}
-              style={{
-                fontSize: 'inherit',
-                padding: '1px 6px',
-                border: '1px solid var(--bs-border-color, #dee2e6)',
-                borderRadius: '3px',
-                backgroundColor: 'transparent',
-                cursor: 'pointer'
-              }}
+              style={{ fontSize: 'inherit', padding: '1px 6px' }}
             >
               Cancel
-            </button>
+            </Button>
           )}
         </span>
         {isVictronDevice(device) ? (
           <div
+            className="text-warning-emphasis"
             style={{
               fontSize: '0.78em',
-              color: 'var(--bs-warning-text-emphasis, #664d03)',
               marginTop: '4px',
               maxWidth: '320px',
               lineHeight: 1.3
@@ -1326,9 +1304,9 @@ const InlineInstanceCell: React.FC<{
           </div>
         ) : (
           <div
+            className="text-muted"
             style={{
               fontSize: '0.78em',
-              color: 'var(--bs-secondary-color, #6c757d)',
               marginTop: '4px',
               maxWidth: '320px',
               lineHeight: 1.3
@@ -1362,7 +1340,8 @@ const InlineInstanceCell: React.FC<{
       {currentValue ?? ''}
       {saveResult === 'ok' && (
         <span
-          style={{ color: 'var(--bs-success, #4dbd74)', marginLeft: '4px' }}
+          className="text-success"
+          style={{ marginLeft: '4px' }}
           title="Device confirmed the change"
         >
           ✓
@@ -1370,7 +1349,8 @@ const InlineInstanceCell: React.FC<{
       )}
       {saveResult === 'fail' && (
         <span
-          style={{ color: 'var(--bs-danger, #f86c6b)', marginLeft: '4px' }}
+          className="text-danger"
+          style={{ marginLeft: '4px' }}
           title="Device did not confirm the change within timeout"
         >
           ✗
@@ -1379,10 +1359,8 @@ const InlineInstanceCell: React.FC<{
       {hasConflict && (
         <FontAwesomeIcon
           icon={faTriangleExclamation}
-          style={{
-            color: 'var(--bs-warning, #f0ad4e)',
-            marginLeft: '4px'
-          }}
+          className="text-warning"
+          style={{ marginLeft: '4px' }}
           title="Instance conflict: another device has the same instance and sends overlapping PGNs"
         />
       )}
@@ -1529,19 +1507,9 @@ const InstanceRow: React.FC<{
     width: '70px',
     fontSize: 'inherit',
     padding: '1px 4px',
-    border: '1px solid var(--bs-border-color, #dee2e6)',
+    border: '1px solid var(--bs-border-color)',
     borderRadius: '3px',
     outline: 'none'
-  }
-
-  const btnStyle = {
-    fontSize: 'inherit',
-    padding: '1px 8px',
-    border: '1px solid var(--bs-primary, #20a8d8)',
-    borderRadius: '3px',
-    backgroundColor: 'var(--bs-primary, #20a8d8)',
-    color: '#fff',
-    cursor: 'pointer'
   }
 
   return (
@@ -1566,26 +1534,24 @@ const InstanceRow: React.FC<{
         style={inputStyle}
       />
       {editValue !== '' && (
-        <button
-          type="button"
+        <Button
+          size="sm"
+          variant="primary"
           onClick={handleSave}
           disabled={isSaving}
-          style={btnStyle}
+          style={{ fontSize: 'inherit', padding: '1px 8px' }}
         >
           {isSaving ? 'Verifying...' : 'Save'}
-        </button>
+        </Button>
       )}
       {saveResult === 'ok' && (
-        <span
-          style={{ color: 'var(--bs-success, #4dbd74)' }}
-          title="Device confirmed the change"
-        >
+        <span className="text-success" title="Device confirmed the change">
           ✓
         </span>
       )}
       {saveResult === 'fail' && (
         <span
-          style={{ color: 'var(--bs-danger, #f86c6b)' }}
+          className="text-danger"
           title="Device did not confirm the change within timeout"
         >
           ✗
@@ -1672,15 +1638,15 @@ const PgnInstanceField: React.FC<{
     }
   }, [fetchInstances, reloadKey])
 
-  const labelStyle = {
-    fontWeight: 500 as const,
-    color: 'var(--bs-secondary-color, #6c757d)'
-  }
+  const labelStyle = { fontWeight: 500 as const }
 
   if (!loaded) {
     return (
       <div>
-        <span style={labelStyle}>{label}:</span> ...
+        <span className="text-muted" style={labelStyle}>
+          {label}:
+        </span>{' '}
+        ...
       </div>
     )
   }
@@ -1688,7 +1654,9 @@ const PgnInstanceField: React.FC<{
   if (currentInstances.length === 0) {
     return (
       <div>
-        <span style={labelStyle}>{label}:</span>{' '}
+        <span className="text-muted" style={labelStyle}>
+          {label}:
+        </span>{' '}
         <InstanceRow
           device={device}
           field={field}
@@ -1704,7 +1672,9 @@ const PgnInstanceField: React.FC<{
 
   return (
     <div>
-      <span style={labelStyle}>{label}:</span>
+      <span className="text-muted" style={labelStyle}>
+        {label}:
+      </span>
       {currentInstances.map((inst) => (
         <div key={inst} style={{ marginLeft: '8px', marginTop: '2px' }}>
           <InstanceRow
@@ -1838,17 +1808,16 @@ const DataInstanceSection: React.FC<{
     }
   }, [fetchInstances])
 
-  const labelStyle = {
-    fontWeight: 500 as const,
-    color: 'var(--bs-secondary-color, #6c757d)'
-  }
+  const labelStyle = { fontWeight: 500 as const }
 
   if (loading) {
     return (
       <div style={{ gridColumn: '1 / -1' }}>
-        <span style={labelStyle}>Data Instances:</span>{' '}
+        <span className="text-muted" style={labelStyle}>
+          Data Instances:
+        </span>{' '}
         <Spinner size="sm" animation="border" />{' '}
-        <span style={{ fontSize: '0.85em', color: '#888' }}>
+        <span className="text-muted" style={{ fontSize: '0.85em' }}>
           Listening to N2K bus (~6s)...
         </span>
       </div>
@@ -1858,22 +1827,18 @@ const DataInstanceSection: React.FC<{
   if (error) {
     return (
       <div style={{ gridColumn: '1 / -1' }}>
-        <span style={labelStyle}>Data Instances:</span>{' '}
-        <span style={{ color: 'var(--bs-danger, #f86c6b)' }}>{error}</span>{' '}
-        <button
-          type="button"
+        <span className="text-muted" style={labelStyle}>
+          Data Instances:
+        </span>{' '}
+        <span className="text-danger">{error}</span>{' '}
+        <Button
+          size="sm"
+          variant="outline-secondary"
           onClick={discover}
-          style={{
-            fontSize: 'inherit',
-            padding: '1px 6px',
-            border: '1px solid var(--bs-border-color, #dee2e6)',
-            borderRadius: '3px',
-            backgroundColor: 'transparent',
-            cursor: 'pointer'
-          }}
+          style={{ fontSize: 'inherit', padding: '1px 6px' }}
         >
           Retry
-        </button>
+        </Button>
       </div>
     )
   }
@@ -1883,24 +1848,20 @@ const DataInstanceSection: React.FC<{
   if (!hasInstances) {
     return (
       <div style={{ gridColumn: '1 / -1' }}>
-        <span style={labelStyle}>Data Instances:</span>{' '}
-        <span style={{ color: '#888' }}>
+        <span className="text-muted" style={labelStyle}>
+          Data Instances:
+        </span>{' '}
+        <span className="text-muted">
           {instances ? 'No data instances detected' : '...'}
         </span>{' '}
-        <button
-          type="button"
+        <Button
+          size="sm"
+          variant="outline-secondary"
           onClick={discover}
-          style={{
-            fontSize: 'inherit',
-            padding: '1px 6px',
-            border: '1px solid var(--bs-border-color, #dee2e6)',
-            borderRadius: '3px',
-            backgroundColor: 'transparent',
-            cursor: 'pointer'
-          }}
+          style={{ fontSize: 'inherit', padding: '1px 6px' }}
         >
           Discover
-        </button>
+        </Button>
       </div>
     )
   }
@@ -1927,21 +1888,17 @@ const DataInstanceSection: React.FC<{
           marginBottom: '4px'
         }}
       >
-        <span style={labelStyle}>Data Instances:</span>
-        <button
-          type="button"
+        <span className="text-muted" style={labelStyle}>
+          Data Instances:
+        </span>
+        <Button
+          size="sm"
+          variant="outline-secondary"
           onClick={discover}
-          style={{
-            fontSize: '0.8em',
-            padding: '1px 6px',
-            border: '1px solid var(--bs-border-color, #dee2e6)',
-            borderRadius: '3px',
-            backgroundColor: 'transparent',
-            cursor: 'pointer'
-          }}
+          style={{ fontSize: '0.8em', padding: '1px 6px' }}
         >
           Re-scan
-        </button>
+        </Button>
       </div>
       {Array.from(byPgn.entries()).map(([pgn, insts]) => (
         <div key={pgn} style={{ marginLeft: '8px', marginBottom: '6px' }}>
@@ -2017,11 +1974,9 @@ const DataInstanceRow: React.FC<{
         <span style={{ fontFamily: 'monospace', minWidth: '30px' }}>
           {inst.instance}
         </span>
-        <span style={{ color: '#555' }}>{inst.sourceLabel}</span>
+        <span className="text-muted">{inst.sourceLabel}</span>
         {inst.label && (
-          <span
-            style={{ marginLeft: '8px', color: '#333', fontStyle: 'italic' }}
-          >
+          <span style={{ marginLeft: '8px', fontStyle: 'italic' }}>
             {inst.label}
           </span>
         )}
@@ -2155,19 +2110,9 @@ const DataInstanceRow: React.FC<{
     width: '60px',
     fontSize: 'inherit',
     padding: '1px 4px',
-    border: '1px solid var(--bs-border-color, #dee2e6)',
+    border: '1px solid var(--bs-border-color)',
     borderRadius: '3px',
     outline: 'none'
-  }
-
-  const btnStyle = {
-    fontSize: 'inherit',
-    padding: '1px 6px',
-    border: '1px solid var(--bs-primary, #20a8d8)',
-    borderRadius: '3px',
-    backgroundColor: 'var(--bs-primary, #20a8d8)',
-    color: '#fff',
-    cursor: 'pointer'
   }
 
   return (
@@ -2185,9 +2130,11 @@ const DataInstanceRow: React.FC<{
       <span style={{ fontFamily: 'monospace', minWidth: '30px' }}>
         {inst.instance}
       </span>
-      <span style={{ color: '#555' }}>{inst.sourceLabel}</span>
+      <span className="text-muted">{inst.sourceLabel}</span>
 
-      <span style={{ marginLeft: '8px', color: '#999' }}>{'\u2192'}</span>
+      <span className="text-muted" style={{ marginLeft: '8px' }}>
+        {'\u2192'}
+      </span>
       <input
         type="number"
         min={0}
@@ -2200,14 +2147,15 @@ const DataInstanceRow: React.FC<{
         style={inputStyle}
       />
       {editInstance !== '' && (
-        <button
-          type="button"
+        <Button
+          size="sm"
+          variant="primary"
           onClick={handleSaveInstance}
           disabled={isSaving}
-          style={btnStyle}
+          style={{ fontSize: 'inherit', padding: '1px 6px' }}
         >
           {isSaving ? '...' : 'Set'}
-        </button>
+        </Button>
       )}
 
       {hasSourceDropdown && (
@@ -2219,7 +2167,7 @@ const DataInstanceRow: React.FC<{
             style={{
               fontSize: 'inherit',
               padding: '1px 4px',
-              border: '1px solid var(--bs-border-color, #dee2e6)',
+              border: '1px solid var(--bs-border-color)',
               borderRadius: '3px',
               outline: 'none',
               marginLeft: '4px'
@@ -2235,44 +2183,33 @@ const DataInstanceRow: React.FC<{
             ))}
           </select>
           {sourceChanged && (
-            <button
-              type="button"
+            <Button
+              size="sm"
+              variant="primary"
               onClick={handleSaveSource}
               disabled={isSaving}
-              style={btnStyle}
+              style={{ fontSize: 'inherit', padding: '1px 6px' }}
             >
               {isSaving ? '...' : 'Set'}
-            </button>
+            </Button>
           )}
         </>
       )}
 
       {/* Label (read-only, from device PGN 130060) */}
       {inst.label && (
-        <span
-          style={{
-            marginLeft: '8px',
-            color: '#333',
-            fontStyle: 'italic'
-          }}
-        >
+        <span style={{ marginLeft: '8px', fontStyle: 'italic' }}>
           {inst.label}
         </span>
       )}
 
       {saveResult === 'ok' && (
-        <span
-          style={{ color: 'var(--bs-success, #4dbd74)' }}
-          title="Command sent"
-        >
+        <span className="text-success" title="Command sent">
           ✓
         </span>
       )}
       {saveResult === 'fail' && (
-        <span
-          style={{ color: 'var(--bs-danger, #f86c6b)' }}
-          title="Failed to send command"
-        >
+        <span className="text-danger" title="Failed to send command">
           ✗
         </span>
       )}
@@ -2416,23 +2353,24 @@ const InlineTextField: React.FC<{
     if (e.key === 'Enter') handleSave()
   }
 
-  const labelStyle = {
-    fontWeight: 500 as const,
-    color: 'var(--bs-secondary-color, #6c757d)'
-  }
+  const labelStyle = { fontWeight: 500 as const }
 
   if (readOnly) {
     return (
       <div style={{ gridColumn: '1 / -1' }}>
-        <span style={labelStyle}>{label}:</span>{' '}
-        {currentValue || <span style={{ color: '#999' }}>{'—'}</span>}
+        <span className="text-muted" style={labelStyle}>
+          {label}:
+        </span>{' '}
+        {currentValue || <span className="text-muted">{'—'}</span>}
       </div>
     )
   }
 
   return (
     <div style={{ gridColumn: '1 / -1' }}>
-      <span style={labelStyle}>{label}:</span>{' '}
+      <span className="text-muted" style={labelStyle}>
+        {label}:
+      </span>{' '}
       <span
         onClick={(e) => e.stopPropagation()}
         style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
@@ -2447,40 +2385,30 @@ const InlineTextField: React.FC<{
             width: '320px',
             fontSize: 'inherit',
             padding: '1px 4px',
-            border: '1px solid var(--bs-border-color, #dee2e6)',
+            border: '1px solid var(--bs-border-color)',
             borderRadius: '3px',
             outline: 'none'
           }}
         />
         {isDirty && (
-          <button
-            type="button"
+          <Button
+            size="sm"
+            variant="primary"
             onClick={handleSave}
             disabled={isSaving}
-            style={{
-              fontSize: 'inherit',
-              padding: '1px 8px',
-              border: '1px solid var(--bs-primary, #20a8d8)',
-              borderRadius: '3px',
-              backgroundColor: 'var(--bs-primary, #20a8d8)',
-              color: '#fff',
-              cursor: 'pointer'
-            }}
+            style={{ fontSize: 'inherit', padding: '1px 8px' }}
           >
             {isSaving ? 'Verifying...' : 'Save'}
-          </button>
+          </Button>
         )}
         {saveResult === 'ok' && (
-          <span
-            style={{ color: 'var(--bs-success, #4dbd74)' }}
-            title="Device confirmed the change"
-          >
+          <span className="text-success" title="Device confirmed the change">
             ✓
           </span>
         )}
         {saveResult === 'fail' && (
           <span
-            style={{ color: 'var(--bs-danger, #f86c6b)' }}
+            className="text-danger"
             title="Device did not confirm the change within timeout"
           >
             ✗
@@ -2563,12 +2491,7 @@ const DetailField: React.FC<{
   if (value === undefined || value === null || value === '') return null
   return (
     <div>
-      <span
-        style={{
-          fontWeight: 500,
-          color: 'var(--bs-secondary-color, #6c757d)'
-        }}
-      >
+      <span className="text-muted" style={{ fontWeight: 500 }}>
         {label}:
       </span>{' '}
       {String(value)}

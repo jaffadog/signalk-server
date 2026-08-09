@@ -135,99 +135,394 @@ const TimelineDiagram: React.FC = () => (
         markerHeight="6"
         orient="auto-start-reverse"
       >
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#555" />
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--bs-secondary-color)" />
       </marker>
     </defs>
-    <rect x="0" y="0" width="10" height="10" fill="#2e7d32" rx="2" />
-    <text x="16" y="9" fontSize="10" fill="#555">
+    <rect x="0" y="0" width="10" height="10" fill="var(--bs-success)" rx="2" />
+    <text x="16" y="9" fontSize="10" fill="var(--bs-secondary-color)">
       accepted (winning)
     </text>
-    <rect x="150" y="0" width="10" height="10" fill="#bdbdbd" rx="2" />
-    <text x="166" y="9" fontSize="10" fill="#555">
+    <rect
+      x="150"
+      y="0"
+      width="10"
+      height="10"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <text x="166" y="9" fontSize="10" fill="var(--bs-secondary-color)">
       ignored (not winning)
     </text>
-    <rect x="305" y="0" width="10" height="10" fill="#1565c0" rx="2" />
-    <text x="321" y="9" fontSize="10" fill="#555">
+    <rect
+      x="305"
+      y="0"
+      width="10"
+      height="10"
+      fill="var(--bs-primary)"
+      rx="2"
+    />
+    <text x="321" y="9" fontSize="10" fill="var(--bs-secondary-color)">
       accepted (takeover)
     </text>
-    <text x="0" y="56" fontSize="12" fill="#333" fontWeight="600">
+    <text
+      x="0"
+      y="56"
+      fontSize="12"
+      fill="var(--bs-body-color)"
+      fontWeight="600"
+    >
       Preferred
     </text>
-    <text x="0" y="106" fontSize="12" fill="#333" fontWeight="600">
+    <text
+      x="0"
+      y="106"
+      fontSize="12"
+      fill="var(--bs-body-color)"
+      fontWeight="600"
+    >
       Backup 1
     </text>
-    <text x="0" y="156" fontSize="12" fill="#333" fontWeight="600">
+    <text
+      x="0"
+      y="156"
+      fontSize="12"
+      fill="var(--bs-body-color)"
+      fontWeight="600"
+    >
       Backup 2
     </text>
-    <rect x="80" y="48" width="30" height="16" fill="#2e7d32" rx="2" />
-    <rect x="118" y="48" width="30" height="16" fill="#2e7d32" rx="2" />
-    <rect x="156" y="48" width="30" height="16" fill="#2e7d32" rx="2" />
-    <rect x="194" y="48" width="30" height="16" fill="#2e7d32" rx="2" />
-    <rect x="232" y="48" width="30" height="16" fill="#2e7d32" rx="2" />
+    <rect
+      x="80"
+      y="48"
+      width="30"
+      height="16"
+      fill="var(--bs-success)"
+      rx="2"
+    />
+    <rect
+      x="118"
+      y="48"
+      width="30"
+      height="16"
+      fill="var(--bs-success)"
+      rx="2"
+    />
+    <rect
+      x="156"
+      y="48"
+      width="30"
+      height="16"
+      fill="var(--bs-success)"
+      rx="2"
+    />
+    <rect
+      x="194"
+      y="48"
+      width="30"
+      height="16"
+      fill="var(--bs-success)"
+      rx="2"
+    />
+    <rect
+      x="232"
+      y="48"
+      width="30"
+      height="16"
+      fill="var(--bs-success)"
+      rx="2"
+    />
     <line
       x1="262"
       y1="56"
       x2="800"
       y2="56"
-      stroke="#b71c1c"
+      stroke="var(--bs-danger)"
       strokeWidth="1.5"
       strokeDasharray="4 3"
     />
-    <text x="531" y="45" fontSize="11" fill="#b71c1c" textAnchor="middle">
+    <text
+      x="531"
+      y="45"
+      fontSize="11"
+      fill="var(--bs-danger)"
+      textAnchor="middle"
+    >
       (silent)
     </text>
-    <rect x="80" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="118" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="156" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="194" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="232" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="270" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="308" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="346" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="384" y="98" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="442" y="98" width="30" height="16" fill="#1565c0" rx="2" />
-    <rect x="480" y="98" width="30" height="16" fill="#1565c0" rx="2" />
-    <rect x="518" y="98" width="30" height="16" fill="#1565c0" rx="2" />
+    <rect
+      x="80"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="118"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="156"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="194"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="232"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="270"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="308"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="346"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="384"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="442"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-primary)"
+      rx="2"
+    />
+    <rect
+      x="480"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-primary)"
+      rx="2"
+    />
+    <rect
+      x="518"
+      y="98"
+      width="30"
+      height="16"
+      fill="var(--bs-primary)"
+      rx="2"
+    />
     <line
       x1="548"
       y1="106"
       x2="800"
       y2="106"
-      stroke="#b71c1c"
+      stroke="var(--bs-danger)"
       strokeWidth="1.5"
       strokeDasharray="4 3"
     />
-    <text x="674" y="95" fontSize="11" fill="#b71c1c" textAnchor="middle">
+    <text
+      x="674"
+      y="95"
+      fontSize="11"
+      fill="var(--bs-danger)"
+      textAnchor="middle"
+    >
       (silent)
     </text>
-    <rect x="80" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="118" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="156" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="194" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="232" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="270" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="308" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="346" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="384" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="442" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="480" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="518" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="560" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="598" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="636" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="674" y="148" width="30" height="16" fill="#bdbdbd" rx="2" />
-    <rect x="728" y="148" width="30" height="16" fill="#1565c0" rx="2" />
-    <rect x="766" y="148" width="30" height="16" fill="#1565c0" rx="2" />
+    <rect
+      x="80"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="118"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="156"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="194"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="232"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="270"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="308"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="346"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="384"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="442"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="480"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="518"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="560"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="598"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="636"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="674"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-secondary)"
+      rx="2"
+    />
+    <rect
+      x="728"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-primary)"
+      rx="2"
+    />
+    <rect
+      x="766"
+      y="148"
+      width="30"
+      height="16"
+      fill="var(--bs-primary)"
+      rx="2"
+    />
     <line
       x1="262"
       y1="30"
       x2="262"
       y2="185"
-      stroke="#999"
+      stroke="var(--bs-secondary-color)"
       strokeWidth="1"
       strokeDasharray="3 3"
     />
-    <text x="262" y="24" fontSize="10" fill="#555" textAnchor="middle">
+    <text
+      x="262"
+      y="24"
+      fontSize="10"
+      fill="var(--bs-secondary-color)"
+      textAnchor="middle"
+    >
       Preferred silent
     </text>
     <line
@@ -235,11 +530,17 @@ const TimelineDiagram: React.FC = () => (
       y1="30"
       x2="442"
       y2="185"
-      stroke="#1565c0"
+      stroke="var(--bs-primary)"
       strokeWidth="1"
       strokeDasharray="3 3"
     />
-    <text x="442" y="24" fontSize="10" fill="#1565c0" textAnchor="middle">
+    <text
+      x="442"
+      y="24"
+      fontSize="10"
+      fill="var(--bs-primary)"
+      textAnchor="middle"
+    >
       Backup 1 wins
     </text>
     <line
@@ -247,12 +548,18 @@ const TimelineDiagram: React.FC = () => (
       y1="80"
       x2="442"
       y2="80"
-      stroke="#555"
+      stroke="var(--bs-secondary-color)"
       strokeWidth="1"
       markerStart="url(#arrow)"
       markerEnd="url(#arrow)"
     />
-    <text x="352" y="76" fontSize="10" fill="#333" textAnchor="middle">
+    <text
+      x="352"
+      y="76"
+      fontSize="10"
+      fill="var(--bs-body-color)"
+      textAnchor="middle"
+    >
       Fallback after (15s)
     </text>
     <line
@@ -260,11 +567,17 @@ const TimelineDiagram: React.FC = () => (
       y1="80"
       x2="548"
       y2="185"
-      stroke="#999"
+      stroke="var(--bs-secondary-color)"
       strokeWidth="1"
       strokeDasharray="3 3"
     />
-    <text x="548" y="74" fontSize="10" fill="#555" textAnchor="middle">
+    <text
+      x="548"
+      y="74"
+      fontSize="10"
+      fill="var(--bs-secondary-color)"
+      textAnchor="middle"
+    >
       Backup 1 silent
     </text>
     <line
@@ -272,11 +585,17 @@ const TimelineDiagram: React.FC = () => (
       y1="130"
       x2="728"
       y2="185"
-      stroke="#1565c0"
+      stroke="var(--bs-primary)"
       strokeWidth="1"
       strokeDasharray="3 3"
     />
-    <text x="728" y="126" fontSize="10" fill="#1565c0" textAnchor="middle">
+    <text
+      x="728"
+      y="126"
+      fontSize="10"
+      fill="var(--bs-primary)"
+      textAnchor="middle"
+    >
       Backup 2 wins
     </text>
     <line
@@ -284,34 +603,66 @@ const TimelineDiagram: React.FC = () => (
       y1="175"
       x2="728"
       y2="175"
-      stroke="#555"
+      stroke="var(--bs-secondary-color)"
       strokeWidth="1"
       markerStart="url(#arrow)"
       markerEnd="url(#arrow)"
     />
-    <text x="638" y="171" fontSize="10" fill="#333" textAnchor="middle">
+    <text
+      x="638"
+      y="171"
+      fontSize="10"
+      fill="var(--bs-body-color)"
+      textAnchor="middle"
+    >
       Fallback after (15s)
     </text>
-    <line x1="80" y1="200" x2="810" y2="200" stroke="#ccc" strokeWidth="1" />
-    <text x="810" y="200" fontSize="10" fill="#999" textAnchor="end" dy="12">
+    <line
+      x1="80"
+      y1="200"
+      x2="810"
+      y2="200"
+      stroke="var(--bs-border-color)"
+      strokeWidth="1"
+    />
+    <text
+      x="810"
+      y="200"
+      fontSize="10"
+      fill="var(--bs-secondary-color)"
+      textAnchor="end"
+      dy="12"
+    >
       time →
     </text>
     <text
       x="420"
       y="240"
       fontSize="11"
-      fill="#333"
+      fill="var(--bs-body-color)"
       textAnchor="middle"
       fontWeight="600"
     >
       Each row&apos;s Fallback timer starts from the last source that was
       winning — not from row 1.
     </text>
-    <text x="420" y="256" fontSize="10" fill="#666" textAnchor="middle">
+    <text
+      x="420"
+      y="256"
+      fontSize="10"
+      fill="var(--bs-secondary-color)"
+      textAnchor="middle"
+    >
       Backup 2 waits for Backup 1 to go silent, then 15 s more. It does NOT kick
       in 15 s after Preferred.
     </text>
-    <text x="420" y="272" fontSize="10" fill="#666" textAnchor="middle">
+    <text
+      x="420"
+      y="272"
+      fontSize="10"
+      fill="var(--bs-secondary-color)"
+      textAnchor="middle"
+    >
       If Backup 1 keeps sending, Backup 2 never wins — only the next row up in
       the chain matters.
     </text>
