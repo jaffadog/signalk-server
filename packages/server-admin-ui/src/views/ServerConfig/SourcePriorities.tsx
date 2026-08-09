@@ -24,6 +24,8 @@ import type { SourcePriority } from '../../store/types'
 import PrefsEditor from './PrefsEditor'
 import PriorityGroupCard from './PriorityGroupCard'
 
+import './SourcePriorities.scss'
+
 interface DeviceIdentity {
   canName: string
   manufacturerCode?: string
