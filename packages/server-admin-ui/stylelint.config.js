@@ -72,7 +72,10 @@ export default {
   // Allow the real color definitions only in the token / variables files
   overrides: [
     {
-      files: ['./src/styles/_bootstrap-variables.scss'],
+      files: [
+        './src/styles/_bootstrap-variables.scss',
+        './src/styles/_sk-tokens.scss'
+      ],
       rules: {
         'color-no-hex': null,
         'color-named': null,

@@ -1,11 +1,13 @@
-// custom SignalK Admin UI Colors
-@import 'sk-tokens';
-
 // ----- Lean Bootstrap -----
 // https://getbootstrap.com/docs/5.3/customize/optimize/
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import 'bootstrap/scss/functions';
+
+// custom SignalK Admin UI Colors - after functions (so tint-color/
+// shade-color etc. are available if a brand color is ever derived via
+// one), before bootstrap-variables (which references these colors).
+@import 'sk-tokens';
 
 // 2. Include any default variable overrides here
 @import 'bootstrap-variables';

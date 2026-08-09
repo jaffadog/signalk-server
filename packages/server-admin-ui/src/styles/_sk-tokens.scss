@@ -2,6 +2,12 @@
 $sk-brand-color-light: #039;
 
 // ----- SignalK Dark Mode Colors -----
+// A flat navy reads too dark on the dark background. Not derived from
+// $sk-brand-color-light by a formula - mixing navy toward white
+// desaturates as it lightens, which reads as washed-out/grayish, not
+// as a brighter version of the same blue. This hand-picked value keeps
+// the blue saturated and clears WCAG AA contrast comfortably (~5.66:1
+// against --bs-body-bg's dark value, #212529).
 $sk-brand-color-dark: #5b9dff;
 
 // ----- SignalK CSS Vars -----
