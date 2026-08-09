@@ -185,7 +185,6 @@ const AttitudeRenderer = ({ value, size = '2em' }: AttitudeRendererProps) => {
           height: size,
           // Instrument bezel: intentionally theme-independent, like the
           // black case on a real artificial-horizon gauge.
-          // eslint-disable-next-line no-restricted-syntax
           border: '2px solid black',
           borderRadius: '50%',
           overflow: 'hidden',
