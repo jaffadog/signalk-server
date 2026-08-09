@@ -45,6 +45,9 @@ class WebappErrorBoundary extends Component<
     if (this.state.hasError) {
       const errorMessage = this.state.error?.message || ''
       // Check if this looks like a React version incompatibility error
+      // These are React minified-error codes (from react.dev/errors/<code>),
+      // not colors — they just happen to match the hex-color lint pattern.
+      /* eslint-disable no-restricted-syntax */
       const isReactIncompatibility =
         errorMessage.includes('Minified React error') ||
         errorMessage.includes('Element type is invalid') ||
@@ -53,6 +56,7 @@ class WebappErrorBoundary extends Component<
         errorMessage.includes('#306') ||
         errorMessage.includes('#130') ||
         errorMessage.includes('#152')
+      /* eslint-enable no-restricted-syntax */
 
       return (
         <div className="container mt-4">
@@ -237,7 +241,10 @@ export default function Embedded() {
 
   return (
     <div
-      style={{ backgroundColor: 'aliceblue', height: 'calc(100vh - 105px)' }}
+      style={{
+        backgroundColor: 'var(--bs-info-bg-subtle)',
+        height: 'calc(100vh - 105px)'
+      }}
     >
       <WebappErrorBoundary key={moduleId} webappName={moduleId || 'Unknown'}>
         <Suspense fallback="Loading...">

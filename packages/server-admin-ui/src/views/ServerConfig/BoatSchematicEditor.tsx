@@ -135,7 +135,7 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
         onPointerUp={handlePointerUp}
         onPointerLeave={handlePointerUp}
         style={{
-          border: '1px solid #dee2e6',
+          border: '1px solid var(--bs-border-color)',
           borderRadius: 4,
           cursor: dragging !== null ? 'grabbing' : 'default',
           // Without this, touch drags fight the browser's scroll/zoom
@@ -143,13 +143,18 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
           touchAction: 'none'
         }}
       >
-        <path d={HULL_PATH} fill="#f8f9fa" stroke="#6c757d" strokeWidth={1.5} />
+        <path
+          d={HULL_PATH}
+          fill="var(--bs-tertiary-bg)"
+          stroke="var(--bs-secondary-color)"
+          strokeWidth={1.5}
+        />
         <line
           x1={HULL_CX}
           y1={HULL_TOP}
           x2={HULL_CX}
           y2={HULL_BOTTOM}
-          stroke="#adb5bd"
+          stroke="var(--bs-border-color)"
           strokeWidth={1}
           strokeDasharray="4 3"
         />
@@ -158,7 +163,7 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
           y1={HULL_TOP + HULL_H / 2}
           x2={HULL_RIGHT}
           y2={HULL_TOP + HULL_H / 2}
-          stroke="#adb5bd"
+          stroke="var(--bs-border-color)"
           strokeWidth={1}
           strokeDasharray="4 3"
         />
@@ -167,7 +172,7 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
           y={HULL_TOP - 8}
           textAnchor="middle"
           fontSize={11}
-          fill="#6c757d"
+          fill="var(--bs-secondary-color)"
         >
           Bow
         </text>
@@ -176,7 +181,7 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
           y={HULL_BOTTOM + 16}
           textAnchor="middle"
           fontSize={11}
-          fill="#6c757d"
+          fill="var(--bs-secondary-color)"
         >
           Stern
         </text>
@@ -186,7 +191,7 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
           textAnchor="end"
           dominantBaseline="middle"
           fontSize={10}
-          fill="#6c757d"
+          fill="var(--bs-secondary-color)"
         >
           Port
         </text>
@@ -196,7 +201,7 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
           textAnchor="start"
           dominantBaseline="middle"
           fontSize={10}
-          fill="#6c757d"
+          fill="var(--bs-secondary-color)"
         >
           Stbd
         </text>
@@ -235,7 +240,7 @@ const BoatSchematicEditor: React.FC<BoatSchematicEditorProps> = ({
                 cy={y}
                 r={DOT_RADIUS}
                 fill={color}
-                stroke="#fff"
+                stroke="var(--bs-white)"
                 strokeWidth={2}
                 cursor="grab"
                 onPointerDown={handlePointerDown(index)}

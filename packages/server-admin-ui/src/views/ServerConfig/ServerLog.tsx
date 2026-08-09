@@ -265,7 +265,7 @@ function LogList({ value, accessError }: LogListProps) {
       {accessError ? (
         <span className="text-danger">{accessError}</span>
       ) : value.entries.length === 0 ? (
-        <span style={{ color: 'grey', fontStyle: 'italic' }}>
+        <span className="text-muted" style={{ fontStyle: 'italic' }}>
           Waiting for log entries...
         </span>
       ) : (

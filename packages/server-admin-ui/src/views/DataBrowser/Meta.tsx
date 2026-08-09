@@ -155,11 +155,11 @@ const DISPLAYTYPES = ['linear', 'logarithmic', 'squareroot', 'power']
 const STATES = ['nominal', 'alert', 'warn', 'alarm', 'emergency']
 
 const STATE_COLORS: Record<string, string> = {
-  nominal: '#28a745',
-  alert: '#ffc107',
-  warn: '#fd7e14',
-  alarm: '#dc3545',
-  emergency: '#6f42c1'
+  nominal: 'var(--bs-success)',
+  alert: 'var(--bs-warning)',
+  warn: 'var(--bs-orange)',
+  alarm: 'var(--bs-danger)',
+  emergency: 'var(--bs-purple)'
 }
 
 const DEFAULT_CATEGORIES = [
@@ -743,10 +743,10 @@ const Meta: React.FC<MetaProps> = ({ meta, path, context, showContext }) => {
           {!isExpanded &&
             currentValue !== undefined &&
             typeof currentValue === 'number' && (
-              <span style={{ color: '#6c757d', fontSize: '0.85rem' }}>
+              <span className="text-muted" style={{ fontSize: '0.85rem' }}>
                 {formatMetaValue(currentValue)} {siUnit}
                 {converted && (
-                  <span style={{ color: '#28a745' }}>
+                  <span className="text-success">
                     {' '}
                     → {formatMetaValue(converted.value)} {converted.unit}
                   </span>
@@ -791,7 +791,7 @@ const Meta: React.FC<MetaProps> = ({ meta, path, context, showContext }) => {
                 {siUnit && <strong>{siUnit}</strong>}
               </span>
               {converted && (
-                <span style={{ color: '#28a745', fontWeight: 'bold' }}>
+                <span className="text-success" style={{ fontWeight: 'bold' }}>
                   → {formatMetaValue(converted.value)}{' '}
                   <strong>{converted.unit}</strong>
                 </span>
@@ -962,10 +962,10 @@ const UnknownMetaFormRow: React.FC<UnknownMetaFormRowProps> = ({
         <pre
           className="text-primary"
           style={{
-            border: '1px solid #c8ced3',
+            border: '1px solid var(--bs-border-color)',
             borderRadius: '0.25rem',
             padding: '0.375rem 0.75rem',
-            backgroundColor: '#f0f3f5',
+            backgroundColor: 'var(--bs-tertiary-bg)',
             margin: 0,
             whiteSpace: 'pre-wrap',
             wordWrap: 'break-word',
@@ -1051,11 +1051,11 @@ const ZoneRow: React.FC<ZoneProps> = ({
   return (
     <div
       style={{
-        backgroundColor: 'aliceblue',
+        backgroundColor: 'var(--bs-info-bg-subtle)',
         padding: '10px',
         marginBottom: '5px',
         borderRadius: '4px',
-        borderLeft: `4px solid ${STATE_COLORS[state] || '#6c757d'}`
+        borderLeft: `4px solid ${STATE_COLORS[state] || 'var(--bs-secondary-color)'}`
       }}
     >
       <Row>
@@ -1280,7 +1280,7 @@ function Zones({
             </div>
           )}
           {(zones === undefined || zones.length === 0) && !isEditing && (
-            <span style={{ color: '#6c757d', fontStyle: 'italic' }}>
+            <span className="text-muted" style={{ fontStyle: 'italic' }}>
               No zones defined
             </span>
           )}

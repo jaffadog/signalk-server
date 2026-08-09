@@ -65,7 +65,18 @@ export default function EmbeddedDocs() {
   }, [docsBase, routeSubPath, location.hash])
 
   return (
-    <div style={{ backgroundColor: '#0d1117', margin: 0, padding: 0 }}>
+    <div
+      style={{
+        // GitHub's own dark-theme background — the embedded docs are
+        // always dark regardless of our app theme, so this intentionally
+        // doesn't follow var(--bs-*); it's a loading backdrop behind an
+        // iframe of always-dark external content.
+        // eslint-disable-next-line no-restricted-syntax
+        backgroundColor: '#0d1117',
+        margin: 0,
+        padding: 0
+      }}
+    >
       <iframe
         ref={iframeRef}
         src={initialSrc}

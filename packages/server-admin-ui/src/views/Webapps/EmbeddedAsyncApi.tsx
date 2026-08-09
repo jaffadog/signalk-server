@@ -105,7 +105,12 @@ export default function EmbeddedAsyncApi() {
       .catch((e) => setError(e.message))
   }, [specs, selectedIdx])
 
-  if (error) return <p style={{ color: 'red', padding: 20 }}>Error: {error}</p>
+  if (error)
+    return (
+      <p className="text-danger" style={{ padding: 20 }}>
+        Error: {error}
+      </p>
+    )
 
   return (
     <div style={{ padding: 20 }}>

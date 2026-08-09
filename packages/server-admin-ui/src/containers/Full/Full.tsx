@@ -165,7 +165,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
           Something went wrong.
           {this.state.error && (
             <pre
-              style={{ fontSize: '0.8rem', color: 'red', marginTop: '1rem' }}
+              className="text-danger"
+              style={{ fontSize: '0.8rem', marginTop: '1rem' }}
             >
               {this.state.error.toString()}
             </pre>

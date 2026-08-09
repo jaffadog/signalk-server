@@ -183,6 +183,9 @@ const AttitudeRenderer = ({ value, size = '2em' }: AttitudeRendererProps) => {
         style={{
           width: size,
           height: size,
+          // Instrument bezel: intentionally theme-independent, like the
+          // black case on a real artificial-horizon gauge.
+          // eslint-disable-next-line no-restricted-syntax
           border: '2px solid black',
           borderRadius: '50%',
           overflow: 'hidden',
@@ -193,6 +196,9 @@ const AttitudeRenderer = ({ value, size = '2em' }: AttitudeRendererProps) => {
           style={{
             width: '100%',
             height: '100%',
+            // Sky/ground colors represent the horizon itself, not themed
+            // UI chrome — they stay the same regardless of light/dark mode.
+            // eslint-disable-next-line no-restricted-syntax
             backgroundColor: 'skyblue',
             position: 'absolute',
             transformOrigin: 'center',
@@ -203,6 +209,7 @@ const AttitudeRenderer = ({ value, size = '2em' }: AttitudeRendererProps) => {
             style={{
               width: '100%',
               height: horizonHeight,
+              // eslint-disable-next-line no-restricted-syntax
               backgroundColor: 'brown',
               position: 'absolute',
               bottom: 0
@@ -220,16 +227,19 @@ const AttitudeRenderer = ({ value, size = '2em' }: AttitudeRendererProps) => {
 const NotificationRenderer = ({ value }: NotificationRendererProps) => {
   const { message, state, method = [] } = value ? value : {}
 
+  // Matches the escalation palette Meta.tsx's STATE_COLORS uses for the
+  // same SignalK notification states (nominal/alert/warn/alarm/emergency),
+  // so a given state reads the same color throughout the app.
   const severityColor =
     {
-      info: 'green',
-      normal: 'green',
-      nominal: 'green',
-      warn: 'yellow',
-      alert: 'orange',
-      alarm: 'red',
-      emergency: 'darkred'
-    }[state as string] || 'gray'
+      info: 'var(--bs-success)',
+      normal: 'var(--bs-success)',
+      nominal: 'var(--bs-success)',
+      alert: 'var(--bs-warning)',
+      warn: 'var(--bs-orange)',
+      alarm: 'var(--bs-danger)',
+      emergency: 'var(--bs-purple)'
+    }[state as string] || 'var(--bs-secondary-color)'
 
   const circleStyle: React.CSSProperties = {
     width: '1em',
@@ -343,10 +353,10 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
   const maxRadius = center - 20
 
   const getSNRColor = (snr: number | undefined): string => {
-    if (!snr || snr <= 0) return '#000'
-    if (snr >= 40) return '#28a745'
-    if (snr >= 30) return '#004085'
-    return '#8b0000'
+    if (!snr || snr <= 0) return 'var(--bs-secondary-color)'
+    if (snr >= 40) return 'var(--bs-success)'
+    if (snr >= 30) return 'var(--bs-info)'
+    return 'var(--bs-danger)'
   }
 
   const polarToCartesian = (
@@ -366,9 +376,9 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
           width={size}
           height={size}
           style={{
-            border: '2px solid #666',
+            border: '2px solid var(--bs-border-color)',
             borderRadius: '4px',
-            backgroundColor: '#f8f9fa'
+            backgroundColor: 'var(--bs-tertiary-bg)'
           }}
         >
           {/* Elevation circles (30° intervals) */}
@@ -377,7 +387,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             cy={center}
             r={maxRadius}
             fill="none"
-            stroke="#999"
+            stroke="var(--bs-border-color)"
             strokeWidth="1"
           />
           <circle
@@ -385,7 +395,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             cy={center}
             r={(maxRadius * 2) / 3}
             fill="none"
-            stroke="#aaa"
+            stroke="var(--bs-border-color)"
             strokeWidth="1"
           />
           <circle
@@ -393,7 +403,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             cy={center}
             r={(maxRadius * 1) / 3}
             fill="none"
-            stroke="#aaa"
+            stroke="var(--bs-border-color)"
             strokeWidth="1"
           />
 
@@ -403,7 +413,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             y1={20}
             x2={center}
             y2={size - 20}
-            stroke="#999"
+            stroke="var(--bs-border-color)"
             strokeWidth="1"
           />
           <line
@@ -411,7 +421,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             y1={center}
             x2={size - 20}
             y2={center}
-            stroke="#999"
+            stroke="var(--bs-border-color)"
             strokeWidth="1"
           />
 
@@ -421,7 +431,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             y={15}
             textAnchor="middle"
             fontSize="12"
-            fill="#333"
+            fill="var(--bs-body-color)"
             fontWeight="bold"
           >
             N
@@ -431,7 +441,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             y={size - 5}
             textAnchor="middle"
             fontSize="12"
-            fill="#333"
+            fill="var(--bs-body-color)"
             fontWeight="bold"
           >
             S
@@ -441,7 +451,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             y={center + 4}
             textAnchor="middle"
             fontSize="12"
-            fill="#333"
+            fill="var(--bs-body-color)"
             fontWeight="bold"
           >
             W
@@ -451,7 +461,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             y={center + 4}
             textAnchor="middle"
             fontSize="12"
-            fill="#333"
+            fill="var(--bs-body-color)"
             fontWeight="bold"
           >
             E
@@ -462,7 +472,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             x={center + maxRadius + 5}
             y={center + 4}
             fontSize="10"
-            fill="#666"
+            fill="var(--bs-secondary-color)"
           >
             0°
           </text>
@@ -470,7 +480,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             x={center + (maxRadius * 2) / 3 + 5}
             y={center + 4}
             fontSize="10"
-            fill="#666"
+            fill="var(--bs-secondary-color)"
           >
             30°
           </text>
@@ -478,11 +488,16 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
             x={center + (maxRadius * 1) / 3 + 5}
             y={center + 4}
             fontSize="10"
-            fill="#666"
+            fill="var(--bs-secondary-color)"
           >
             60°
           </text>
-          <text x={center + 5} y={center + 4} fontSize="10" fill="#666">
+          <text
+            x={center + 5}
+            y={center + 4}
+            fontSize="10"
+            fill="var(--bs-secondary-color)"
+          >
             90°
           </text>
 
@@ -503,7 +518,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                   cy={y}
                   r="8"
                   fill={color}
-                  stroke={hasSignal ? 'none' : '#000'}
+                  stroke={hasSignal ? 'none' : 'var(--bs-body-color)'}
                   strokeWidth={hasSignal ? 0 : 2}
                 />
                 <text
@@ -511,7 +526,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                   y={y + 4}
                   textAnchor="middle"
                   fontSize="10"
-                  fill="white"
+                  fill="var(--bs-white)"
                   fontWeight="bold"
                 >
                   {sat.id}
@@ -532,7 +547,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                 style={{
                   width: '12px',
                   height: '12px',
-                  backgroundColor: '#28a745',
+                  backgroundColor: 'var(--bs-success)',
                   borderRadius: '50%'
                 }}
               ></div>
@@ -543,7 +558,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                 style={{
                   width: '12px',
                   height: '12px',
-                  backgroundColor: '#004085',
+                  backgroundColor: 'var(--bs-info)',
                   borderRadius: '50%'
                 }}
               ></div>
@@ -554,7 +569,7 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                 style={{
                   width: '12px',
                   height: '12px',
-                  backgroundColor: '#8b0000',
+                  backgroundColor: 'var(--bs-danger)',
                   borderRadius: '50%'
                 }}
               ></div>
@@ -565,8 +580,8 @@ const SatellitesInViewRenderer = ({ value }: SatellitesInViewRendererProps) => {
                 style={{
                   width: '12px',
                   height: '12px',
-                  backgroundColor: '#000',
-                  border: '2px solid #000',
+                  backgroundColor: 'var(--bs-secondary-color)',
+                  border: '2px solid var(--bs-border-color)',
                   borderRadius: '50%'
                 }}
               ></div>
@@ -686,7 +701,7 @@ export const DefaultValueRenderer = ({
           {formattedValue}
           {typeof value === 'number' && units && <strong> {units}</strong>}
           {formattedConverted && convertedUnit && (
-            <span style={{ color: '#28a745', marginLeft: '8px' }}>
+            <span className="text-success" style={{ marginLeft: '8px' }}>
               ({formattedConverted} <strong>{convertedUnit}</strong>)
             </span>
           )}
