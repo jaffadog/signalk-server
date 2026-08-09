@@ -9,6 +9,43 @@ const reactCompiler = require('eslint-plugin-react-compiler')
 const eslintReact = require('@eslint-react/eslint-plugin')
 const chai = require('eslint-plugin-chai-friendly')
 
+// CSS named colors (CSS Color Module Level 4) that shouldn't appear as
+// literal string values in packages/server-admin-ui — mirrors that
+// package's stylelint 'color-named'/'color-no-hex' rules, which only
+// ever see .scss/.css and can't catch the same thing in inline
+// style={{}} objects or SVG fill/stroke props. Use var(--bs-*) instead.
+const CSS_NAMED_COLORS = [
+  'aliceblue', 'antiquewhite', 'aqua', 'aquamarine', 'azure', 'beige',
+  'bisque', 'black', 'blanchedalmond', 'blue', 'blueviolet', 'brown',
+  'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 'coral',
+  'cornflowerblue', 'cornsilk', 'crimson', 'cyan', 'darkblue', 'darkcyan',
+  'darkgoldenrod', 'darkgray', 'darkgreen', 'darkgrey', 'darkkhaki',
+  'darkmagenta', 'darkolivegreen', 'darkorange', 'darkorchid', 'darkred',
+  'darksalmon', 'darkseagreen', 'darkslateblue', 'darkslategray',
+  'darkturquoise', 'darkviolet', 'deeppink', 'deepskyblue', 'dimgray',
+  'dodgerblue', 'firebrick', 'floralwhite', 'forestgreen', 'fuchsia',
+  'gainsboro', 'ghostwhite', 'gold', 'goldenrod', 'gray', 'green',
+  'greenyellow', 'grey', 'honeydew', 'hotpink', 'indianred', 'indigo',
+  'ivory', 'khaki', 'lavender', 'lavenderblush', 'lawngreen',
+  'lemonchiffon', 'lightblue', 'lightcoral', 'lightcyan',
+  'lightgoldenrodyellow', 'lightgray', 'lightgreen', 'lightgrey',
+  'lightpink', 'lightsalmon', 'lightseagreen', 'lightskyblue',
+  'lightslategray', 'lightsteelblue', 'lightyellow', 'lime', 'limegreen',
+  'linen', 'magenta', 'maroon', 'mediumaquamarine', 'mediumblue',
+  'mediumorchid', 'mediumpurple', 'mediumseagreen', 'mediumslateblue',
+  'mediumspringgreen', 'mediumturquoise', 'mediumvioletred',
+  'midnightblue', 'mintcream', 'mistyrose', 'moccasin', 'navajowhite',
+  'navy', 'oldlace', 'olive', 'olivedrab', 'orange', 'orangered',
+  'orchid', 'palegoldenrod', 'palegreen', 'paleturquoise',
+  'palevioletred', 'papayawhip', 'peachpuff', 'peru', 'pink', 'plum',
+  'powderblue', 'purple', 'red', 'rosybrown', 'royalblue', 'saddlebrown',
+  'salmon', 'sandybrown', 'seagreen', 'seashell', 'sienna', 'silver',
+  'skyblue', 'slateblue', 'slategray', 'snow', 'springgreen',
+  'steelblue', 'tan', 'teal', 'thistle', 'tomato', 'turquoise', 'violet',
+  'wheat', 'white', 'whitesmoke', 'yellow', 'yellowgreen'
+]
+const NAMED_COLOR_PATTERN = CSS_NAMED_COLORS.join('|')
+
 module.exports = defineConfig([
   globalIgnores([
     '**/public',
@@ -107,7 +144,24 @@ module.exports = defineConfig([
       // Disable prop-types (using TypeScript)
       'react/prop-types': 'off',
       'react/no-string-refs': 'off',
-      'react/no-direct-mutation-state': 'off'
+      'react/no-direct-mutation-state': 'off',
+      // Mirror this package's stylelint color-no-hex/color-named rules
+      // for the file types stylelint can't see (.tsx/.ts inline styles,
+      // SVG fill/stroke props) — use var(--bs-*) instead.
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            'Literal[value=/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/]',
+          message:
+            'Use a Bootstrap utility class (e.g. text-danger) or CSS variable (var(--bs-*)) instead of a hardcoded hex color.'
+        },
+        {
+          selector: `Literal[value=/^(${NAMED_COLOR_PATTERN})$/]`,
+          message:
+            'Use a Bootstrap utility class (e.g. text-danger) or CSS variable (var(--bs-*)) instead of a named color.'
+        }
+      ]
     }
   },
 

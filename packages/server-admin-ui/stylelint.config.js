@@ -12,7 +12,7 @@ export default {
       {
         severity: 'error',
         message:
-          'Use a CSS variable (var(--bs-*) or var(--sk-*)) instead of a hex color'
+          'Use a Bootstrap CSS variable (var(--bs-*), e.g. var(--bs-primary)) instead of a hex color'
       }
     ],
 
@@ -22,7 +22,7 @@ export default {
       {
         severity: 'error',
         message:
-          'Use a CSS variable (var(--bs-*) or var(--sk-*)) instead of a named color'
+          'Use a Bootstrap CSS variable (var(--bs-*), e.g. var(--bs-primary)) instead of a named color'
       }
     ],
 
@@ -34,7 +34,7 @@ export default {
       {
         severity: 'error',
         message:
-          'Use a CSS variable (var(--bs-*) or var(--sk-*)) instead of a color function'
+          'Use a Bootstrap CSS variable (var(--bs-*), e.g. var(--bs-primary)) instead of a color function'
       }
     ],
 
@@ -50,7 +50,7 @@ export default {
       {
         severity: 'error',
         message:
-          'Use a CSS variable (var(--bs-*) or var(--sk-*)) instead of a literal color function value'
+          'Use a Bootstrap CSS variable (var(--bs-*), e.g. var(--bs-primary)) instead of a literal color function value'
       }
     ],
 
