@@ -328,19 +328,21 @@ const Apps: React.FC = () => {
             <Card.Title>Apps & Plugins</Card.Title>
             <div className="button-wrapper">
               <Button
-                variant={view === 'All' ? 'secondary' : 'light'}
+                variant={view === 'All' ? 'secondary' : 'outline-secondary'}
                 onClick={() => setSelectedView('All')}
               >
                 All
               </Button>
               <Button
-                variant={view === 'Installed' ? 'secondary' : 'light'}
+                variant={
+                  view === 'Installed' ? 'secondary' : 'outline-secondary'
+                }
                 onClick={() => setSelectedView('Installed')}
               >
                 Installed
               </Button>
               <Button
-                variant={view === 'Updates' ? 'secondary' : 'light'}
+                variant={view === 'Updates' ? 'secondary' : 'outline-secondary'}
                 onClick={() => setSelectedView('Updates')}
               >
                 Updates
@@ -353,7 +355,9 @@ const Apps: React.FC = () => {
               {appStore.installing.length > 0 && (
                 <>
                   <Button
-                    variant={view === 'Installing' ? 'secondary' : 'light'}
+                    variant={
+                      view === 'Installing' ? 'secondary' : 'outline-secondary'
+                    }
                     onClick={() => setSelectedView('Installing')}
                   >
                     Installs & Removes
@@ -394,7 +398,9 @@ const Apps: React.FC = () => {
 
             <ButtonGroup aria-label="View mode" size="sm">
               <Button
-                variant={viewMode === 'grid' ? 'secondary' : 'light'}
+                variant={
+                  viewMode === 'grid' ? 'secondary' : 'outline-secondary'
+                }
                 onClick={() => setViewMode('grid')}
                 aria-label="Grid view"
                 aria-pressed={viewMode === 'grid'}
@@ -402,7 +408,9 @@ const Apps: React.FC = () => {
                 <FontAwesomeIcon icon={faTableCells} />
               </Button>
               <Button
-                variant={viewMode === 'list' ? 'secondary' : 'light'}
+                variant={
+                  viewMode === 'list' ? 'secondary' : 'outline-secondary'
+                }
                 onClick={() => setViewMode('list')}
                 aria-label="List view"
                 aria-pressed={viewMode === 'list'}

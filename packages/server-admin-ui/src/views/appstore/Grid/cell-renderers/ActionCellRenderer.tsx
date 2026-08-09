@@ -270,7 +270,7 @@ export default function ActionCellRenderer({
               <NavLink
                 to={`/apps/configuration/${app.id}`}
                 role="button"
-                className="btn btn-light text-start"
+                className="btn btn-secondary text-start"
               >
                 <FontAwesomeIcon className="me-2" icon={faGear} />
                 Configure
@@ -279,7 +279,7 @@ export default function ActionCellRenderer({
               <a
                 href={urlToWebapp(app)}
                 role="button"
-                className="btn btn-light text-start"
+                className="btn btn-secondary text-start"
               >
                 <FontAwesomeIcon className="me-2" icon={faLink} />
                 Open
@@ -288,7 +288,7 @@ export default function ActionCellRenderer({
           ) : (
             <Button
               className="text-start"
-              variant="light"
+              variant="secondary"
               onClick={handleInstallClick}
             >
               <FontAwesomeIcon className="me-2" icon={faCloudArrowDown} />
@@ -298,7 +298,7 @@ export default function ActionCellRenderer({
 
           <Dropdown.Toggle
             split
-            variant={app.newVersion ? 'success' : 'light'}
+            variant={app.newVersion ? 'success' : 'secondary'}
             className="flex-grow-0"
           />
           <Dropdown.Menu align="end">
@@ -407,7 +407,7 @@ export default function ActionCellRenderer({
                         {app.installedVersion !== version && (
                           <Button
                             size="sm"
-                            variant="light"
+                            variant="outline-secondary"
                             onClick={() => handleInstallVersionClick(version)}
                           >
                             <FontAwesomeIcon

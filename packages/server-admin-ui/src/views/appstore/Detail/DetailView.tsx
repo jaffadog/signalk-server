@@ -189,7 +189,7 @@ const DetailView: React.FC = () => {
           >
             {state.message}
           </Alert>
-          <NavLink to="/apps/store" className="btn btn-light">
+          <NavLink to="/apps/store" className="btn btn-outline-secondary">
             Back to Store
           </NavLink>
         </Card.Body>
