@@ -125,6 +125,14 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: true
       },
+      '/documentation': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
+      '/doc': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      },
       // Proxy scoped webapp packages (@signalk/*, etc.) but not Vite internals
       '/@': {
         target: 'http://localhost:3000',
