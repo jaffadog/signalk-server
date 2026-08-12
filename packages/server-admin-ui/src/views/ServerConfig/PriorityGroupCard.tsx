@@ -177,14 +177,13 @@ const SortableSourceRow: React.FC<SortableSourceRowProps> = ({
             </Badge>
           )}
           {isNewcomer && (
-            <Badge
-              bg="warning"
-              text="dark"
+            <span
+              className="badge text-bg-warning"
               style={{ fontSize: '0.7em' }}
               title="This source started publishing a path in this group after the ranking was saved. Drag it where you want it and Save to include it."
             >
               New
-            </Badge>
+            </span>
           )}
           {isPlugin && (
             <Badge
@@ -675,25 +674,19 @@ const PriorityGroupCard: React.FC<PriorityGroupCardProps> = ({
             {group.sources.length} sources · {group.paths.length} shared paths
           </strong>
           {!isRanked && (
-            <Badge bg="warning" text="dark" className="ms-2">
-              Unranked
-            </Badge>
+            <span className="badge text-bg-warning ms-2">Unranked</span>
           )}
           {isRanked && group.newcomerSources.length > 0 && (
-            <Badge
-              bg="warning"
-              text="dark"
-              className="ms-2"
+            <span
+              className="badge text-bg-warning ms-2"
               title="A new source has started publishing a path in this group since the ranking was saved. Click Save to append it at the bottom, or drag it into place first."
             >
               {group.newcomerSources.length} new source
               {group.newcomerSources.length === 1 ? '' : 's'}
-            </Badge>
+            </span>
           )}
           {dirty && group.newcomerSources.length === 0 && (
-            <Badge bg="warning" text="dark" className="ms-2">
-              Unsaved
-            </Badge>
+            <span className="badge text-bg-warning ms-2">Unsaved</span>
           )}
           {overrideRows.length > 0 && (
             <Badge bg="info" className="ms-2">

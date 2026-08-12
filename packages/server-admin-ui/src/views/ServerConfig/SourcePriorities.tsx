@@ -1340,9 +1340,7 @@ const SourcePriorities: React.FC = () => {
           )}
           {hasIncompleteEntries && (
             <span style={{ paddingLeft: '10px' }}>
-              <Badge bg="warning" text="dark">
-                Warning
-              </Badge>
+              <span className="badge text-bg-warning">Warning</span>
               {' All entries must have a path and source reference set.'}
             </span>
           )}
