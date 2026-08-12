@@ -152,8 +152,8 @@ export default function Dashboard() {
             ? pluginNameLink(status.id)
             : providerIdLink(status.id)}
         </td>
-        <td className="text-danger">{lastError}</td>
-        <td className={statusClass}>
+        <td className="text-danger text-break">{lastError}</td>
+        <td className={`${statusClass} text-break`}>
           {(status.message || '').substring(0, 80)}
           {(status.message || '').length > 80 ? '...' : ''}
         </td>
