@@ -24,7 +24,6 @@ import Footer from '../../components/Footer/Footer'
 
 import Dashboard from '../../views/Dashboard/Dashboard'
 import Embedded from '../../views/Webapps/Embedded'
-import EmbeddedDocs from '../../views/Webapps/EmbeddedDocs'
 import EmbeddedAsyncApi from '../../views/Webapps/EmbeddedAsyncApi'
 import Webapps from '../../views/Webapps/Webapps'
 import Login from '../../views/security/Login'
@@ -294,22 +293,20 @@ export default function Full() {
     setSidebarShow((prev) => !prev)
   }, [])
 
-  const isDocsRoute = location.pathname.indexOf('/documentation') === 0
   const isEmbeddedRoute = location.pathname.indexOf('/e/') === 0
-  const suppressPadding =
-    isEmbeddedRoute || isDocsRoute ? { padding: '0px' } : { padding: '30px' }
+  const suppressPadding = isEmbeddedRoute
+    ? { padding: '0px' }
+    : { padding: '30px' }
 
   return (
     <div className="d-flex flex-column min-vh-100">
       <Header onToggleSidebar={toggleSidebar} />
       <div className="app-content-row flex-grow-1">
-        {!isDocsRoute && (
-          <Sidebar
-            location={location}
-            show={sidebarShow}
-            onHide={() => setSidebarShow(false)}
-          />
-        )}
+        <Sidebar
+          location={location}
+          show={sidebarShow}
+          onHide={() => setSidebarShow(false)}
+        />
         <main className="app-main overflow-x-auto">
           <Container fluid style={suppressPadding}>
             <Suspense fallback={<LoadingSpinner />}>
@@ -461,7 +458,6 @@ export default function Full() {
                     />
                   }
                 />
-                <Route path="/documentation/*" element={<EmbeddedDocs />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route

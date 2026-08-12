@@ -421,8 +421,12 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
 
     result.push({
       name: 'Documentation',
-      url: '/documentation',
-      icon: faBookOpen
+      url: `${window.location.protocol}//${window.location.host}/documentation`,
+      icon: faBookOpen,
+      props: {
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }
     })
 
     result.push({
