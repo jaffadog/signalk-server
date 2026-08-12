@@ -148,14 +148,23 @@ export default function PathReference() {
   }
 
   return (
-    <Card>
+    // Height anchors to the viewport minus the app shell's fixed chrome
+    // (navbar + container padding + this card's own margin + footer), so
+    // the card always ends exactly at the footer with no page-level
+    // scroll. Everything above the table (header, intro text, filters) is
+    // natural-height flex content instead of a second guessed number —
+    // only the table itself needs to flex/scroll to absorb what's left.
+    <Card
+      style={{ height: 'calc(100vh - 177px)' }}
+      className="d-flex flex-column"
+    >
       <Card.Header>
         <FontAwesomeIcon icon={faList} className="me-2" /> Path Reference
         <Badge bg="secondary" className="ms-2">
           {filtered.length} / {vesselPaths.length} paths
         </Badge>
       </Card.Header>
-      <Card.Body>
+      <Card.Body className="d-flex flex-column overflow-hidden">
         <p className="text-muted small mb-2">
           Vessel paths also apply to <code>/aircraft/*</code>,{' '}
           <code>/aton/*</code>, and <code>/sar/*</code> contexts.
@@ -194,7 +203,8 @@ export default function PathReference() {
 
         <div
           style={{
-            maxHeight: 'calc(100vh - 280px)',
+            flex: '1 1 auto',
+            minHeight: 0,
             overflowY: 'auto'
           }}
         >
