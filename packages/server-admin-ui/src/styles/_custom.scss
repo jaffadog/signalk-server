@@ -26,6 +26,10 @@ body {
   position: absolute !important;
 }
 
+.theme-dropdown .dropdown-menu {
+  min-width: 9em;
+}
+
 // App shell: fixed dimensions so Header's banner offsets, the sidebar's
 // fixed positioning, and the main/footer margin compensation below all
 // share the same stable values to anchor to.
