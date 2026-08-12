@@ -408,14 +408,12 @@ const DetailView: React.FC = () => {
                     return (
                       <div className="d-flex flex-wrap gap-1 mt-2">
                         {cats.map((cat) => (
-                          <Badge
+                          <span
                             key={cat}
-                            bg="light"
-                            text="dark"
-                            className="fw-normal"
+                            className="badge text-bg-secondary fw-normal"
                           >
                             {cat}
-                          </Badge>
+                          </span>
                         ))}
                       </div>
                     )

@@ -223,9 +223,9 @@ const PluginCard: React.FC<PluginCardProps> = ({
       <Card.Footer className="d-flex align-items-center gap-2">
         <div className="flex-grow-1 d-flex flex-wrap gap-1">
           {(app.categories || []).slice(0, MAX_CATEGORY_BADGES).map((cat) => (
-            <Badge key={cat} bg="light" text="dark" className="fw-normal">
+            <span key={cat} className="badge text-bg-secondary fw-normal">
               {cat}
-            </Badge>
+            </span>
           ))}
         </div>
         <StatePill app={app} onFailedClick={() => setShowLogModal(true)} />
