@@ -116,7 +116,7 @@ export default function InstallLogModal({
               </p>
             )}
             <pre
-              className="bg-light border rounded p-2 small"
+              className="bg-body-tertiary border rounded p-2 small"
               style={{
                 maxHeight: '50vh',
                 overflow: 'auto',
