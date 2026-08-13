@@ -30,6 +30,15 @@ body {
   min-width: 9em;
 }
 
+// Bootstrap ships no min-width utility. Flex/grid items default to
+// min-width: auto, which stops them shrinking below their content's
+// intrinsic width — the thing several .text-truncate-inside-a-flex-item
+// usages across the app store rely on to actually truncate instead of
+// forcing their container wider than its slot.
+.min-w-0 {
+  min-width: 0;
+}
+
 // App shell: fixed dimensions so Header's banner offsets, the sidebar's
 // fixed positioning, and the main/footer margin compensation below all
 // share the same stable values to anchor to.
