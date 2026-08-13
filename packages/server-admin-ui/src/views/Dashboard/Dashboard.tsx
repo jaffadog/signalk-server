@@ -252,12 +252,19 @@ export default function Dashboard() {
             <Card.Body>
               <Row>
                 <Col xs="12" md="12">
-                  <Table hover responsive bordered striped size="sm">
+                  <Table
+                    hover
+                    responsive
+                    bordered
+                    striped
+                    size="sm"
+                    style={{ tableLayout: 'fixed' }}
+                  >
                     <thead>
                       <tr>
-                        <th>Id</th>
-                        <th>Last Error</th>
-                        <th>Status</th>
+                        <th style={{ width: '20%' }}>Id</th>
+                        <th style={{ width: '40%' }}>Last Error</th>
+                        <th style={{ width: '40%' }}>Status</th>
                       </tr>
                     </thead>
                     <tbody>
