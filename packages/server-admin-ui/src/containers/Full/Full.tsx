@@ -277,6 +277,7 @@ export default function Full() {
   // NavLink navigates via pushState, which fires no popstate, so nothing
   // else closes the mobile off-canvas sidebar after the user picks a page.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSidebarShow(false)
   }, [location.pathname])
 
