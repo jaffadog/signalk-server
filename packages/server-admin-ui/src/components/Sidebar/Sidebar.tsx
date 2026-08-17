@@ -714,7 +714,6 @@ export default function Sidebar({ location, show, onHide }: SidebarProps) {
       responsive="lg"
       data-bs-theme="dark"
       className="bg-dark border-end sidebar-offcanvas"
-      style={{ width: 240 }}
     >
       <Offcanvas.Header closeButton className="d-lg-none border-bottom">
         <Offcanvas.Title as="span" className="fs-6 fw-semibold">

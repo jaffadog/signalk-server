@@ -106,6 +106,14 @@ $app-sidebar-width: 240px;
   margin-top: $app-navbar-height;
 }
 
+// Single source of truth for the sidebar's width at every breakpoint —
+// below lg this overrides Bootstrap's own ~400px mobile offcanvas default;
+// at lg+ it's paired with the fixed-position rules below. Sidebar.tsx no
+// longer sets this inline, so there's only one place to change it.
+.sidebar-offcanvas {
+  width: $app-sidebar-width;
+}
+
 // Sidebar stays pinned in the viewport instead of scrolling away with the
 // page, matching the pre-BS5 app shell. Only applies at lg+, where
 // Offcanvas (responsive="lg") renders as a static in-flow panel rather than
@@ -115,7 +123,6 @@ $app-sidebar-width: 240px;
   .sidebar-offcanvas {
     position: fixed;
     top: $app-navbar-height;
-    width: $app-sidebar-width;
     height: calc(100vh - #{$app-navbar-height});
     overflow-y: auto;
     z-index: 1020;
