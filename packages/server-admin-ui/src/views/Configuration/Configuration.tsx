@@ -170,7 +170,7 @@ export default function PluginConfigurationList() {
       if (!configCardRef.current) return
       const rect = configCardRef.current.getBoundingClientRect()
       const navbarHeight =
-        document.querySelector('.app-header')?.getBoundingClientRect().height ??
+        document.querySelector('.app-navbar')?.getBoundingClientRect().height ??
         55
       window.scrollBy({
         top: rect.top - navbarHeight,
@@ -409,7 +409,8 @@ export default function PluginConfigurationList() {
                     style={{
                       position: 'sticky',
                       top: 0,
-                      zIndex: 1
+                      zIndex: 1,
+                      backgroundColor: 'var(--bs-body-bg)'
                     }}
                   >
                     <tr>
