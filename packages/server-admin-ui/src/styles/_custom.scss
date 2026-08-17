@@ -201,27 +201,24 @@ $app-sidebar-width: 240px;
 
 // RJSF Form Styling
 
-// Mixin for button state variants to reduce duplication
-@mixin button-variant(
-  $bg-color,
-  $border-color,
-  $hover-bg,
-  $hover-border,
-  $shadow-color
-) {
-  background-color: $bg-color !important;
-  border-color: $border-color !important;
+// Mixin for button color variants to reduce duplication. Named distinctly
+// from Bootstrap's own button-variant mixin (bootstrap/scss/mixins/_buttons)
+// to avoid silently shadowing it under this file's legacy @import (global
+// namespace). Uses filter: brightness() for the hover/focus shade instead
+// of a second hand-picked color, since it darkens correctly in both light
+// and dark mode without needing a separate token.
+@mixin rjsf-button-color($color-var, $color-rgb-var) {
+  background-color: var($color-var) !important;
+  border-color: var($color-var) !important;
   color: var(--bs-white) !important;
 
-  &:hover {
-    background-color: $hover-bg !important;
-    border-color: $hover-border !important;
+  &:hover,
+  &:focus {
+    filter: brightness(0.85);
   }
 
   &:focus {
-    background-color: $hover-bg !important;
-    border-color: $hover-border !important;
-    box-shadow: 0 0 0 0.2rem $shadow-color !important;
+    box-shadow: 0 0 0 0.2rem rgba(var($color-rgb-var), 0.5) !important;
   }
 }
 
@@ -290,32 +287,12 @@ form.rjsf {
 
   // Add button styling - cyan color
   button.btn-add {
-    @include button-variant(
-      #20a8d8,
-      // background
-      #20a8d8,
-      // border
-      #1985ac,
-      // hover background
-      #1985ac,
-      // hover border
-      rgba(32, 168, 216, 0.5) // focus shadow
-    );
+    @include rjsf-button-color(--bs-info, --bs-info-rgb);
   }
 
   // Remove button styling - red color
   button.array-item-remove {
-    @include button-variant(
-      #f86c6b,
-      // background
-      #f86c6b,
-      // border
-      #f63c3a,
-      // hover background
-      #f63c3a,
-      // hover border
-      rgba(248, 108, 107, 0.5) // focus shadow
-    );
+    @include rjsf-button-color(--bs-danger, --bs-danger-rgb);
   }
 
   // Array button styling
