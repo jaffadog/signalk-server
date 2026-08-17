@@ -11,7 +11,7 @@
 .pg-default-fallback {
   padding: 0.75rem;
   margin-bottom: 1rem;
-  border: 1px solid rgb(var(--bs-black-rgb), 0.08);
+  border: 1px solid var(--bs-border-color-translucent);
   border-radius: 0.375rem;
   background: rgb(var(--bs-primary-rgb), 0.03);
 
@@ -122,7 +122,7 @@
       'enabled order order';
     gap: 0.35rem 0.5rem;
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgb(var(--bs-black-rgb), 0.08);
+    border-bottom: 1px solid var(--bs-border-color-translucent);
   }
   td {
     padding: 0;
@@ -192,7 +192,7 @@
   gap: 0.5rem;
   padding: 0.4rem 0.5rem;
   background: var(--bs-body-bg);
-  border: 1px solid rgb(var(--bs-black-rgb), 0.08);
+  border: 1px solid var(--bs-border-color-translucent);
   border-radius: 0.375rem;
   transition:
     border-color 0.15s ease,
@@ -392,7 +392,7 @@
 }
 
 .pg-path-row {
-  background: rgb(var(--bs-black-rgb), 0.02);
+  background: rgb(var(--bs-body-color-rgb), 0.02);
   border: 1px solid transparent;
   border-radius: 0.25rem;
   transition:
@@ -423,7 +423,7 @@
   border-radius: 0.25rem;
 
   &:hover {
-    background: rgb(var(--bs-black-rgb), 0.04);
+    background: rgb(var(--bs-body-color-rgb), 0.04);
   }
 
   &:focus-visible {
@@ -449,7 +449,7 @@
   font-size: 0.65rem;
   font-family: var(--bs-font-monospace);
   color: var(--bs-secondary-color);
-  background: rgb(var(--bs-black-rgb), 0.04);
+  background: rgb(var(--bs-body-color-rgb), 0.04);
   padding: 0.05rem 0.35rem;
   border-radius: 0.25rem;
   white-space: nowrap;
@@ -460,7 +460,7 @@
   // warning.
   &.is-partial {
     color: var(--bs-gray-700);
-    background: rgb(var(--bs-black-rgb), 0.08);
+    background: rgb(var(--bs-body-color-rgb), 0.08);
   }
 }
 
@@ -475,7 +475,7 @@
   font-size: 0.65rem;
   font-family: var(--bs-font-monospace);
   color: var(--bs-secondary-color);
-  background: rgb(var(--bs-black-rgb), 0.05);
+  background: rgb(var(--bs-body-color-rgb), 0.05);
   padding: 0.05rem 0.3rem;
   border-radius: 0.25rem;
   white-space: nowrap;
