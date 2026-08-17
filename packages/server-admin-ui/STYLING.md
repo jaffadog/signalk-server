@@ -45,11 +45,12 @@ knows which theme is active. If you write `color: $primary` instead of
 `color: var(--bs-primary)`, that rule will not react when a user switches
 themes.
 
-**The one place Sass variables still belong:** `src/styles/_bootstrap-variables.scss`,
-where we set the base token _values_ Bootstrap compiles into CSS variables in the
-first place. That's compile-time configuration of the palette, not runtime
-styling — which is also why that file (and only that file, plus the vendored
-`core/` directory) is exempt from the `color-no-hex` family of rules.
+**The places Sass variables still belong:** `src/styles/_bootstrap-variables.scss`
+and `src/styles/_sk-tokens.scss`, where we set the base token _values_ Bootstrap
+(and our own brand colors) compile into CSS variables in the first place.
+That's compile-time configuration of the palette, not runtime styling — which
+is also why those two files (and only those two) are exempt from the
+`color-no-hex` family of rules.
 
 Everywhere else: `var(--bs-*)` for Bootstrap tokens, `var(--sk-*)` for our
 own. If you need a color that doesn't have a token yet, add one to
