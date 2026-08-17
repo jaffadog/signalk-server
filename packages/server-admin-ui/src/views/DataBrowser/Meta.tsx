@@ -364,8 +364,7 @@ const MethodSelect: React.FC<ValueRenderProps> = ({
           onChange={() => {
             const arr = value as string[]
             if (arr.indexOf(method) < 0) {
-              arr.push(method)
-              setValue([...arr])
+              setValue([...arr, method])
             } else {
               const newArr = arr.filter((m) => m !== method)
               setValue(newArr)
