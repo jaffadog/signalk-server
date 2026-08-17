@@ -54,28 +54,18 @@ const BLESettings: React.FC = () => {
               </Form.Label>
             </Col>
             <Col xs="12" md={10}>
-              <div className="d-flex align-items-center">
-                <Form.Label
-                  style={{ marginRight: '15px', marginBottom: 0 }}
-                  className="switch switch-text switch-primary"
-                >
-                  <input
-                    type="checkbox"
-                    id="localBluetoothManaged"
-                    name="localBluetoothManaged"
-                    className="switch-input"
-                    disabled={!supported || saving}
-                    checked={settings.localBluetoothManaged}
-                    onChange={(e) =>
-                      setBleSettingsLocal({
-                        localBluetoothManaged: e.target.checked
-                      })
-                    }
-                  />
-                  <span className="switch-label" data-on="On" data-off="Off" />
-                  <span className="switch-handle" />
-                </Form.Label>
-              </div>
+              <Form.Check
+                type="switch"
+                id="localBluetoothManaged"
+                name="localBluetoothManaged"
+                disabled={!supported || saving}
+                checked={settings.localBluetoothManaged}
+                onChange={(e) =>
+                  setBleSettingsLocal({
+                    localBluetoothManaged: e.target.checked
+                  })
+                }
+              />
               <Form.Text muted>
                 {supported
                   ? "Use the server's built-in Bluetooth adapter for BLE scanning and GATT connections."
