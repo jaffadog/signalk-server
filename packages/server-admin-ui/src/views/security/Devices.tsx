@@ -165,7 +165,7 @@ export default function Devices() {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {loginStatus.authenticationRequired === false && <EnableSecurity />}
       {loginStatus.authenticationRequired && (
         <div>
@@ -215,7 +215,7 @@ export default function Devices() {
                   <FontAwesomeIcon icon={faAlignJustify} /> Device
                 </Card.Header>
                 <Card.Body>
-                  <Form>
+                  <Form onSubmit={handleApply}>
                     <Form.Group as={Row}>
                       <Form.Label column md="2">
                         Client ID
