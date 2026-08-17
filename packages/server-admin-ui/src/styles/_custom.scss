@@ -389,42 +389,6 @@ form.rjsf {
   }
 }
 
-// Ensure btn-success has white text (Bootstrap 5 may calculate dark text for some greens)
-// .btn-success,
-// .btn-success:hover,
-// .btn-success:focus,
-// .btn-success:active {
-//   --bs-btn-color: var(--bs-white);
-//   --bs-btn-hover-color: var(--bs-white);
-//   --bs-btn-active-color: var(--bs-white);
-//   color: var(--bs-white) !important;
-// }
-
-// Source Priorities: nested table in Priorities column should have white background
-// .table-striped .table {
-//   --bs-table-bg: var(--bs-white);
-//   background-color: var(--bs-white);
-// }
-
-// Ensure btn-danger has white text
-// .btn-danger,
-// .btn-danger:hover,
-// .btn-danger:focus,
-// .btn-danger:active {
-//   --bs-btn-color: var(--bs-white);
-//   --bs-btn-hover-color: var(--bs-white);
-//   --bs-btn-active-color: var(--bs-white);
-//   color: var(--bs-white) !important;
-// }
-
-// Ensure badges have white text
-// .badge.text-bg-success,
-// .badge.text-bg-danger,
-// .badge.bg-success,
-// .badge.bg-danger {
-//   color: var(--bs-white) !important;
-// }
-
 // Plugin config: scrollable list and connected panels on desktop
 @media (width >= 1200px) {
   .plugin-list-container {

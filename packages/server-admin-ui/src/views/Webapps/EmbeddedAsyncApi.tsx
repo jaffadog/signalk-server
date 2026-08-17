@@ -255,7 +255,10 @@ export default function EmbeddedAsyncApi() {
                   className="card"
                   style={{ marginBottom: 8, padding: 12 }}
                 >
-                  <span className="badge bg-success" style={{ marginRight: 8 }}>
+                  <span
+                    className="badge text-bg-success"
+                    style={{ marginRight: 8 }}
+                  >
                     {op.action}
                   </span>
                   <strong>{oname}</strong>
