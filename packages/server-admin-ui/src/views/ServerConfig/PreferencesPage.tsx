@@ -4,7 +4,7 @@ import UnitPreferencesSettings from './UnitPreferencesSettings'
 
 const PreferencesPage: React.FC = () => {
   return (
-    <div className="animated fadeIn">
+    <div>
       <GnssPositionSettings />
       <UnitPreferencesSettings />
     </div>

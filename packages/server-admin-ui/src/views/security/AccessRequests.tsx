@@ -123,7 +123,7 @@ export default function AccessRequests() {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {loginStatus.authenticationRequired === false && <EnableSecurity />}
       {loginStatus.authenticationRequired && (
         <div>

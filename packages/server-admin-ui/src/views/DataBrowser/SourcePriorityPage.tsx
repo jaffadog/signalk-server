@@ -3,7 +3,7 @@ import SourcePriorities from '../ServerConfig/SourcePriorities'
 
 const SourcePriorityPage: React.FC = () => {
   return (
-    <div className="animated fadeIn">
+    <div>
       <SourcePriorities />
     </div>
   )

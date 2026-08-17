@@ -151,7 +151,7 @@ export default function ServerLogs() {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Card>
         <Card.Header>
           <FontAwesomeIcon icon={faAlignJustify} /> <strong>Server Log</strong>

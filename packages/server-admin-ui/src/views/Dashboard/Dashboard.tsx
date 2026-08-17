@@ -162,7 +162,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {websocketStatus === 'open' && (
         <div>
           <Card>

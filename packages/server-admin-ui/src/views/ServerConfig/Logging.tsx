@@ -72,7 +72,7 @@ const Logging: React.FC = () => {
   }, [])
 
   if (!authorized) {
-    return <div className="animated fadeIn">Not Authorized</div>
+    return <div>Not Authorized</div>
   }
 
   if (!hasData) {
@@ -80,7 +80,7 @@ const Logging: React.FC = () => {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Row>
         <Col sm="12" xl="12">
           <Card>

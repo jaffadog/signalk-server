@@ -89,7 +89,7 @@ export default function Settings() {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {loginStatus.authenticationRequired === false && <EnableSecurity />}
       {config.hasData && loginStatus.authenticationRequired && (
         <div>

@@ -274,7 +274,7 @@ const Playground: React.FC = () => {
   }, [input, send])
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Row>
         <Col xs={12} md={6}>
           <Card>

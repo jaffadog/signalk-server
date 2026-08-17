@@ -187,7 +187,7 @@ export default function Users() {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {loginStatus.authenticationRequired === false && <EnableSecurity />}
       {users && loginStatus.authenticationRequired && (
         <div>

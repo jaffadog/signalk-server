@@ -242,7 +242,7 @@ export default function Webapps() {
   )
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Card>
         <Card.Header className="d-flex justify-content-between align-items-center">
           <span>Webapps</span>

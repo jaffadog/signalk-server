@@ -881,7 +881,7 @@ const DataBrowser: React.FC = () => {
   )
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Card>
         <Card.Body>
           <Form

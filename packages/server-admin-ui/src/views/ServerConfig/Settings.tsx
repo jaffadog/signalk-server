@@ -222,7 +222,7 @@ const ServerSettings: React.FC = () => {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Card>
         <Card.Header>
           <FontAwesomeIcon icon={faAlignJustify} />{' '}

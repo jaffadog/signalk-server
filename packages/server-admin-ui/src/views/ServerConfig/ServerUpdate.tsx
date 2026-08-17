@@ -37,7 +37,7 @@ const ServerUpdate: React.FC = () => {
 
   if (!appStore.storeAvailable) {
     return (
-      <div className="animated fadeIn">
+      <div>
         <Card>
           <Card.Header>Waiting for App store data to load...</Card.Header>
         </Card>
@@ -57,7 +57,7 @@ const ServerUpdate: React.FC = () => {
   }
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {!appStore.canUpdateServer && (
         <Card className="border-warning">
           <Card.Header>Server Update</Card.Header>

@@ -95,7 +95,7 @@ export default function BLEManager() {
   const isScanning = hasGateways || activeAdapters.length > 0
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Row className="mb-3">
         <Col sm="3">
           <Card className="text-center">

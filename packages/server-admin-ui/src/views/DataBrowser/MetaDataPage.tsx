@@ -86,7 +86,7 @@ const MetaDataPage: React.FC = () => {
   }, [context, search, dataVersion])
 
   return (
-    <div className="animated fadeIn">
+    <div>
       <Card>
         <Card.Body>
           <Form

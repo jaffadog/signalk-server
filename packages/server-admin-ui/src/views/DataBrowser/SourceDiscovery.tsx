@@ -438,7 +438,7 @@ const SourceDiscovery: React.FC = () => {
   const allWsProxied = devices.length > 0 && !hasDirectN2k
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {devices.length === 0 && nmea0183.length === 0 && (
         <Alert variant="info" style={{ fontSize: '0.9rem' }}>
           No NMEA devices detected yet. Check your{' '}

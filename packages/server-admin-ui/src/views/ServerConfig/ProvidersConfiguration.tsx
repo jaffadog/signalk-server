@@ -297,7 +297,7 @@ const ProvidersConfiguration: React.FC = () => {
   }, [])
 
   return (
-    <div className="animated fadeIn">
+    <div>
       {discoveredProviders && discoveredProviders.length > 0 && (
         <Card>
           <Card.Header>Discovered Connections</Card.Header>
